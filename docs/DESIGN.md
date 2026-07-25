@@ -13,8 +13,8 @@ backend, sem router: cada versão é uma página estática independente.
 site/
   index.html              # índice /mockup/ — a área de rascunhos (HTML puro)
   versoes/
-    index.html            # escolha das 10 versões, com miniaturas
-    v1/ … v10/            # uma entrada por versão: index.html + main.tsx (gerados)
+    index.html            # escolha das 11 versões, com miniaturas
+    v1/ … v11/            # uma entrada por versão: index.html + main.tsx (gerados)
   root/                   # a entrada do site publicado em /
   src/
     content/pt-pt.ts      # TODA a copy, em pt-PT — fonte de verdade
@@ -34,10 +34,10 @@ site/
     assets/fonts.css      # o trio da marca num só ficheiro
     assets/img/           # fotografias optimizadas (geradas)
     assets/logo/          # logótipo em 11 variantes (geradas)
-    versions/v1..v10/     # o design de cada versão (App.tsx + css)
+    versions/v1..v11/     # o design de cada versão (App.tsx + css)
 ```
 
-`npm run build` → `mockup/` (índice) + `mockup/versoes/vN/` (as 10), com
+`npm run build` → `mockup/` (índice) + `mockup/versoes/vN/` (as 11), com
 `base: './'` — caminhos relativos, portanto o mesmo build serve no GitHub Pages
 e num domínio próprio, a qualquer profundidade. A raiz `/` continua a ser o
 site publicado: **o build não lhe toca**.
@@ -51,7 +51,7 @@ escolha regeneram-se depois (`npm run thumbs`), não editar nada à mão lá.
   `getContent()`. Consequência: traduzir = escrever um ficheiro; o TypeScript
   acusa a chave em falta. Três idiomas: pt-PT (omissão), pt-BR, EN.
 - **Nenhum contacto escrito à mão.** WhatsApp/telefone saem de `config.ts` pelo
-  `whatsappHref(t, intent)`. Trocar o número = uma linha, as 10 seguem.
+  `whatsappHref(t, intent)`. Trocar o número = uma linha, as 11 seguem.
 - **Nenhum dado inventado.** Morada, Instagram e Maps ainda não existem: os
   campos são `null` em `config.ts` e as versões **escondem o bloco** em vez de
   mostrar texto falso.
@@ -80,11 +80,11 @@ Para laranja em corpo de texto sobre claro, usar `--fire-800` (brasa, 9.4:1).
 | Comando | O que faz |
 |---|---|
 | `npm run dev` | Vite dev. As versões em `/versoes/vN/`, o índice em `/` |
-| `npm run build` | Build das 10 → `mockup/` |
+| `npm run build` | Build das 11 → `mockup/` |
 | `npm run fonts` | Descarrega as 8 famílias e embute em base64 (subset `latin`) |
 | `npm run photos` | Optimiza as fotos de `docs da erica/` → `src/assets/img/` + `photos.data.ts` |
 | `node scripts/logos.mjs` | Corta e optimiza as 11 variantes do logótipo |
-| `npm run entries` | Regenera as entradas das 10 versões |
+| `npm run entries` | Regenera as entradas das 11 versões |
 | `npm run shots` | `npm run shots <url> <dir> <prefixo>` — captura 320/375/390/414/768/1440 e **falha** se houver erro de consola, imagem partida, overflow horizontal ou alvo de toque < 44px |
 | `npm run thumbs` | Miniaturas JPEG (desktop + telemóvel) para a página de escolha |
 | `node scripts/serve-root.mjs` | Serve a RAIZ do repositório como o GitHub Pages a serve (o `vite preview` serve `site/`, não a raiz) |

@@ -44,16 +44,23 @@
   --tom-5-t: #ffffff; /* ruivo escuro */
 
   --font-display: 'Anton', 'Arial Narrow', 'Haettenschweiler', sans-serif;
+  /**
+   * Bodoni Moda é uma didone: contraste altíssimo, hastes finas que somem.
+   * Em texto corrido — e sobretudo sobre o laranja chapado — deixa de se ler.
+   * Fica reservada ao que é grande (leads, números, a etiqueta da assinatura);
+   * o corpo vai para Archivo, que aguenta 1rem sobre cor saturada.
+   */
   --serif: 'Bodoni Moda', 'Bodoni MT', Georgia, serif;
+  --font-body: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --cta-bar-height: 4.25rem;
   --gutter: clamp(1.125rem, 4.5vw, 3.5rem);
   --max: 82rem;
 
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: clamp(1.02rem, 0.95rem + 0.32vw, 1.18rem);
-  line-height: 1.55;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+  line-height: 1.6;
   color: var(--k);
   background: var(--p);
   /* A barra fixa do WhatsApp nunca tapa o fim da página. */
@@ -61,7 +68,9 @@
   overflow-x: clip;
 }
 
-.v10 :is(h1, h2, h3) {
+/* `:where()` e não `:is()`: `:is` soma a especificidade do elemento e ganhava
+   às regras de cada título — o `line-height` do h1 do cartaz nunca pegava. */
+.v10 :where(h1, h2, h3) {
   font-family: var(--font-display);
   font-weight: 400;
   text-transform: uppercase;
@@ -349,7 +358,9 @@
 
 .v10-hero__h1 {
   font-size: clamp(2.25rem, 11.6vw, 6rem);
-  line-height: 0.9;
+  /* Anton desenha o acento das maiúsculas muito acima da caixa: abaixo de
+     1.15 o "É" de "É RARO" encosta no "RUIVO" da linha de cima. */
+  line-height: 1.15;
   letter-spacing: -0.012em;
   margin: 0 0 0.9rem;
   /* O registo: a chapa oliva ficou 3px atrás da preta. */
@@ -765,12 +776,14 @@
   color: var(--p);
 }
 .v10-banda__tag {
-  font-family: var(--serif);
-  font-style: italic;
+  /* Sans com peso, não didone itálica: sobre laranja o traço fino desaparece. */
+  font-family: var(--font-body);
+  font-weight: 600;
   font-size: var(--step--1);
+  letter-spacing: 0.02em;
   line-height: 1.2;
   margin-bottom: 0.3rem;
-  opacity: 0.95;
+  opacity: 1;
 }
 .v10-banda__titulo {
   font-size: clamp(1.4rem, 6vw, 2rem);

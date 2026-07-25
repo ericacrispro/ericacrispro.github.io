@@ -11,11 +11,11 @@ export const en = {
   meta: {
     lang: 'en',
     locale: 'en_GB',
-    title: 'Érica Gonçalves — Redhead Hair Specialist | Portugal',
+    title: 'Érica Gonçalves — Redhead Hair Specialist',
     description:
-      'Red hair colour, colour correction and tone maintenance, in Portugal. Your red, made by hand by someone who does nothing but red. Bookings via WhatsApp.',
+      'Red hair colour, colour correction and tone maintenance, by someone who does nothing else. Bookings via WhatsApp.',
     ogTitle: 'Érica Gonçalves — Redhead Specialist',
-    ogDescription: 'Your shade of red, made by hand, in Portugal. Bookings via WhatsApp.',
+    ogDescription: 'Red done right is rare. Bookings via WhatsApp.',
   },
 
   brand: {
@@ -62,12 +62,12 @@ export const en = {
 
   hero: {
     /** One line per item — each version composes them as it likes. */
-    titleLines: ['Red', 'is not just', 'another shade.'],
-    titleFlat: 'Red is not just another shade.',
+    titleLines: ['Red done right', 'is rare.', 'It is all I do.'],
+    titleFlat: 'Red done right is rare. It is all I do.',
     /** Shorter alternative, for the big-type versions. */
-    titleShort: 'Your red.',
-    lead: 'It is the only thing I do, and I do it properly. Red colour, correction and upkeep, in Portugal — head by head, shade by shade.',
-    leadShort: 'Red colour, correction and upkeep, in Portugal.',
+    titleShort: 'Your red, done right.',
+    lead: 'Getting a red right — and keeping it alive — is one of the hardest things done in a salon. That is why I do nothing else: colour, correction and upkeep, head by head, shade by shade.',
+    leadShort: 'Red colour, correction and upkeep, by someone who does nothing else.',
     note: 'Book by message, no commitment.',
     scroll: 'Scroll to see the work',
   },
@@ -77,10 +77,10 @@ export const en = {
     lines: [
       'Red is the hardest colour to get right.',
       'It is also the one that fades fastest.',
-      'And it is the only one I do every single day.',
+      'That is why I do nothing else.',
     ],
     kicker: 'Why only red',
-    body: 'Every head of hair takes colour differently — what is already in it, what has been done to it before, how thick the strand is. With red you see it straight away: either it comes out alive, or it comes out orange and dull. That is why this is all I do.',
+    body: 'Every head of hair takes colour differently — what is already in it, what has been done to it before, how thick the strand is. With red you see it straight away: either it comes out alive, or it comes out orange and dull. In a salon that does a bit of everything, a beautiful red happens now and then. Here it is the only thing done — which is why I know what your hair will give before I touch it.',
   },
 
   sobre: {
@@ -88,7 +88,7 @@ export const en = {
     kicker: 'About me',
     lead: 'I am Érica. I am a redhead, and I make redheads.',
     body: [
-      'I work in Portugal with one speciality only: red colour. Colouring from scratch, correcting what went wrong somewhere else, and maintenance — which with red is half the job.',
+      'I have one speciality only: red colour. Colouring from scratch, correcting what went wrong somewhere else, and maintenance — which with red is half the job. I do not split my attention with anything else, and that is what shows in the result.',
       'Before I touch your hair, I want to know what has already been put on it. That is what decides what can be done today, and what will only work two sessions from now. I would rather tell you that to your face than promise a shade that will not hold.',
       'What I do is right there in the photos below. They are all my own clients — not one of them is from a catalogue.',
     ],
@@ -237,14 +237,14 @@ export const en = {
     whatsappLabel: 'WhatsApp',
     localLabel: 'Where',
     /** Until the address comes from Érica, this is what shows. */
-    localPendente: 'Portugal — exact address goes here.',
+    localPendente: 'The salon address goes here.',
     horarioLabel: 'Hours',
     horarioPendente: 'By appointment.',
     instagramLabel: 'Instagram',
   },
 
   footer: {
-    tagline: 'Redhead specialist, in Portugal.',
+    tagline: 'Redhead specialist.',
     direitos: 'All rights reserved.',
     feitoPor: 'Photographs of real work, shared with the clients’ permission.',
     idiomaLabel: 'Language',

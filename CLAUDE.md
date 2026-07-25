@@ -29,7 +29,7 @@ verde e acolhimento clínico, aqui fogo e ofício.
 4. **Nada de dado inventado.** Sem morada, preços, horários, depoimentos ou anos
    de experiência. O que falta está `null` em `config.ts` e o bloco esconde-se.
 5. **`/` tem de funcionar sempre**, para ela poder ver a qualquer momento.
-6. **Dez versões para ela escolher** em `/mockup/versoes/`. A escolhida promove-se
+6. **Onze versões para ela escolher** em `/mockup/versoes/`. A escolhida promove-se
    para a raiz com `npm run promote vN`.
 
 ## Quem é a Érica (extraído dos materiais dela)
@@ -59,7 +59,7 @@ A curadoria (que foto entra, em que papel, com que tom de ruivo) está em
 
 ## Estado (24/07/2026)
 
-Base pronta e as 10 versões construídas. **A escolha é dela.** A versão promovida
+Base pronta e as 11 versões construídas. **A escolha é dela.** A versão promovida
 para `/` é um palpite; troca-se com um comando.
 
 ### Pendências à espera da Érica
@@ -77,7 +77,7 @@ Ver `docs/DESIGN.md` para a lista completa. Os quatro do dia-a-dia:
 
 ```bash
 npm run dev            # versões em /versoes/vN/, índice em /
-npm run build          # as 10 → mockup/
+npm run build          # as 11 → mockup/
 npm run shots <url> <dir> <prefixo>   # portão de qualidade: 6 viewports, falha se houver bug
 npm run promote v3     # publica a versão escolhida na raiz /
 ```

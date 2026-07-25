@@ -64,8 +64,15 @@ export const VERSIONS = [
   {
     id: 'v10',
     name: 'Cartaz',
-    fonts: ['anton', 'bodoni-moda'],
+    fonts: ['anton', 'bodoni-moda', 'archivo'],
     resumo: 'Blocos de cor chapada e retícula de impressão, como a embalagem de uma coloração. Gráfico e directo.',
+  },
+  {
+    id: 'v11',
+    name: 'Perfil',
+    fonts: ['epilogue', 'archivo'],
+    resumo:
+      'A foto dela ocupa a primeira tela inteira; o conteúdo desce por baixo e a barra acende a secção que estás a ler. No computador, foto fixa à esquerda.',
   },
 ]
 

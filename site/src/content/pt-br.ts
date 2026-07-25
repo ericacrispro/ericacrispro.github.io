@@ -12,11 +12,11 @@ export const ptBR = {
   meta: {
     lang: 'pt-BR',
     locale: 'pt_BR',
-    title: 'Érica Gonçalves — Especialista em Ruivos | Portugal',
+    title: 'Érica Gonçalves — Especialista em Ruivos',
     description:
-      'Coloração ruiva, correção de cor e manutenção do tom, em Portugal. O seu ruivo feito à mão por quem só faz ruivos. Agendamentos pelo WhatsApp.',
+      'Coloração ruiva, correção de cor e manutenção do tom, por quem não faz mais nada. Agendamentos pelo WhatsApp.',
     ogTitle: 'Érica Gonçalves — Especialista em Ruivos',
-    ogDescription: 'O seu tom de ruivo, feito à mão, em Portugal. Agendamentos pelo WhatsApp.',
+    ogDescription: 'Ruivo bem feito é raro. Agendamentos pelo WhatsApp.',
   },
 
   brand: {
@@ -63,12 +63,12 @@ export const ptBR = {
 
   hero: {
     /** Uma linha por elemento — as versões compõem como quiserem. */
-    titleLines: ['Ruivo', 'não é uma cor', 'da lista.'],
-    titleFlat: 'Ruivo não é uma cor da lista.',
+    titleLines: ['Ruivo bem feito', 'é raro.', 'É tudo o que eu faço.'],
+    titleFlat: 'Ruivo bem feito é raro. É tudo o que eu faço.',
     /** Alternativa mais curta, para as versões de tipografia grande. */
-    titleShort: 'O seu ruivo.',
-    lead: 'É a única coisa que eu faço a sério. Coloração, correção e manutenção de ruivo, em Portugal — cabelo a cabelo, tom a tom.',
-    leadShort: 'Coloração, correção e manutenção de ruivo, em Portugal.',
+    titleShort: 'O seu ruivo, bem feito.',
+    lead: 'Acertar um ruivo — e manter ele aceso — é uma das coisas mais difíceis que se faz num salão. É por isso que eu não faço mais nada: coloração, correção e manutenção, cabelo a cabelo, tom a tom.',
+    leadShort: 'Coloração, correção e manutenção de ruivo, por quem não faz mais nada.',
     note: 'Agendamento por mensagem, sem compromisso.',
     scroll: 'Role para ver o trabalho',
   },
@@ -78,10 +78,10 @@ export const ptBR = {
     lines: [
       'O ruivo é a cor mais difícil de acertar.',
       'É também a que mais desbota.',
-      'E é a única que eu faço todos os dias.',
+      'Por isso eu não faço mais nada.',
     ],
     kicker: 'Por que só ruivos',
-    body: 'Cada cabelo reage à cor de um jeito diferente — o que já está lá, o que já foi feito, a espessura do fio. Com ruivo isso aparece na hora: ou fica vivo, ou fica alaranjado e sem graça. É por isso que eu só faço isso.',
+    body: 'Cada cabelo reage à cor de um jeito diferente — o que já está lá, o que já foi feito, a espessura do fio. Com ruivo isso aparece na hora: ou fica vivo, ou fica alaranjado e sem graça. Num salão que faz de tudo, um ruivo bonito sai de vez em quando. Aqui é a única coisa que se faz — e por isso eu sei o que o seu cabelo vai dar antes de encostar nele.',
   },
 
   sobre: {
@@ -89,7 +89,7 @@ export const ptBR = {
     kicker: 'Sobre mim',
     lead: 'Eu sou a Érica. Sou ruiva, e faço ruivas.',
     body: [
-      'Trabalho em Portugal com uma especialidade só: cor ruiva. Coloração do zero, correção do que deu errado em outro lugar, e a manutenção — que no ruivo é metade do trabalho.',
+      'Tenho uma especialidade só: cor ruiva. Coloração do zero, correção do que deu errado em outro lugar, e a manutenção — que no ruivo é metade do trabalho. Não divido a atenção com mais nada, e é isso que faz a diferença no resultado.',
       'Antes de tocar no seu cabelo, quero saber o que já foi colocado nele. É isso que decide o que dá para fazer hoje, e o que só dá daqui a duas sessões. Prefiro te falar isso na cara do que prometer um tom que não se sustenta.',
       'O que eu faço você vê nas fotos aqui embaixo. São todas de clientes minhas — nenhuma é de catálogo.',
     ],
@@ -238,14 +238,14 @@ export const ptBR = {
     whatsappLabel: 'WhatsApp',
     localLabel: 'Onde',
     /** Enquanto o endereço não vier da Érica, é isto que aparece. */
-    localPendente: 'Portugal — o endereço exato vai aqui.',
+    localPendente: 'O endereço do salão vai aqui.',
     horarioLabel: 'Horário',
     horarioPendente: 'Com hora marcada.',
     instagramLabel: 'Instagram',
   },
 
   footer: {
-    tagline: 'Especialista em ruivos, em Portugal.',
+    tagline: 'Especialista em ruivos.',
     direitos: 'Todos os direitos reservados.',
     feitoPor: 'Fotos de trabalhos reais, com autorização das clientes.',
     idiomaLabel: 'Idioma',
