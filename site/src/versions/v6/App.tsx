@@ -91,8 +91,8 @@ export function App() {
         <section className={`v6-hero${hero.cls}`} id="top" ref={hero.ref} aria-labelledby="v6-h1">
           <div className="v6-hero-photo">
             <Picture
-              photo={photo('caracois-ruivos-cobre-volume')}
-              alt={t.photoAlt['caracois-ruivos-cobre-volume']}
+              photo={photo('erica-retrato-estudio')}
+              alt={t.photoAlt['erica-retrato-estudio']}
               sizes="100vw"
               ratio="auto"
               priority
@@ -147,8 +147,8 @@ export function App() {
         <section className="v6-sobre" ref={sobre.ref} aria-labelledby="v6-sobre-t">
           <div className={`v6-sobre-photo${sobre.cls}`}>
             <Picture
-              photo={photo('erica-retrato-estudio')}
-              alt={t.photoAlt['erica-retrato-estudio']}
+              photo={photo('caracois-ruivos-cobre-volume')}
+              alt={t.photoAlt['caracois-ruivos-cobre-volume']}
               sizes="(min-width: 900px) 50vw, 100vw"
               ratio="auto"
             />

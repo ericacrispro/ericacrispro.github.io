@@ -82,7 +82,8 @@ export function App() {
     window.history.replaceState(null, '', next ? `${pathname}${search}#${next}` : `${pathname}${search}`)
   }, [])
 
-  const heroPhoto = photo('caracois-ruivos-cobre-volume')
+  // Quem abre a página é ela: é ela própria ruiva, e isso é metade do argumento.
+  const heroPhoto = photo('erica-retrato-estudio')
   const ericaPhoto = photo('erica-sorriso-salao')
   const cartaPhoto = photo('kc-color-gama-tons-ruivos')
   const maoPhoto = photo('erica-com-coloracao-kc-color')

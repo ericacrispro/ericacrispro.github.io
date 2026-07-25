@@ -73,7 +73,8 @@ export function App() {
   const waMarcar = whatsappHref(t, 'marcar')
   const ano = new Date().getFullYear()
 
-  const fotoHero = HEROES[1] ?? HEROES[0]
+  // Quem abre a página é ela; o trabalho em clientes vem na galeria.
+  const fotoHero = ERICA.hero
   const fotoManifesto = HEROES[0]
 
   const nav = [

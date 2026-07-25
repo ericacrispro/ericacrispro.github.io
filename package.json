@@ -16,7 +16,9 @@
     "shots": "node scripts/shots.mjs",
     "thumbs": "node scripts/thumbs.mjs",
     "promote": "node scripts/promote.mjs",
-    "social": "node scripts/social.mjs"
+    "social": "node scripts/social.mjs",
+    "publicar": "node scripts/publicar.mjs",
+    "serve-root": "node scripts/serve-root.mjs"
   },
   "dependencies": {
     "react": "^19.2.7",

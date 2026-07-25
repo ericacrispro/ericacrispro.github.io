@@ -19,8 +19,14 @@ import { LangSwitch } from '../../shared/LangSwitch'
 import { CONTACT, externalLinkProps, whatsappHref } from '../../shared/contact'
 import { useReveal } from '../../shared/useReveal'
 
-/** A foto do hero: caracóis cobre, sujeito centrado — aguenta o recorte vertical. */
-const HERO_PHOTO: Photo = HEROES[1] ?? HEROES[0]
+/**
+ * Quem abre a página é ela. É ela própria ruiva, e isso é metade do argumento —
+ * o trabalho em clientes vem a seguir, na galeria.
+ */
+const HERO_PHOTO: Photo = ERICA.hero
+
+/** O fecho: caracóis cobre, sujeito centrado — aguenta o recorte vertical. */
+const FECHO_PHOTO: Photo = HEROES[1] ?? HEROES[0]
 
 /** Marca de água: a chama-raposa, recortada pela margem. */
 function Chama({ className, tone }: { className: string; tone: 'quente' | 'clara' }) {
@@ -316,10 +322,12 @@ export function App() {
             </dl>
           </div>
 
+          {/* No fecho volta o trabalho, não ela — é o que fica na cabeça de quem
+              está prestes a escrever. */}
           <Picture
             className="v1-contacto__foto"
-            photo={ERICA.hero}
-            alt={t.photoAlt[ERICA.hero.slug]}
+            photo={FECHO_PHOTO}
+            alt={t.photoAlt[FECHO_PHOTO.slug]}
             sizes="(min-width: 900px) 34vw, 100vw"
             ratio="auto"
           />

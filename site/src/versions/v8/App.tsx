@@ -116,7 +116,8 @@ function Galeria({ t }: { t: ReturnType<typeof getContent> }) {
 
 export function App() {
   const t = getContent()
-  const heroFoto = photo('caracois-ruivos-cobre-volume')
+  // Quem abre a página é ela; o trabalho em clientes vem na galeria.
+  const heroFoto = photo('erica-retrato-estudio')
 
   return (
     <div className="v8">

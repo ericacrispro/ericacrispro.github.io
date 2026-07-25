@@ -31,12 +31,22 @@ const TYPES = {
 }
 
 createServer(async (req, res) => {
+  const [pathname, query = ''] = req.url.split('?')
   // `normalize` + o corte dos `../` impede sair da raiz do repositório.
-  const rel = normalize(decodeURIComponent(req.url.split('?')[0])).replace(/^(\.\.[/\\])+/, '')
+  const rel = normalize(decodeURIComponent(pathname)).replace(/^(\.\.[/\\])+/, '')
   let path = join(ROOT, rel)
 
   try {
-    if ((await stat(path)).isDirectory()) path = join(path, 'index.html')
+    if ((await stat(path)).isDirectory()) {
+      // `/mockup` → `/mockup/`. Sem isto, os caminhos relativos da página
+      // resolvem contra a directoria-pai e a página abre sem CSS — é o que o
+      // GitHub Pages faz, e o servidor local tem de fazer igual.
+      if (!pathname.endsWith('/')) {
+        res.writeHead(301, { location: `${pathname}/${query ? `?${query}` : ''}` }).end()
+        return
+      }
+      path = join(path, 'index.html')
+    }
   } catch {
     res.writeHead(404, { 'content-type': 'text/plain; charset=utf-8' }).end('não encontrado')
     return
