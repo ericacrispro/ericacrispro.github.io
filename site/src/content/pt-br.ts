@@ -14,9 +14,9 @@ export const ptBR = {
     locale: 'pt_BR',
     title: 'Érica Gonçalves — Especialista em Ruivos',
     description:
-      'Coloração ruiva, correção de cor e manutenção do tom, por quem não faz mais nada. Agendamentos pelo WhatsApp.',
+      'Coloração ruiva, correção de cor e manutenção do tom, por quem entende e vive o ruivo. Agendamentos pelo WhatsApp.',
     ogTitle: 'Érica Gonçalves — Especialista em Ruivos',
-    ogDescription: 'Ruivo bem feito é raro. Agendamentos pelo WhatsApp.',
+    ogDescription: 'Um ruivo feito por quem vive o ruivo. Agendamentos pelo WhatsApp.',
   },
 
   brand: {
@@ -63,12 +63,12 @@ export const ptBR = {
 
   hero: {
     /** Uma linha por elemento — as versões compõem como quiserem. */
-    titleLines: ['Ruivo bem feito', 'é raro.', 'É tudo o que eu faço.'],
-    titleFlat: 'Ruivo bem feito é raro. É tudo o que eu faço.',
+    titleLines: ['Um ruivo perfeito', 'para as minhas', 'raposinhas.'],
+    titleFlat: 'Um ruivo perfeito para as minhas raposinhas.',
     /** Alternativa mais curta, para as versões de tipografia grande. */
-    titleShort: 'O seu ruivo, bem feito.',
-    lead: 'Acertar um ruivo — e manter ele aceso — é uma das coisas mais difíceis que se faz num salão. É por isso que eu não faço mais nada: coloração, correção e manutenção, cabelo a cabelo, tom a tom.',
-    leadShort: 'Coloração, correção e manutenção de ruivo, por quem não faz mais nada.',
+    titleShort: 'O seu ruivo perfeito.',
+    lead: 'Um ruivo feito por quem vive o ruivo — e que por isso sabe o que o seu cabelo aguenta antes de encostar nele.',
+    leadShort: 'Um ruivo feito por quem vive o ruivo.',
     note: 'Agendamento por mensagem, sem compromisso.',
     scroll: 'Role para ver o trabalho',
   },
@@ -78,10 +78,10 @@ export const ptBR = {
     lines: [
       'O ruivo é a cor mais difícil de acertar.',
       'É também a que mais desbota.',
-      'Por isso eu não faço mais nada.',
+      'Tem que ser feito por quem vive ela.',
     ],
     kicker: 'Por que só ruivos',
-    body: 'Cada cabelo reage à cor de um jeito diferente — o que já está lá, o que já foi feito, a espessura do fio. Com ruivo isso aparece na hora: ou fica vivo, ou fica alaranjado e sem graça. Num salão que faz de tudo, um ruivo bonito sai de vez em quando. Aqui é a única coisa que se faz — e por isso eu sei o que o seu cabelo vai dar antes de encostar nele.',
+    body: 'Cada cabelo reage à cor de um jeito diferente — o que já está lá, o que já foi feito, a espessura do fio. Com ruivo isso aparece na hora: ou fica vivo, ou fica alaranjado e sem graça. Quem não convive com essa cor todo dia descobre isso tarde demais, já com a mistura no cabelo. Eu sou ruiva e faço ruivas: conheço essa cor dos dois lados, no espelho e na cadeira.',
   },
 
   sobre: {
@@ -89,7 +89,7 @@ export const ptBR = {
     kicker: 'Sobre mim',
     lead: 'Eu sou a Érica. Sou ruiva, e faço ruivas.',
     body: [
-      'Tenho uma especialidade só: cor ruiva. Coloração do zero, correção do que deu errado em outro lugar, e a manutenção — que no ruivo é metade do trabalho. Não divido a atenção com mais nada, e é isso que faz a diferença no resultado.',
+      'Coloração do zero, correção do que deu errado em outro lugar, e a manutenção — que no ruivo é metade do trabalho. É a cor com que eu vivo todo dia, no espelho e na cadeira, e é por isso que eu sei ler um cabelo antes de encostar nele.',
       'Antes de tocar no seu cabelo, quero saber o que já foi colocado nele. É isso que decide o que dá para fazer hoje, e o que só dá daqui a duas sessões. Prefiro te falar isso na cara do que prometer um tom que não se sustenta.',
       'O que eu faço você vê nas fotos aqui embaixo. São todas de clientes minhas — nenhuma é de catálogo.',
     ],

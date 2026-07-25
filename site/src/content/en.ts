@@ -13,9 +13,9 @@ export const en = {
     locale: 'en_GB',
     title: 'Érica Gonçalves — Redhead Hair Specialist',
     description:
-      'Red hair colour, colour correction and tone maintenance, by someone who does nothing else. Bookings via WhatsApp.',
+      'Red hair colour, colour correction and tone maintenance, by someone who understands and lives red. Bookings via WhatsApp.',
     ogTitle: 'Érica Gonçalves — Redhead Specialist',
-    ogDescription: 'Red done right is rare. Bookings via WhatsApp.',
+    ogDescription: 'Red done by someone who lives in red. Bookings via WhatsApp.',
   },
 
   brand: {
@@ -62,12 +62,12 @@ export const en = {
 
   hero: {
     /** One line per item — each version composes them as it likes. */
-    titleLines: ['Red done right', 'is rare.', 'It is all I do.'],
-    titleFlat: 'Red done right is rare. It is all I do.',
+    titleLines: ['A perfect red', 'for my little', 'foxes.'],
+    titleFlat: 'A perfect red for my little foxes.',
     /** Shorter alternative, for the big-type versions. */
-    titleShort: 'Your red, done right.',
-    lead: 'Getting a red right — and keeping it alive — is one of the hardest things done in a salon. That is why I do nothing else: colour, correction and upkeep, head by head, shade by shade.',
-    leadShort: 'Red colour, correction and upkeep, by someone who does nothing else.',
+    titleShort: 'Your perfect red.',
+    lead: 'Red done by someone who lives in red — and who therefore knows what your hair can take before touching it.',
+    leadShort: 'Red done by someone who lives in red.',
     note: 'Book by message, no commitment.',
     scroll: 'Scroll to see the work',
   },
@@ -77,10 +77,10 @@ export const en = {
     lines: [
       'Red is the hardest colour to get right.',
       'It is also the one that fades fastest.',
-      'That is why I do nothing else.',
+      'It has to be done by someone who lives it.',
     ],
     kicker: 'Why only red',
-    body: 'Every head of hair takes colour differently — what is already in it, what has been done to it before, how thick the strand is. With red you see it straight away: either it comes out alive, or it comes out orange and dull. In a salon that does a bit of everything, a beautiful red happens now and then. Here it is the only thing done — which is why I know what your hair will give before I touch it.',
+    body: 'Every head of hair takes colour differently — what is already in it, what has been done to it before, how thick the strand is. With red you see it straight away: either it comes out alive, or it comes out orange and dull. Anyone who does not live with this colour every day finds that out too late, with the mix already on the hair. I am a redhead and I make redheads: I know this colour from both sides, in the mirror and in the chair.',
   },
 
   sobre: {
@@ -88,7 +88,7 @@ export const en = {
     kicker: 'About me',
     lead: 'I am Érica. I am a redhead, and I make redheads.',
     body: [
-      'I have one speciality only: red colour. Colouring from scratch, correcting what went wrong somewhere else, and maintenance — which with red is half the job. I do not split my attention with anything else, and that is what shows in the result.',
+      'Colouring from scratch, correcting what went wrong somewhere else, and maintenance — which with red is half the job. It is the colour I live with every day, in the mirror and in the chair, and that is why I can read a head of hair before I touch it.',
       'Before I touch your hair, I want to know what has already been put on it. That is what decides what can be done today, and what will only work two sessions from now. I would rather tell you that to your face than promise a shade that will not hold.',
       'What I do is right there in the photos below. They are all my own clients — not one of them is from a catalogue.',
     ],

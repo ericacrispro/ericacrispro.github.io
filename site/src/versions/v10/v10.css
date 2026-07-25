@@ -357,10 +357,12 @@
 }
 
 .v10-hero__h1 {
-  font-size: clamp(2.25rem, 11.6vw, 6rem);
+  /* Mais contido do que um cartaz pediria: a chapa tem de caber na dobra do
+     telemóvel para a fotografia — e o dedo dela — chegarem à barra de contacto. */
+  font-size: clamp(1.85rem, 8.9vw, 5.25rem);
   /* Anton desenha o acento das maiúsculas muito acima da caixa: abaixo de
-     1.15 o "É" de "É RARO" encosta no "RUIVO" da linha de cima. */
-  line-height: 1.15;
+     1.12 o acento encosta na linha de cima. */
+  line-height: 1.12;
   letter-spacing: -0.012em;
   margin: 0 0 0.9rem;
   /* O registo: a chapa oliva ficou 3px atrás da preta. */
@@ -426,9 +428,39 @@
 }
 .v10-hero__foto img {
   width: 100%;
-  height: clamp(320px, 68vw, 560px);
+  /* Alta o suficiente para encostar na barra de contacto: o gesto dela só
+     aponta para o botão se não houver uma faixa vazia pelo meio. */
+  height: clamp(330px, 66vw, 560px);
   object-fit: cover;
-  object-position: 50% 32%;
+  object-position: 68% 34%;
+}
+
+/**
+ * Ecrã curto (iPhone SE e afins): a chapa comia a dobra inteira e a fotografia
+ * — com o gesto dela a apontar para a barra de contacto — ficava toda abaixo.
+ * Aqui a chapa aperta e o botão secundário sai: a barra fixa já leva a mesma
+ * acção, e o que interessa ver é o dedo em cima do WhatsApp.
+ */
+@media (max-height: 720px) {
+  .v10-hero__chapa {
+    /* A retícula continua a ter faixa própria — só encolhe com o resto. */
+    --ret: clamp(30px, 7vw, 60px);
+    padding-block: 1.1rem calc(var(--ret) + 0.4rem);
+  }
+  .v10-hero__h1 {
+    font-size: clamp(1.6rem, 7.4vw, 2.4rem);
+    margin-bottom: 0.6rem;
+  }
+  .v10-hero__lead {
+    margin-bottom: 0;
+  }
+  .v10-hero__accoes,
+  .v10-hero__nota {
+    display: none;
+  }
+  .v10-hero__foto img {
+    height: clamp(230px, 34svh, 340px);
+  }
 }
 
 /* Barra de cores de impressão — a régua de tinta ao pé da folha. */
