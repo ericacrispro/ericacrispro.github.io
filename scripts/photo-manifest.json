@@ -4,7 +4,7 @@
       "file": "erica/1000186209.jpg.jpeg",
       "slug": "erica-retrato-estudio",
       "role": "hero",
-      "alt": "Érica Gonçalves, especialista em ruivos, de bob acobreado encaracolado e look todo preto, em retrato de estúdio",
+      "alt": "Erica Gonçalves, especialista em ruivos, de bob acobreado encaracolado e look todo preto, em retrato de estúdio",
       "orientation": "portrait",
       "notes": "A única foto verdadeiramente profissional dela: fundo cinza uniforme, luz suave, nitidez alta. Muito espaço vazio à esquerda e no topo para título e CTA. O gesto de apontar para baixo funciona a apontar para o botão de marcação."
     },
@@ -12,7 +12,7 @@
       "file": "erica/1000220528.jpg.jpeg",
       "slug": "erica-sorriso-salao",
       "role": "sobre",
-      "alt": "Érica de perto, com o seu bob de caracóis num ruivo laranja intenso, no salão",
+      "alt": "Erica de perto, com o seu bob de caracóis num ruivo laranja intenso, no salão",
       "orientation": "portrait",
       "notes": "O ruivo dela está no ponto mais vibrante de todas as fotos e o enquadramento é próximo e caloroso. Ideal para a secção 'sobre' — cria ligação humana. Fundo claro do salão, boa luz natural."
     },
@@ -20,7 +20,7 @@
       "file": "erica/1000178848.jpg.jpeg",
       "slug": "erica-raposa-croche",
       "role": "prova",
-      "alt": "Érica no salão, cabelo ruivo em caracóis volumosos, a segurar uma raposa e um camaleão em crochê",
+      "alt": "Erica no salão, cabelo ruivo em caracóis volumosos, a segurar uma raposa e um camaleão em crochê",
       "orientation": "portrait",
       "notes": "Mostra-a dentro do salão real, com a personalidade da marca (raposa = ruivo, camaleão = KC Color). Qualidade de telemóvel e fundo movimentado, por isso serve melhor em bloco pequeno de prova/bastidores do que em destaque."
     }
@@ -31,7 +31,7 @@
       "slug": "ruivo-acaju-camadas-longas",
       "alt": "Cabelo ruivo acaju em camadas longas com pontas viradas, brilho espelhado sob luz natural",
       "orientation": "portrait",
-      "notes": "Primeira escolha para hero. Cliente em três quartos, parede bege lisa a ocupar todo o terço direito e o topo — espaço limpo para título, subtítulo e CTA. Cor rica, brilho impecável, corte bem legível. A mão da Érica a levantar o cabelo assina o trabalho sem mostrar rosto."
+      "notes": "Primeira escolha para hero. Cliente em três quartos, parede bege lisa a ocupar todo o terço direito e o topo — espaço limpo para título, subtítulo e CTA. Cor rica, brilho impecável, corte bem legível. A mão da Erica a levantar o cabelo assina o trabalho sem mostrar rosto."
     },
     {
       "file": "clients/1000255813.jpg.jpeg",
@@ -142,7 +142,7 @@
     {
       "file": "clients/1000178859.jpg.jpeg",
       "slug": "erica-com-cliente-ruivo-comprido",
-      "alt": "Érica ao lado de uma cliente com ruivo cobre comprido e escovado, ambas de ruivo no salão",
+      "alt": "Erica ao lado de uma cliente com ruivo cobre comprido e escovado, ambas de ruivo no salão",
       "orientation": "portrait",
       "tone": "cobre",
       "faceVisible": true,
@@ -151,11 +151,11 @@
     {
       "file": "clients/1000215600.jpg.jpeg",
       "slug": "coloracao-fantasia-laranja-fogo",
-      "alt": "Coloração de fantasia em degradê fogo, do magenta na raiz ao laranja e amarelo nas pontas, nas mãos da Érica",
+      "alt": "Coloração de fantasia em degradê fogo, do magenta na raiz ao laranja e amarelo nas pontas, nas mãos da Erica",
       "orientation": "portrait",
       "tone": "laranja",
       "faceVisible": false,
-      "notes": "Foto profissional e a única em que o rosto da cliente não aparece — mostra só o cabelo e a Érica a sorrir. Ideal para representar coloração criativa sem expor ninguém."
+      "notes": "Foto profissional e a única em que o rosto da cliente não aparece — mostra só o cabelo e a Erica a sorrir. Ideal para representar coloração criativa sem expor ninguém."
     },
     {
       "file": "clients/1000239610.jpg.jpeg",
@@ -212,9 +212,9 @@
     {
       "file": "clients/1000213918.jpg.jpeg",
       "slug": "erica-com-coloracao-kc-color",
-      "alt": "Érica de luvas a mostrar dois frascos de coloração KC Color Cachorro Caramelo, a sorrir",
+      "alt": "Erica de luvas a mostrar dois frascos de coloração KC Color Cachorro Caramelo, a sorrir",
       "orientation": "portrait",
-      "notes": "Está na pasta clients/ mas é a melhor imagem de 'Érica + produto': liga a profissional à marca de coloração. Excelente para o topo da secção de produtos."
+      "notes": "Está na pasta clients/ mas é a melhor imagem de 'Erica + produto': liga a profissional à marca de coloração. Excelente para o topo da secção de produtos."
     }
   ],
   "rejected": [
@@ -240,7 +240,7 @@
     },
     {
       "file": "clients/1000213755.jpg.jpeg",
-      "reason": "Mesma sessão e mesma cliente do degradê de fogo; a composição com Érica atrás já está coberta por 1000215600. Reserva."
+      "reason": "Mesma sessão e mesma cliente do degradê de fogo; a composição com Erica atrás já está coberta por 1000215600. Reserva."
     },
     {
       "file": "clients/1000183564.jpg.jpeg",
@@ -256,7 +256,7 @@
     },
     {
       "file": "produtos/Cachorro caramelo-26.jpg.jpeg",
-      "reason": "É um cartaz publicitário da KC Color com código QR, não um produto em uso. Comunica a marca do fornecedor, não o trabalho da Érica."
+      "reason": "É um cartaz publicitário da KC Color com código QR, não um produto em uso. Comunica a marca do fornecedor, não o trabalho da Erica."
     },
     {
       "file": "produtos/Cachorro caramelo-153.jpg.jpeg",

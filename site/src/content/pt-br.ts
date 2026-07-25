@@ -12,16 +12,16 @@ export const ptBR = {
   meta: {
     lang: 'pt-BR',
     locale: 'pt_BR',
-    title: 'Érica Gonçalves — Especialista em Ruivos',
+    title: 'Erica Gonçalves — Especialista em Ruivos',
     description:
       'Coloração ruiva, correção de cor e manutenção do tom, por quem entende e vive o ruivo. Agendamentos pelo WhatsApp.',
-    ogTitle: 'Érica Gonçalves — Especialista em Ruivos',
+    ogTitle: 'Erica Gonçalves — Especialista em Ruivos',
     ogDescription: 'Um ruivo feito por quem vive o ruivo. Agendamentos pelo WhatsApp.',
   },
 
   brand: {
-    name: 'Érica Gonçalves',
-    firstName: 'Érica',
+    name: 'Erica Gonçalves',
+    firstName: 'Erica',
     tagline: 'Especialista em Ruivos',
     signature: 'Gonçalves',
   },
@@ -48,10 +48,10 @@ export const ptBR = {
     secondaryLong: 'Ligar para +351 932 386 898',
     /** Mensagem já escrita quando o WhatsApp abre. */
     whatsappMessage:
-      'Oi Érica! Vi o seu site e queria falar sobre o meu cabelo. 🦊',
-    whatsappMessageAgenda: 'Oi Érica! Queria agendar uma coloração ruiva. 🦊',
+      'Oi Erica! Vi o seu site e queria falar sobre o meu cabelo. 🦊',
+    whatsappMessageAgenda: 'Oi Erica! Queria agendar uma coloração ruiva. 🦊',
     whatsappMessageCorrecao:
-      'Oi Érica! A minha cor não ficou como eu queria e queria saber se dá para corrigir.',
+      'Oi Erica! A minha cor não ficou como eu queria e queria saber se dá para corrigir.',
     helper: 'Você me manda uma foto do seu cabelo e a gente conversa a partir daí.',
     helperShort: 'Agendamentos e orçamentos por mensagem.',
     maps: 'Ver no mapa',
@@ -87,7 +87,7 @@ export const ptBR = {
   sobre: {
     title: 'Quem vai pintar o seu cabelo',
     kicker: 'Sobre mim',
-    lead: 'Eu sou a Érica. Sou ruiva, e faço ruivas.',
+    lead: 'Eu sou a Erica. Sou ruiva, e faço ruivas.',
     body: [
       'Coloração do zero, correção do que deu errado em outro lugar, e a manutenção — que no ruivo é metade do trabalho. É a cor com que eu vivo todo dia, no espelho e na cadeira, e é por isso que eu sei ler um cabelo antes de encostar nele.',
       'Antes de tocar no seu cabelo, quero saber o que já foi colocado nele. É isso que decide o que dá para fazer hoje, e o que só dá daqui a duas sessões. Prefiro te falar isso na cara do que prometer um tom que não se sustenta.',
@@ -237,7 +237,7 @@ export const ptBR = {
     telefoneLabel: 'Telefone',
     whatsappLabel: 'WhatsApp',
     localLabel: 'Onde',
-    /** Enquanto o endereço não vier da Érica, é isto que aparece. */
+    /** Enquanto o endereço não vier da Erica, é isto que aparece. */
     localPendente: 'O endereço do salão vai aqui.',
     horarioLabel: 'Horário',
     horarioPendente: 'Com hora marcada.',
@@ -261,10 +261,10 @@ export const ptBR = {
   /** Texto alternativo de cada foto. Chave = slug em `photos.data.ts`. */
   photoAlt: {
     'erica-retrato-estudio':
-      'Érica Gonçalves, especialista em ruivos, de bob acobreado cacheado e look todo preto, em retrato de estúdio',
-    'erica-sorriso-salao': 'Érica de perto, com o seu bob de cachos num ruivo laranja intenso, no salão',
+      'Erica Gonçalves, especialista em ruivos, de bob acobreado cacheado e look todo preto, em retrato de estúdio',
+    'erica-sorriso-salao': 'Erica de perto, com o seu bob de cachos num ruivo laranja intenso, no salão',
     'erica-raposa-croche':
-      'Érica no salão, cabelo ruivo em cachos volumosos, segurando uma raposa e um camaleão de crochê',
+      'Erica no salão, cabelo ruivo em cachos volumosos, segurando uma raposa e um camaleão de crochê',
     'ruivo-acaju-camadas-longas':
       'Cabelo ruivo acaju em camadas longas com pontas viradas, brilho espelhado sob luz natural',
     'caracois-ruivos-cobre-volume':
@@ -281,9 +281,9 @@ export const ptBR = {
     'ruivo-escuro-liso-comprido': 'Ruivo escuro amarronzado, comprido e liso, com brilho acetinado',
     'ruivo-cobre-dourado-ondas': 'Ruivo cobre dourado em ondas largas, com reflexos que puxam para o morango',
     'erica-com-cliente-ruivo-comprido':
-      'Érica ao lado de uma cliente com ruivo cobre comprido e escovado, as duas de ruivo no salão',
+      'Erica ao lado de uma cliente com ruivo cobre comprido e escovado, as duas de ruivo no salão',
     'coloracao-fantasia-laranja-fogo':
-      'Coloração fantasia em degradê fogo, do magenta na raiz ao laranja e amarelo nas pontas, nas mãos da Érica',
+      'Coloração fantasia em degradê fogo, do magenta na raiz ao laranja e amarelo nas pontas, nas mãos da Erica',
     'caracois-acaju-medios': 'Cachos acaju de comprimento médio, bem definidos e com brilho',
     'ruivo-gengibre-comprido-ondulado': 'Ruivo gengibre comprido com ondas suaves nas pontas e risca no meio',
     'ruivo-acaju-escuro-medio': 'Ruivo acaju escuro em corte médio ondulado, com reflexos acobreados',
@@ -291,12 +291,12 @@ export const ptBR = {
     'kc-color-cachorro-caramelo-frasco':
       'Frasco de coloração profissional em tom cobre dourado, sobre a bancada do salão',
     'kc-color-gama-tons-ruivos': 'Três colorações profissionais lado a lado, com a cartela de tons ruivos',
-    'erica-com-coloracao-kc-color': 'Érica de luvas mostrando dois frascos de coloração em tom cobre, sorrindo',
+    'erica-com-coloracao-kc-color': 'Erica de luvas mostrando dois frascos de coloração em tom cobre, sorrindo',
   } as Record<string, string>,
 
   a11y: {
     skip: 'Pular para o conteúdo',
-    logo: 'Érica Gonçalves — especialista em ruivos',
+    logo: 'Erica Gonçalves — especialista em ruivos',
     galeriaRegiao: 'Galeria de trabalhos',
     fecharFoto: 'Fechar foto',
     fotoAnterior: 'Foto anterior',

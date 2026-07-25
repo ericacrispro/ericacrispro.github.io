@@ -1,6 +1,6 @@
 # Product
 
-> Escrito a partir dos materiais que a Érica entregou (`docs da erica/`) + o
+> Escrito a partir dos materiais que a Erica entregou (`docs da erica/`) + o
 > briefing do Silas em 24/07/2026. O Silas pediu explicitamente para **não
 > parar com perguntas**, portanto o que não estava nos materiais foi inferido e
 > está marcado como **a confirmar** em "Pendências". Nada foi inventado como
@@ -29,7 +29,7 @@ mesma porta mas não procuram ruivo.
 
 ## Product Purpose
 
-Site da Érica Gonçalves, cabeleireira especialista em ruivos em Portugal.
+Site da Erica Gonçalves, cabeleireira especialista em ruivos em Portugal.
 Substitui o "link na bio". Mostra o trabalho real dela, quem ela é, e leva ao
 contacto. Sucesso = a visitante abre o WhatsApp e escreve.
 
@@ -86,7 +86,7 @@ Fotografia de stock é proibida — só o trabalho real.
 - **Especialista, não generalista.** Ruivo primeiro, sempre. O resto dos
   serviços existe mas não disputa o palco.
 - **Nada de dado inventado.** Sem morada, sem preço, sem depoimento fabricado.
-  O que falta, falta visivelmente — e pergunta-se à Érica.
+  O que falta, falta visivelmente — e pergunta-se à Erica.
 
 ## Accessibility & Inclusion
 
@@ -97,7 +97,7 @@ texto escuro por cima, ou na variante brasa para texto. Foco visível,
 toque ≥ 44px, `alt` descritivo em todas as fotos (vem do conteúdo, por idioma),
 `h1` único, landmarks semânticos, skip-link.
 
-## Pendências (a confirmar com a Érica — não bloqueiam)
+## Pendências (a confirmar com a Erica — não bloqueiam)
 
 - **Paleta oficial** — a actual foi extraída do logótipo, pixel a pixel.
 - **Morada + link do Google Maps** do salão.

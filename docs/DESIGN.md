@@ -1,4 +1,4 @@
-# Design system — site da Érica
+# Design system — site da Erica
 
 Como o site é construído. A **identidade** (cores, logótipo, fontes) está em
 `BRAND.md` e é lei; a **estratégia** está em `../PRODUCT.md`. Este ficheiro
@@ -129,7 +129,7 @@ resolvidas na raiz — não voltar a resolvê-las versão a versão:
 - **`decoding="async"` deixa fotografias em branco nas capturas.** Quatro
   agentes tropeçaram nisto de forma independente: o Chrome headless redimensiona
   a janela para a captura de página inteira e não descodifica o que nunca esteve
-  no ecrã. Como é por estas capturas que a Érica escolhe, `Picture` é
+  no ecrã. Como é por estas capturas que a Erica escolhe, `Picture` é
   `decoding="sync"` por omissão.
 - **A biblioteca do Chrome tem de viver num sítio estável.** `libasound.so.2`
   ficou primeiro numa pasta temporária e desapareceu entre sessões, partindo

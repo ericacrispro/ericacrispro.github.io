@@ -1,5 +1,5 @@
 /**
- * O logótipo da Érica, nas variantes que ela entregou.
+ * O logótipo da Erica, nas variantes que ela entregou.
  *
  * `assinatura` = marca completa (chama-raposa + ERICA Gonçalves + especialista
  * em ruivos). `icone` = só a chama-raposa. `selo` = versão circular.

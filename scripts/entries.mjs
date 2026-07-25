@@ -19,7 +19,7 @@ for (const { id, name, fonts, resumo } of VERSIONS) {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Érica Gonçalves — Especialista em Ruivos</title>
+    <title>Erica Gonçalves — Especialista em Ruivos</title>
     <meta name="description" content="Coloração ruiva, correcção de cor e manutenção do tom, em Portugal. Marcações pelo WhatsApp." />
     <meta name="robots" content="noindex" />
     <meta name="theme-color" content="#EC6807" />
@@ -32,15 +32,15 @@ for (const { id, name, fonts, resumo } of VERSIONS) {
          A imagem precisa de URL absoluto. -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_PT" />
-    <meta property="og:site_name" content="Érica Gonçalves" />
-    <meta property="og:title" content="Érica Gonçalves — Especialista em Ruivos" />
+    <meta property="og:site_name" content="Erica Gonçalves" />
+    <meta property="og:title" content="Erica Gonçalves — Especialista em Ruivos" />
     <meta property="og:description" content="Versão ${id.toUpperCase()} · ${name} — ${resumo}" />
     <meta property="og:url" content="${SITE_URL}/mockup/versoes/${id}/" />
     <meta property="og:image" content="${SITE_URL}/og.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Érica Gonçalves, especialista em ruivos, ao lado da frase “Ruivo não é uma cor da lista.”" />
+    <meta property="og:image:alt" content="Erica Gonçalves, especialista em ruivos, ao lado da frase “Ruivo não é uma cor da lista.”" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="${SITE_URL}/og.jpg" />
   </head>
@@ -101,8 +101,8 @@ writeFileSync(
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dez caminhos para o teu site — Érica Gonçalves</title>
-    <meta name="description" content="Dez direcções visuais para o site da Érica Gonçalves. Abre, compara, escolhe." />
+    <title>Dez caminhos para o teu site — Erica Gonçalves</title>
+    <meta name="description" content="Dez direcções visuais para o site da Erica Gonçalves. Abre, compara, escolhe." />
     <meta name="robots" content="noindex" />
     <meta name="theme-color" content="#1B0E05" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -192,7 +192,7 @@ writeFileSync(
       <header>
         <a class="back" href="../">← Rascunhos</a>
         <h1>Dez caminhos para o teu site</h1>
-        <p class="lead">Érica — cada link abaixo é um site inteiro, a funcionar, no telemóvel e no computador. O mesmo conteúdo e a mesma marca; dez maneiras diferentes de te apresentar.</p>
+        <p class="lead">Erica — cada link abaixo é um site inteiro, a funcionar, no telemóvel e no computador. O mesmo conteúdo e a mesma marca; dez maneiras diferentes de te apresentar.</p>
         <p class="note">Abre, rola até ao fim, e diz-me qual é a tua. Dá para misturar: “gostei do início da 2 com a galeria da 3”.</p>
       </header>
 

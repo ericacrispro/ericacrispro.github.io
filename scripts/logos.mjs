@@ -1,5 +1,5 @@
 /**
- * Prepara as variantes do logótipo entregue pela Érica para uso no site.
+ * Prepara as variantes do logótipo entregue pela Erica para uso no site.
  *
  *   node scripts/logos.mjs
  *
@@ -23,7 +23,7 @@ const JOBS = [
   ["Marca d'gua 03.png", 'assinatura-laranja', 900],
   ["Marca d'gua branca.png", 'assinatura-branca', 900],
   ["Marca d'gua - cone.png", 'icone-duas-cores', 512],
-  // Atenção: nos ficheiros do ícone e do selo, a numeração da Érica está ao
+  // Atenção: nos ficheiros do ícone e do selo, a numeração da Erica está ao
   // contrário da da assinatura — aqui o "02" é o laranja e o "03" o oliva.
   // Confirmado por amostragem de píxeis: 02 → #EC6807, 03 → #5D541D.
   ["Marca d'gua 02 - cone.png", 'icone-laranja', 512],

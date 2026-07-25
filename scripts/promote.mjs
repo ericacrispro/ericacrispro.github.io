@@ -3,7 +3,7 @@
  *
  *   npm run promote v3
  *
- * Quando a Érica escolher outra, troca-se o argumento: um comando, sem
+ * Quando a Erica escolher outra, troca-se o argumento: um comando, sem
  * reescrever nada à mão.
  *
  *  1. aponta `site/root/main.tsx` para a versão escolhida (e importa as fontes dela);

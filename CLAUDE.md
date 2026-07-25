@@ -1,4 +1,4 @@
-# Érica Gonçalves — site (cabeleireira, especialista em ruivos)
+# Erica Gonçalves — site (cabeleireira, especialista em ruivos)
 
 > **Este ficheiro é o ponto de partida.** Uma sessão nova deve lê-lo primeiro,
 > depois `PRODUCT.md` (estratégia), `docs/BRAND.md` (identidade) e
@@ -6,7 +6,7 @@
 
 ## O que é
 
-Site profissional da **Érica Gonçalves**, cabeleireira **especialista em
+Site profissional da **Erica Gonçalves**, cabeleireira **especialista em
 ruivos** em Portugal. Publicado no **GitHub Pages** (site de utilizador, serve
 do branch `main`, raiz `/`). Ainda **sem domínio próprio** — vive em
 `ericacrispro.github.io`; quando ela comprar um, junta-se um `CNAME` e aponta-se
@@ -32,7 +32,7 @@ verde e acolhimento clínico, aqui fogo e ofício.
 6. **Onze versões para ela escolher** em `/mockup/versoes/`. A escolhida promove-se
    para a raiz com `npm run promote vN`.
 
-## Quem é a Érica (extraído dos materiais dela)
+## Quem é a Erica (extraído dos materiais dela)
 
 - Cabeleireira em **Portugal**, com uma especialidade só: **cor ruiva** —
   coloração, correcção do que correu mal noutro sítio, e manutenção do tom.
@@ -62,7 +62,7 @@ A curadoria (que foto entra, em que papel, com que tom de ruivo) está em
 Base pronta e as 11 versões construídas. **A escolha é dela.** A versão promovida
 para `/` é um palpite; troca-se com um comando.
 
-### Pendências à espera da Érica
+### Pendências à espera da Erica
 
 - **Paleta oficial** (a actual foi extraída do logótipo, pixel a pixel)
 - **Morada + link do Google Maps** do salão

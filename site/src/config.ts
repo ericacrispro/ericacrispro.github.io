@@ -1,7 +1,7 @@
 /**
  * Contactos e dados fixos. Fonte única — trocar aqui muda as 10 versões.
  *
- * PENDENTE (a Érica ainda vai passar): URL do Google Maps do salão, morada
+ * PENDENTE (a Erica ainda vai passar): URL do Google Maps do salão, morada
  * exacta, handle do Instagram e o domínio próprio. Enquanto forem `null`, as
  * versões escondem o bloco correspondente em vez de mostrar dado inventado.
  */
@@ -17,15 +17,15 @@ export const CONTACT = {
   },
   /** Ligação directa — alternativa para quem não usa WhatsApp. */
   tel: `tel:+${WHATSAPP_NUMBER}`,
-  /** PENDENTE: pedir à Érica. Enquanto for null, o botão do Instagram não aparece. */
+  /** PENDENTE: pedir à Erica. Enquanto for null, o botão do Instagram não aparece. */
   instagramHandle: null as string | null,
   instagramUrl: null as string | null,
-  /** PENDENTE: pedir à Érica o link do Google Maps do salão. */
+  /** PENDENTE: pedir à Erica o link do Google Maps do salão. */
   mapsUrl: null as string | null,
 }
 
 export const BRAND = {
-  name: 'Érica Gonçalves',
+  name: 'Erica Gonçalves',
   tagline: 'Especialista em Ruivos',
   /** PENDENTE: morada exacta do salão. Por agora só o país. */
   city: null as string | null,

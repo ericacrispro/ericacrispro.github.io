@@ -1,5 +1,5 @@
 /**
- * Optimiza as fotografias da Érica (`docs da erica/`, git-ignorado) para
+ * Optimiza as fotografias da Erica (`docs da erica/`, git-ignorado) para
  * `site/src/assets/img/` (versionado) e gera `site/src/shared/photos.data.ts`.
  *
  *   npm run photos

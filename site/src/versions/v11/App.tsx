@@ -179,6 +179,7 @@ export function App() {
                 goTo('sobre')
               }}
             >
+              <span className="hero__arrow" aria-hidden="true" />
               {t.hero.scroll}
               <span className="hero__arrow" aria-hidden="true" />
             </a>

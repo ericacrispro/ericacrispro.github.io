@@ -11,16 +11,16 @@ export const en = {
   meta: {
     lang: 'en',
     locale: 'en_GB',
-    title: 'Érica Gonçalves — Redhead Hair Specialist',
+    title: 'Erica Gonçalves — Redhead Hair Specialist',
     description:
       'Red hair colour, colour correction and tone maintenance, by someone who understands and lives red. Bookings via WhatsApp.',
-    ogTitle: 'Érica Gonçalves — Redhead Specialist',
+    ogTitle: 'Erica Gonçalves — Redhead Specialist',
     ogDescription: 'Red done by someone who lives in red. Bookings via WhatsApp.',
   },
 
   brand: {
-    name: 'Érica Gonçalves',
-    firstName: 'Érica',
+    name: 'Erica Gonçalves',
+    firstName: 'Erica',
     tagline: 'Redhead Specialist',
     signature: 'Gonçalves',
   },
@@ -47,10 +47,10 @@ export const en = {
     secondaryLong: 'Call +351 932 386 898',
     /** Message already written when WhatsApp opens. */
     whatsappMessage:
-      'Hi Érica! I saw your site and I would love to talk about my hair. 🦊',
-    whatsappMessageAgenda: 'Hi Érica! I would like to book a red colour appointment. 🦊',
+      'Hi Erica! I saw your site and I would love to talk about my hair. 🦊',
+    whatsappMessageAgenda: 'Hi Erica! I would like to book a red colour appointment. 🦊',
     whatsappMessageCorrecao:
-      'Hi Érica! My colour did not turn out the way I wanted and I would like to know if it can be fixed.',
+      'Hi Erica! My colour did not turn out the way I wanted and I would like to know if it can be fixed.',
     helper: 'Send me a photo of your hair and we take it from there.',
     helperShort: 'Bookings and quotes by message.',
     maps: 'View on the map',
@@ -86,7 +86,7 @@ export const en = {
   sobre: {
     title: 'Who is colouring your hair',
     kicker: 'About me',
-    lead: 'I am Érica. I am a redhead, and I make redheads.',
+    lead: 'I am Erica. I am a redhead, and I make redheads.',
     body: [
       'Colouring from scratch, correcting what went wrong somewhere else, and maintenance — which with red is half the job. It is the colour I live with every day, in the mirror and in the chair, and that is why I can read a head of hair before I touch it.',
       'Before I touch your hair, I want to know what has already been put on it. That is what decides what can be done today, and what will only work two sessions from now. I would rather tell you that to your face than promise a shade that will not hold.',
@@ -236,7 +236,7 @@ export const en = {
     telefoneLabel: 'Phone',
     whatsappLabel: 'WhatsApp',
     localLabel: 'Where',
-    /** Until the address comes from Érica, this is what shows. */
+    /** Until the address comes from Erica, this is what shows. */
     localPendente: 'The salon address goes here.',
     horarioLabel: 'Hours',
     horarioPendente: 'By appointment.',
@@ -260,10 +260,10 @@ export const en = {
   /** Alt text for each photo. Key = slug in `photos.data.ts`. */
   photoAlt: {
     'erica-retrato-estudio':
-      'Érica Gonçalves, redhead specialist, with a curly copper bob and an all-black outfit, in a studio portrait',
-    'erica-sorriso-salao': 'Close-up of Érica, her curly bob in an intense orange red, in the salon',
+      'Erica Gonçalves, redhead specialist, with a curly copper bob and an all-black outfit, in a studio portrait',
+    'erica-sorriso-salao': 'Close-up of Erica, her curly bob in an intense orange red, in the salon',
     'erica-raposa-croche':
-      'Érica in the salon, red hair in full curls, holding a crocheted fox and chameleon',
+      'Erica in the salon, red hair in full curls, holding a crocheted fox and chameleon',
     'ruivo-acaju-camadas-longas':
       'Auburn red hair in long layers with flicked ends, mirror shine in natural light',
     'caracois-ruivos-cobre-volume':
@@ -280,9 +280,9 @@ export const en = {
     'ruivo-escuro-liso-comprido': 'Dark brownish red, long and straight, with a satin shine',
     'ruivo-cobre-dourado-ondas': 'Golden copper red in wide waves, with strawberry-leaning highlights',
     'erica-com-cliente-ruivo-comprido':
-      'Érica beside a client with long, blow-dried copper red hair, both of them redheads in the salon',
+      'Erica beside a client with long, blow-dried copper red hair, both of them redheads in the salon',
     'coloracao-fantasia-laranja-fogo':
-      'Fantasy colour in a fire gradient, from magenta at the root to orange and yellow at the ends, held in Érica’s hands',
+      'Fantasy colour in a fire gradient, from magenta at the root to orange and yellow at the ends, held in Erica’s hands',
     'caracois-acaju-medios': 'Mid-length auburn curls, well defined and shining',
     'ruivo-gengibre-comprido-ondulado': 'Long ginger red with soft waves at the ends and a centre parting',
     'ruivo-acaju-escuro-medio': 'Dark auburn red in a mid-length wavy cut, with coppery highlights',
@@ -290,12 +290,12 @@ export const en = {
     'kc-color-cachorro-caramelo-frasco':
       'A bottle of professional colour in a golden copper shade, on the salon counter',
     'kc-color-gama-tons-ruivos': 'Three professional colours side by side, with the chart of red shades',
-    'erica-com-coloracao-kc-color': 'Érica in gloves holding up two bottles of copper-toned colour, smiling',
+    'erica-com-coloracao-kc-color': 'Erica in gloves holding up two bottles of copper-toned colour, smiling',
   } as Record<string, string>,
 
   a11y: {
     skip: 'Skip to content',
-    logo: 'Érica Gonçalves — redhead specialist',
+    logo: 'Erica Gonçalves — redhead specialist',
     galeriaRegiao: 'Gallery of work',
     fecharFoto: 'Close photo',
     fotoAnterior: 'Previous photo',

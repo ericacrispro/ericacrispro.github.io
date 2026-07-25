@@ -9,7 +9,7 @@
  *    construir as versões): o Chrome headless redimensiona a janela para a
  *    captura e não chega a descodificar as imagens que nunca estiveram no ecrã,
  *    e a página sai sem uma única fotografia. Como é por estas capturas que a
- *    Érica escolhe, o default aqui é `sync`. Em produção o custo é baixo: as
+ *    Erica escolhe, o default aqui é `sync`. Em produção o custo é baixo: as
  *    imagens já vêm em duas larguras e ~60–120 KB cada.
  */
 import type { Photo } from './photos'

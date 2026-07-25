@@ -1,6 +1,6 @@
 # ericacrispro.github.io
 
-Site da **Érica Gonçalves** — cabeleireira especialista em ruivos, em Portugal.
+Site da **Erica Gonçalves** — cabeleireira especialista em ruivos, em Portugal.
 
 Vite + React + TypeScript, estático, publicado no GitHub Pages a partir do
 branch `main`.
@@ -24,6 +24,6 @@ npm run dev
 | `docs/BRAND.md` | Identidade: cores exactas, logótipo, tipografia |
 | `docs/DESIGN.md` | O sistema: estrutura, scripts, armadilhas já pagas |
 
-## Contacto da Érica
+## Contacto da Erica
 
 WhatsApp **+351 932 386 898**

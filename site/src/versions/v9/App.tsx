@@ -1,7 +1,7 @@
 /**
  * V9 · "Conversa"
  *
- * O primeiro contacto da Érica é sempre por mensagem. Esta versão assume isso:
+ * O primeiro contacto da Erica é sempre por mensagem. Esta versão assume isso:
  * a página é a troca que ela já tem todos os dias — as dúvidas de quem chega
  * alinhadas a um lado, a voz dela do outro, e as fotografias a entrar como
  * prova enviada no meio da conversa.

@@ -365,7 +365,7 @@ export function App() {
 
           {/* As 16. `priority` (não `lazy`) por causa da armadilha já paga: com
               decode assíncrono, a captura de página inteira sai com as fotos em
-              branco — e é por essas capturas que a Érica vai escolher. */}
+              branco — e é por essas capturas que a Erica vai escolher. */}
           <ul className="v4-grid" aria-label={t.a11y.galeriaRegiao}>
             {GALLERY.map((p, i) => (
               <li key={p.slug} className={`v4-cell${i % 7 === 0 || i === last ? ' is-wide' : ''}`}>

@@ -1,6 +1,6 @@
-# Marca — Érica Gonçalves
+# Marca — Erica Gonçalves
 
-Identidade extraída dos ficheiros que a Érica entregou (`docs da erica/logos/`).
+Identidade extraída dos ficheiros que a Erica entregou (`docs da erica/logos/`).
 **Provisório até ela mandar a paleta oficial** — os hex abaixo foram lidos
 pixel a pixel dos PNG do logótipo, portanto são exactos, mas o *papel* de cada
 cor (o que é fundo, o que é acento) foi decidido aqui, não por ela.
