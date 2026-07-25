@@ -1,0 +1,1138 @@
+/**
+ * V9 · "Conversa" — laranja-fogo e quase-preto, tipografia grande, blocos
+ * alinhados a lados opostos. Uma família só (Archivo, 400–700) e a assinatura
+ * (Sacramento) em dois sítios contados: o lockup do topo e o fecho.
+ *
+ * Regras de cor respeitadas: o laranja é superfície com texto quase-preto por
+ * cima (6.4:1); o laranja em corpo sobre claro é sempre a brasa `--fire-800`.
+ */
+
+:root {
+  /* Uma família só. O display é o mesmo Archivo, em 700. */
+  --font-display: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --cta-bar-height: 4.5rem;
+
+  /* Superfícies desta versão. */
+  --v9-ink-soft-dark: oklch(0.31 0.055 45); /* a bolha dela sobre fundo escuro */
+  --v9-line-dark: oklch(0.52 0.06 45);
+  --v9-radius: 1.4rem;
+  --v9-radius-tip: 0.35rem;
+}
+
+body {
+  background: var(--paper);
+  /* A barra fixa do telemóvel nunca tapa o fim da página. */
+  padding-bottom: var(--cta-bar-height);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+}
+
+/* ---------------------------------------------------------------- estrutura */
+
+.wrap {
+  width: 100%;
+  max-width: 78rem;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 3rem);
+}
+
+main > section {
+  padding-block: clamp(3rem, 8vw, 6rem);
+  scroll-margin-top: 4.5rem;
+}
+
+.dark {
+  background: var(--fire-950);
+  color: var(--paper);
+}
+
+.fire {
+  background: var(--fire-500);
+  color: var(--ink);
+}
+
+/* ------------------------------------------------------------------- átomos */
+
+.kicker {
+  font-size: var(--step--1);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--fire-800);
+}
+
+.dark .kicker {
+  color: var(--fire-300);
+}
+
+.chip {
+  display: inline-block;
+  width: fit-content;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  font-size: var(--step--2);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.chip--fire {
+  background: var(--fire-500);
+  color: var(--ink);
+}
+
+.chip--line {
+  color: var(--ink-soft);
+  box-shadow: inset 0 0 0 1.5px var(--line);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: 999px;
+  font-size: var(--step-0);
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    background-color 0.2s var(--ease-out-quart),
+    color 0.2s var(--ease-out-quart),
+    transform 0.2s var(--ease-out-quart);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn--fire {
+  background: var(--fire-500);
+  color: var(--ink);
+}
+
+.btn--fire:hover {
+  background: var(--fire-400);
+}
+
+.btn--ink {
+  background: var(--fire-950);
+  color: var(--paper);
+}
+
+.btn--ink:hover {
+  background: var(--fire-900);
+}
+
+.btn--line {
+  color: var(--ink);
+  box-shadow: inset 0 0 0 2px var(--ink);
+}
+
+.btn--line:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.btn--line-ink {
+  color: var(--fire-950);
+  box-shadow: inset 0 0 0 2px var(--fire-950);
+}
+
+.btn--line-ink:hover {
+  background: var(--fire-950);
+  color: var(--paper);
+}
+
+.btn--small {
+  min-height: 2.9rem;
+  padding: 0.6rem 1.15rem;
+  font-size: var(--step--1);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+}
+
+.actions--right {
+  justify-content: flex-end;
+}
+
+.lang {
+  appearance: none;
+  -webkit-appearance: none;
+  min-height: 2.75rem;
+  padding: 0.5rem 2.1rem 0.5rem 0.9rem;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background-color: var(--white);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'><path d='M1 1.5 6 6.5l5-5' fill='none' stroke='%231B0E05' stroke-width='1.8' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  background-size: 0.7rem;
+  color: var(--ink);
+  font-size: var(--step--1);
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------------- mensagens */
+
+.thread {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.65rem;
+  width: 100%;
+}
+
+.msg {
+  max-width: min(100%, 34rem);
+  padding: 0.95rem 1.2rem;
+  border-radius: var(--v9-radius);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  overflow-wrap: break-word;
+}
+
+/* Quem chega: à esquerda, contornada. */
+.msg--them {
+  margin-right: auto;
+  border-bottom-left-radius: var(--v9-radius-tip);
+  background: var(--white);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 2px var(--ink);
+  font-weight: 600;
+}
+
+/* A voz dela: à direita. */
+.msg--her {
+  margin-left: auto;
+  border-bottom-right-radius: var(--v9-radius-tip);
+}
+
+.msg--fire {
+  background: var(--fire-500);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.msg--ink {
+  background: var(--fire-950);
+  color: var(--paper);
+}
+
+.msg--plain {
+  background: var(--paper-dim);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1.5px var(--line);
+}
+
+.dark .msg--ink {
+  background: var(--v9-ink-soft-dark);
+}
+
+.dark .msg--them {
+  background: transparent;
+  color: var(--paper);
+  box-shadow: inset 0 0 0 2px var(--v9-line-dark);
+}
+
+.fire .msg--plain {
+  background: var(--white);
+  box-shadow: none;
+}
+
+.speaker {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+  padding-top: 0.35rem;
+  font-size: var(--step--2);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.dark .speaker {
+  color: var(--fire-300);
+}
+
+.fire .speaker {
+  color: var(--fire-950);
+}
+
+.speaker__mark {
+  flex: none;
+}
+
+/* Fotografias "enviadas" — o mesmo canto cortado das mensagens dela. */
+.sent {
+  margin: 0;
+}
+
+.sent__img {
+  overflow: hidden;
+  border-radius: var(--v9-radius) var(--v9-radius) var(--v9-radius-tip) var(--v9-radius);
+}
+
+.sent__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Todas as fotografias são em retrato: o recorte guarda o rosto. */
+  object-position: center 25%;
+}
+
+/* -------------------------------------------------------------- entrada dos */
+/* blocos: o conteúdo está visível por omissão; a classe só sai.               */
+
+.msg,
+.rise,
+.qa {
+  transition:
+    opacity 0.55s var(--ease-out-quart),
+    transform 0.55s var(--ease-out-expo);
+}
+
+.msg.is-entering,
+.rise.is-entering,
+.qa.is-entering {
+  opacity: 0.001;
+  transform: translateY(0.9rem);
+}
+
+.msg--them.is-entering {
+  transform: translate(-0.5rem, 0.9rem);
+}
+
+.msg--her.is-entering {
+  transform: translate(0.5rem, 0.9rem);
+}
+
+.qa.is-entering .msg {
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .msg.is-entering,
+  .rise.is-entering,
+  .qa.is-entering {
+    opacity: 1;
+    transform: none;
+  }
+  .btn:hover {
+    transform: none;
+  }
+}
+
+/* ---------------------------------------------------------------- cabeçalho */
+
+.top {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.top__in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.7rem;
+}
+
+.lockup {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+}
+
+.lockup__mark {
+  flex: none;
+}
+
+.lockup__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.lockup__name {
+  font-size: var(--step-0);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.lockup__sig {
+  font-family: var(--font-script);
+  font-size: var(--step-1);
+  line-height: 0.85;
+  color: var(--fire-800);
+}
+
+.topnav {
+  display: none;
+}
+
+.top__right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.top__cta {
+  display: none;
+}
+
+/* -------------------------------------------------------------------- hero */
+
+.hero {
+  padding-block: clamp(1.5rem, 5vw, 3rem) clamp(2.5rem, 8vw, 5rem) !important;
+}
+
+.hero__in {
+  display: grid;
+  gap: clamp(1.5rem, 5vw, 3rem);
+  align-items: center;
+}
+
+.hero__h1 {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1.1rem 1.25rem 1.25rem;
+  font-size: var(--step-4);
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.hero__line {
+  display: block;
+}
+
+.hero__line:last-child {
+  color: var(--fire-950);
+}
+
+.hero__note {
+  margin-left: auto;
+  padding-top: 0.2rem;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  text-align: right;
+}
+
+.sent--hero .sent__img {
+  aspect-ratio: 4 / 5;
+}
+
+/* ------------------------------------------------------- porquê só ruivos */
+
+.burst__in {
+  display: grid;
+  gap: clamp(1.5rem, 5vw, 3rem);
+}
+
+.sent--tall .sent__img {
+  aspect-ratio: 4 / 5;
+}
+
+/* -------------------------------------------------------------- sobre mim */
+
+.talk__in {
+  display: grid;
+  gap: clamp(1.5rem, 5vw, 3rem);
+}
+
+.talk__topic {
+  font-size: var(--step-1);
+  line-height: 1.25;
+}
+
+.sent--side .sent__img {
+  aspect-ratio: 3 / 4;
+}
+
+/* --------------------------------------------------------------- trabalho */
+
+.work__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1rem;
+}
+
+.work__head .kicker {
+  flex-basis: 100%;
+}
+
+.work__title {
+  font-size: var(--step-3);
+}
+
+.work__count {
+  font-size: var(--step--1);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fire-300);
+}
+
+.work__intro {
+  margin-top: var(--space-m);
+}
+
+.album {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin: var(--space-l) 0 0;
+  padding: 0 0 1.6rem;
+  list-style: none;
+}
+
+.album__fig {
+  margin: 0;
+}
+
+.album__img {
+  overflow: hidden;
+  border-radius: 0.9rem;
+  aspect-ratio: 3 / 4;
+}
+
+.album__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.album__tone {
+  padding-top: 0.4rem;
+  font-size: var(--step--2);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fire-300);
+}
+
+/* Desalinhamento de colunas — o álbum não é uma grelha certinha. */
+.album__cell:nth-child(2n) {
+  transform: translateY(1.4rem);
+}
+
+/* --------------------------------------------------------------- serviços */
+
+.serv__head {
+  margin-bottom: var(--space-l);
+}
+
+.serv__list {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.serv__item {
+  display: grid;
+  gap: 0.45rem;
+  align-content: start;
+  justify-items: start;
+  padding-block: var(--space-m);
+  border-top: 1px solid var(--line);
+}
+
+.serv__name {
+  font-size: var(--step-2);
+}
+
+.serv__body {
+  max-width: 44ch;
+  color: var(--ink-soft);
+}
+
+.serv__item .btn {
+  margin-top: 0.4rem;
+}
+
+.serv__foot {
+  margin-top: var(--space-l);
+}
+
+/* ------------------------------------------------------------- carta de tons */
+
+.tons {
+  /* Neutro puro: a carta de tons separa-se sem puxar para o creme. */
+  background: oklch(0.955 0 0);
+}
+
+.tons__head {
+  max-width: 46ch;
+}
+
+.tons__title {
+  margin-top: 0.4rem;
+  font-size: var(--step-3);
+}
+
+.tons__lead {
+  margin-top: 0.7rem;
+  color: var(--ink-soft);
+}
+
+.tons__list {
+  display: grid;
+  gap: 0;
+  margin: var(--space-l) 0 0;
+}
+
+.tone {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: 0.3rem 1.1rem;
+  align-content: start;
+  padding-block: var(--space-m);
+  border-top: 1px solid var(--line);
+}
+
+.tone__img {
+  grid-row: 1 / 3;
+  overflow: hidden;
+  border-radius: 0.9rem;
+  aspect-ratio: 3 / 4;
+}
+
+.tone__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tone__name {
+  font-size: var(--step-2);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.tone__body {
+  color: var(--ink-soft);
+}
+
+/* --------------------------------------------------------------- o produto */
+
+.prod__in {
+  display: grid;
+  gap: var(--space-m);
+}
+
+.prod__title {
+  margin-top: 0.4rem;
+  font-size: var(--step-2);
+}
+
+.prod__lead {
+  margin-top: 0.7rem;
+  max-width: 48ch;
+  color: var(--ink-soft);
+}
+
+.prod__shots {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.prod__img {
+  overflow: hidden;
+  border-radius: 0.9rem;
+  aspect-ratio: 3 / 4;
+}
+
+.prod__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ------------------------------------------------------------ como funciona */
+
+.proc__title {
+  font-size: var(--step-3);
+}
+
+.proc__lead {
+  margin-top: 0.7rem;
+  max-width: 40ch;
+  font-weight: 600;
+}
+
+.proc__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin: var(--space-l) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.proc__step {
+  display: flex;
+}
+
+.proc__step--her {
+  justify-content: flex-end;
+}
+
+.proc__bubble {
+  max-width: min(100%, 30rem);
+  padding: 1.05rem 1.3rem 1.15rem;
+  border-radius: var(--v9-radius);
+  border-bottom-left-radius: var(--v9-radius-tip);
+  background: var(--white);
+  color: var(--ink);
+}
+
+.proc__step--her .proc__bubble {
+  border-bottom-left-radius: var(--v9-radius);
+  border-bottom-right-radius: var(--v9-radius-tip);
+  background: var(--fire-950);
+  color: var(--paper);
+}
+
+.proc__num {
+  display: block;
+  font-size: var(--step--2);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--ink-muted);
+}
+
+.proc__step--her .proc__num {
+  color: var(--fire-300);
+}
+
+.proc__name {
+  margin-top: 0.2rem;
+  font-size: var(--step-1);
+}
+
+.proc__body {
+  margin-top: 0.35rem;
+  font-size: var(--step-0);
+  line-height: 1.55;
+}
+
+/* ------------------------------------------------------------------ dúvidas */
+
+.faq__in {
+  display: grid;
+  gap: var(--space-l);
+}
+
+.faq__title {
+  margin-top: 0.4rem;
+  font-size: var(--step-3);
+}
+
+.faq__aside .sent {
+  margin-top: var(--space-m);
+}
+
+.faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 0;
+}
+
+.qa {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.qa dt,
+.qa dd {
+  margin: 0;
+}
+
+/* ----------------------------------------------------------------- contacto */
+
+.close__in {
+  display: grid;
+  gap: clamp(1.5rem, 5vw, 3rem);
+  align-items: center;
+}
+
+.close__title {
+  font-size: var(--step-2);
+  line-height: 1.15;
+}
+
+.close .actions {
+  justify-content: flex-end;
+}
+
+.close__sig {
+  margin-left: auto;
+  font-family: var(--font-script);
+  font-size: clamp(2.8rem, 11vw, 4.5rem);
+  line-height: 0.9;
+  color: var(--fire-950);
+}
+
+.close__meta {
+  display: grid;
+  gap: 0.7rem;
+  margin: var(--space-m) 0 0;
+  margin-left: auto;
+  text-align: right;
+}
+
+.close__meta dt {
+  font-size: var(--step--2);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fire-950);
+}
+
+.close__meta dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+.close__meta a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+}
+
+.sent--close .sent__img {
+  aspect-ratio: 4 / 5;
+}
+
+/* ------------------------------------------------------------------- rodapé */
+
+.foot {
+  padding-block: var(--space-xl) var(--space-l);
+}
+
+.foot__in {
+  display: grid;
+  gap: var(--space-m);
+}
+
+.foot__logo {
+  width: fit-content;
+}
+
+.foot__col {
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+}
+
+.foot__tagline {
+  font-size: var(--step-1);
+  font-weight: 700;
+  max-width: 24ch;
+}
+
+.foot__note {
+  font-size: var(--step--1);
+  color: var(--fire-300);
+  max-width: 44ch;
+}
+
+.foot__top {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 2.75rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1.5px var(--v9-line-dark);
+  font-size: var(--step--1);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.foot__top:hover {
+  background: var(--fire-500);
+  color: var(--ink);
+}
+
+/* --------------------------------------------------------- barra de contacto */
+
+.bar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: var(--z-sticky);
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.6rem 0.75rem calc(0.6rem + env(safe-area-inset-bottom));
+  background: var(--white);
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -10px 26px rgb(0 0 0 / 8%);
+}
+
+.bar .btn {
+  min-height: 2.9rem;
+  padding-inline: 1rem;
+  font-size: var(--step--1);
+}
+
+.bar__cta {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.bar__tel {
+  flex: 0 0 auto;
+}
+
+/* =========================================================== breakpoints == */
+
+@media (min-width: 30rem) {
+  .album {
+    gap: 0.8rem;
+  }
+}
+
+/* Tablet: um retrato a toda a largura ficaria com dois metros de altura. */
+@media (min-width: 34rem) and (max-width: 59.999rem) {
+  .sent--hero .sent__img,
+  .sent--tall .sent__img,
+  .sent--close .sent__img,
+  .sent--side .sent__img {
+    aspect-ratio: auto;
+    height: 28rem;
+  }
+  .faq__aside .sent__img {
+    aspect-ratio: auto;
+    height: 24rem;
+  }
+}
+
+@media (min-width: 48rem) {
+  .album {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .album__cell:nth-child(2n) {
+    transform: none;
+  }
+  .album__cell:nth-child(3n + 2) {
+    transform: translateY(1.8rem);
+  }
+  .serv__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(2rem, 5vw, 3.5rem);
+  }
+  .tons__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(2rem, 5vw, 3.5rem);
+  }
+  .prod__shots {
+    max-width: 34rem;
+  }
+  .foot__in {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: start;
+    gap: var(--space-l);
+  }
+  .foot__col--end {
+    justify-items: end;
+    text-align: right;
+  }
+}
+
+@media (min-width: 60rem) {
+  .hero__in {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
+  }
+  .hero__h1 {
+    font-size: var(--step-5);
+  }
+  .sent--hero .sent__img {
+    aspect-ratio: 3 / 4;
+    max-height: 40rem;
+  }
+
+  .burst__in {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    align-items: center;
+    gap: clamp(2rem, 5vw, 4.5rem);
+  }
+  .sent--tall .sent__img {
+    aspect-ratio: 3 / 4;
+    max-height: 42rem;
+  }
+
+  .talk__in {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 24rem);
+    align-items: start;
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+  .talk__in .sent--side {
+    position: sticky;
+    top: 5.5rem;
+  }
+
+  .album {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .album__cell:nth-child(3n + 2) {
+    transform: none;
+  }
+  .album__cell:nth-child(4n + 2),
+  .album__cell:nth-child(4n + 4) {
+    transform: translateY(2.2rem);
+  }
+
+  /* O título e a mensagem de abertura lado a lado — nada de vácuo no meio. */
+  .work .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 27rem);
+    align-items: end;
+    column-gap: clamp(2rem, 5vw, 4rem);
+  }
+  .work__head {
+    grid-column: 1;
+  }
+  .work__intro {
+    grid-column: 2;
+    margin: 0;
+  }
+  .album {
+    grid-column: 1 / -1;
+  }
+
+  .faq__list .msg--them {
+    max-width: min(100%, 28rem);
+  }
+
+  .prod__in {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    align-items: center;
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+  .prod__shots {
+    max-width: none;
+  }
+
+  .proc .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 21rem) minmax(0, 1fr);
+    align-items: start;
+    gap: clamp(2rem, 6vw, 5rem);
+  }
+  .proc__head {
+    position: sticky;
+    top: 5.5rem;
+  }
+  .proc__list {
+    margin-top: 0;
+  }
+
+  .faq__in {
+    grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
+    align-items: start;
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+  .faq__aside {
+    position: sticky;
+    top: 5.5rem;
+  }
+
+  .close__in {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
+  }
+  .close__title {
+    font-size: var(--step-3);
+  }
+  .sent--close .sent__img {
+    aspect-ratio: 3 / 4;
+    max-height: 38rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .top {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-nav);
+  }
+  .topnav {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.8rem, 1.8vw, 1.6rem);
+  }
+  .topnav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    font-size: var(--step--1);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+  }
+  .topnav a:hover {
+    border-bottom-color: var(--fire-500);
+  }
+  .top__cta {
+    display: inline-flex;
+  }
+  .bar {
+    display: none;
+  }
+  body {
+    padding-bottom: 0;
+  }
+  main > section {
+    scroll-margin-top: 5.5rem;
+  }
+}
+
+@media (min-width: 75rem) {
+  .msg {
+    max-width: min(100%, 36rem);
+  }
+  .hero__h1 {
+    font-size: var(--step-6);
+  }
+}
+
+/* ------------------------------------------------------- ecrã de 320px
+   No telemóvel mais estreito o "Falar comigo no WhatsApp" ocupa a linha
+   inteira e empurra o "Ligar" para trás da barra fixa, que já leva a mesma
+   acção. Em vez de um botão meio tapado, fica um só — e a barra cobre o resto. */
+@media (max-width: 22.5rem) {
+  .hero__thread .actions .btn--line {
+    display: none;
+  }
+}

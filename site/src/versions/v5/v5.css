@@ -1,0 +1,1268 @@
+/**
+ * V5 · Estúdio — claro, arejado e organizado.
+ *
+ * Base `--paper` (off-white de croma 0, nunca creme). Estrutura de linhas finas,
+ * grelha assimétrica, fotografia a sangrar das margens. Laranja da marca só em:
+ * os botões, o filete da nota de preço e a última linha do manifesto.
+ *
+ * Tipos: EB Garamond (display e leitura) + Archivo (corpo e etiquetas).
+ */
+
+.v5 {
+  --gutter: clamp(1.15rem, 5vw, 5.5rem);
+  --line-soft: oklch(0.9 0.004 45);
+  --measure: 56ch;
+  --cta-bar-height: 4.25rem;
+
+  --font-display: 'EB Garamond', 'Times New Roman', serif;
+  --font-body: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  overflow-x: clip;
+
+  /* Reserva para a barra fixa do telemóvel. */
+  padding-bottom: calc(var(--cta-bar-height) + env(safe-area-inset-bottom, 0px));
+}
+
+.v5 h1,
+.v5 h2,
+.v5 h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+}
+
+.v5 .skip-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* ------------------------------------------------------------------ layout */
+
+.wrap {
+  width: 100%;
+  max-width: 102rem;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* A galeria respira mais larga do que o texto — rompe a margem do resto. */
+.wrap--wide {
+  --gutter: clamp(0.75rem, 2.5vw, 2.5rem);
+  max-width: 116rem;
+}
+
+.sec {
+  padding-block: var(--space-2xl);
+}
+
+.sec--hero {
+  padding-block: clamp(1.5rem, 4vw, 3.5rem) 0;
+}
+
+.narrow-only {
+  display: inline;
+}
+.wide-only {
+  display: none;
+}
+
+/* ---------------------------------------------------------------- entrada */
+
+.fade {
+  transition:
+    opacity 0.6s var(--ease-out-quart),
+    transform 0.6s var(--ease-out-quart);
+  transition-delay: calc(var(--i, 0) * 55ms);
+}
+
+.sec.is-entering .fade {
+  opacity: 0.001;
+  transform: translateY(0.85rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sec.is-entering .fade {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------- cabeçalho */
+
+.hdr {
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.hdr__in {
+  display: flex;
+  align-items: center;
+  gap: var(--space-s);
+  min-height: 3.75rem;
+}
+
+.hdr__mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 44px;
+  margin-right: auto;
+  text-decoration: none;
+}
+
+.hdr__name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+
+.hdr__tag {
+  display: none;
+  font-size: var(--step--2);
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
+  padding-left: 0.75rem;
+  margin-left: 0.15rem;
+  border-left: 1px solid var(--line);
+}
+
+.hdr__nav {
+  display: none;
+  gap: clamp(0.9rem, 1.8vw, 2rem);
+  font-size: var(--step--1);
+}
+
+.hdr__nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  text-decoration: none;
+  color: var(--ink-soft);
+  border-bottom: 1px solid transparent;
+}
+
+.hdr__nav a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--fire-500);
+}
+
+.hdr__end {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.hdr__mark picture {
+  flex: 0 0 auto;
+}
+
+/* Selector de idioma — `select` nativo, vestido. */
+.lang {
+  min-height: 44px;
+  min-width: 3.5rem;
+  padding: 0 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: var(--white);
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+
+/* ----------------------------------------------------------------- botões */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  min-width: 44px;
+  padding: 0.75rem 1.4rem;
+  border-radius: 2px;
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.25s var(--ease-out-quart);
+}
+
+.btn--fire {
+  background: var(--fire-500);
+  color: var(--ink);
+  border: 1px solid var(--fire-500);
+}
+.btn--fire:hover {
+  background: var(--fire-600);
+  border-color: var(--fire-600);
+  color: var(--white);
+}
+
+.btn--line {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink-soft);
+}
+.btn--line:hover {
+  border-color: var(--ink);
+  background: var(--white);
+}
+
+.btn--big {
+  min-height: 3.5rem;
+  padding-inline: 1.9rem;
+  font-size: var(--step-0);
+}
+
+/* No telemóvel o WhatsApp vive na barra fixa — o cabeçalho fica limpo. */
+.hdr__cta {
+  display: none;
+}
+
+/* ------------------------------------------------------------------- hero */
+
+.hero__kicker {
+  font-size: var(--step--1);
+  letter-spacing: 0.06em;
+  color: var(--fire-800);
+  margin-bottom: 0.9rem;
+}
+
+.hero__title {
+  font-size: clamp(2.4rem, 1.5rem + 4.2vw, 5.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+
+.hero__title span {
+  display: block;
+}
+.hero__title span:nth-child(2) {
+  padding-left: 0.5em;
+}
+.hero__title span:nth-child(3) {
+  padding-left: 1.4em;
+}
+
+.hero__lead {
+  margin-top: 1.2rem;
+  max-width: 34ch;
+  font-size: var(--step-0);
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.5rem;
+}
+
+.hero__note {
+  margin-top: 0.9rem;
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+
+.hero__figure {
+  margin-top: 1.75rem;
+  /* sangra pela margem direita */
+  margin-right: calc(var(--gutter) * -1);
+  padding-left: 2.5rem;
+}
+
+.hero__img img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 52% 38%;
+}
+
+/* -------------------------------------------------------------- manifesto */
+
+.sec--manifesto {
+  border-top: 1px solid var(--line);
+  background: var(--white);
+  padding-block: var(--space-xl);
+}
+
+.manifesto__kicker {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  margin-bottom: 1.1rem;
+}
+
+.manifesto__lines p {
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 1.05rem + 1.75vw, 2.3rem);
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.manifesto__lines p:nth-child(2) {
+  padding-left: 0.7em;
+}
+.manifesto__lines p:nth-child(3) {
+  padding-left: 1.4em;
+  color: var(--fire-800);
+}
+
+.manifesto__body {
+  margin-top: 1.6rem;
+  max-width: var(--measure);
+  color: var(--ink-soft);
+  font-size: var(--step--1);
+  line-height: 1.65;
+}
+
+/* --------------------------------------------- cabeçalhos comuns de secção */
+
+.sec__kicker {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  margin-bottom: 0.55rem;
+}
+
+.sec__title {
+  font-size: clamp(1.85rem, 1.35rem + 2.3vw, 3.35rem);
+  line-height: 1.06;
+}
+
+.sec__lead {
+  margin-top: 0.9rem;
+  max-width: var(--measure);
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+.sec__head {
+  margin-bottom: var(--space-l);
+}
+
+/* ------------------------------------------------------------------ sobre */
+
+.sobre__figure {
+  /* sangra pela margem esquerda */
+  margin-left: calc(var(--gutter) * -1);
+  margin-bottom: 2rem;
+  padding-right: 4rem;
+}
+
+.sobre__img img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 26%;
+}
+
+.sobre__lead {
+  margin-top: 1.1rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 1.1rem + 1.4vw, 2.1rem);
+  line-height: 1.25;
+}
+
+.sobre__p {
+  margin-top: 1.1rem;
+  max-width: var(--measure);
+  color: var(--ink-soft);
+  line-height: 1.65;
+}
+
+.sobre__badge {
+  margin-top: 1.8rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--step-1);
+  color: var(--fire-800);
+}
+
+/* ---------------------------------------------------------------- galeria */
+
+.sec--galeria {
+  border-top: 1px solid var(--line);
+}
+
+.galeria__head {
+  margin-bottom: var(--space-l);
+  padding-inline: clamp(0.5rem, 2.5vw, 3rem);
+}
+
+.galeria__lead {
+  margin-top: 0.8rem;
+  max-width: var(--measure);
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+.galeria__count {
+  margin-top: 0.6rem;
+  font-size: var(--step--2);
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.gal {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-m) clamp(0.6rem, 2vw, 1.5rem);
+  align-items: start;
+}
+
+.gal > :nth-child(8n + 1) {
+  grid-column: 1 / -1;
+}
+.gal > :nth-child(8n + 3),
+.gal > :nth-child(8n + 5),
+.gal > :nth-child(8n + 7) {
+  margin-top: 1.4rem;
+}
+
+.gal__img img {
+  width: 100%;
+  height: auto;
+}
+
+.gal > :nth-child(8n + 1) .gal__img img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 26%;
+}
+
+.gal__item figcaption {
+  margin-top: 0.55rem;
+  font-size: var(--step--2);
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+
+/* ------------------------------ serviços (índice de trabalho, não cartões) */
+
+.lista {
+  list-style: none;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.lista__row {
+  padding-block: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.lista__title {
+  font-size: var(--step-2);
+  line-height: 1.15;
+}
+
+.lista__body {
+  margin-top: 0.5rem;
+  max-width: var(--measure);
+  color: var(--ink-soft);
+  line-height: 1.6;
+  font-size: var(--step--1);
+}
+
+.lista__tag {
+  margin-top: 0.7rem;
+  font-size: var(--step--2);
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+
+.nota {
+  margin-top: var(--space-l);
+  padding-top: 1.1rem;
+  border-top: 2px solid var(--fire-500);
+  max-width: var(--measure);
+  font-size: var(--step--1);
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+/* ---------------------------------------------------------- carta de tons */
+
+.sec--tons {
+  border-top: 1px solid var(--line);
+  background: var(--white);
+}
+
+.carta {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+.carta__row {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  gap: 1.1rem;
+  align-items: start;
+  padding-block: 1.35rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.carta__img img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: 50% 22%;
+}
+
+.carta__name {
+  font-size: var(--step-1);
+  line-height: 1.2;
+}
+
+.carta__body {
+  margin-top: 0.35rem;
+  color: var(--ink-soft);
+  font-size: var(--step--1);
+  line-height: 1.6;
+  max-width: var(--measure);
+}
+
+/* --------------------------------------------------------------- processo */
+
+.passos {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+
+.passos__item {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  gap: 0.9rem;
+  padding-block: 1.35rem;
+  border-top: 1px solid var(--line);
+}
+.passos__item:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.passos__n {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  line-height: 1;
+  color: var(--fire-800);
+  font-variant-numeric: oldstyle-nums;
+}
+
+.passos__title {
+  font-size: var(--step-1);
+  line-height: 1.2;
+}
+
+.passos__body {
+  grid-column: 2;
+  margin-top: 0.35rem;
+  color: var(--ink-soft);
+  font-size: var(--step--1);
+  line-height: 1.6;
+  max-width: var(--measure);
+}
+
+/* --------------------------------------------------------------- produtos */
+
+.sec--produtos {
+  border-top: 1px solid var(--line);
+}
+
+.produtos__fotos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.6rem, 2vw, 1.5rem);
+  margin-top: var(--space-m);
+  align-items: start;
+}
+
+.produtos__img img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: 50% 45%;
+}
+.produtos__fotos > :nth-child(2) {
+  margin-top: 1.75rem;
+}
+
+/* -------------------------------------------------------------------- faq */
+
+.sec--faq {
+  border-top: 1px solid var(--line);
+  background: var(--white);
+}
+
+.faq__head {
+  margin-bottom: var(--space-m);
+}
+
+.faq__list {
+  border-top: 1px solid var(--line);
+}
+
+.faq__item {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq__item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 44px;
+  padding-block: 1.05rem;
+  padding-right: 2rem;
+  position: relative;
+  list-style: none;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  line-height: 1.25;
+}
+
+.faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+/* sinal de + / − desenhado a traço, sem texto */
+.faq__item summary::before,
+.faq__item summary::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: calc(50% - 0.5px);
+  width: 0.85rem;
+  height: 1px;
+  background: var(--fire-800);
+  transition: transform 0.3s var(--ease-out-quart);
+}
+.faq__item summary::after {
+  transform: rotate(90deg);
+}
+.faq__item[open] summary::after {
+  transform: rotate(0deg);
+}
+
+.faq__item p {
+  padding-bottom: 1.3rem;
+  max-width: var(--measure);
+  color: var(--ink-soft);
+  font-size: var(--step--1);
+  line-height: 1.7;
+}
+
+/* --------------------------------------------------------------- contacto */
+
+.sec--contacto {
+  border-top: 1px solid var(--line);
+}
+
+.contacto__lead {
+  margin-top: 0.9rem;
+  max-width: var(--measure);
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+.contacto .btn--big {
+  margin-top: 1.6rem;
+}
+
+.contacto__helper {
+  margin-top: 0.8rem;
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  max-width: 40ch;
+}
+
+.contacto__dados {
+  display: grid;
+  gap: 0;
+  margin-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+
+.contacto__dados > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 1.2rem;
+  padding-block: 0.35rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.contacto__dados dt {
+  min-width: 7rem;
+  font-size: var(--step--2);
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+
+.contacto__dados dd {
+  margin: 0;
+}
+
+.contacto__dados a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: var(--step-0);
+  text-decoration: none;
+  border-bottom: 1px solid var(--fire-500);
+}
+.contacto__dados a:hover {
+  color: var(--fire-800);
+}
+/* O filete de cor fica só no WhatsApp — é essa a primeira acção. */
+.contacto__dados > div:last-child a {
+  border-bottom-color: var(--line);
+}
+
+.contacto__figure {
+  margin-top: 2.25rem;
+  margin-right: calc(var(--gutter) * -1);
+  padding-left: 3.5rem;
+}
+
+.contacto__img img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 52% 30%;
+}
+
+/* ----------------------------------------------------------------- rodapé */
+
+.rodape {
+  border-top: 1px solid var(--line);
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-l);
+}
+
+.rodape__in {
+  display: grid;
+  gap: var(--space-l);
+}
+
+.rodape__marca p {
+  margin-top: 0.9rem;
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  line-height: 1.3;
+  max-width: 24ch;
+}
+
+.rodape__indice {
+  display: grid;
+  border-top: 1px solid var(--line);
+}
+
+.rodape__indice a {
+  display: flex;
+  align-items: center;
+  min-height: 46px;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+.rodape__indice a:hover {
+  color: var(--ink);
+}
+
+.rodape__fim {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+}
+
+.rodape__topo {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line-soft);
+}
+.rodape__topo:hover {
+  color: var(--ink);
+  border-bottom-color: var(--fire-500);
+}
+
+.rodape__legal {
+  margin-top: var(--space-l);
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 0.35rem;
+  font-size: var(--step--2);
+  color: var(--ink-muted);
+}
+
+/* ----------------------------------------------------- barra fixa (móvel) */
+
+.ctabar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-sticky);
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  height: calc(var(--cta-bar-height) + env(safe-area-inset-bottom, 0px));
+  padding: 0.6rem var(--gutter) calc(0.6rem + env(safe-area-inset-bottom, 0px));
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+}
+
+.ctabar__main {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: var(--step--1);
+  padding-inline: 0.75rem;
+}
+
+.ctabar__tel {
+  flex: 0 0 auto;
+  padding-inline: 1rem;
+}
+
+/* ======================================================== ≥ 40em (tablet) */
+
+@media (min-width: 40em) {
+  .hero__lead {
+    max-width: 42ch;
+  }
+
+  .hero__figure {
+    padding-left: 22%;
+  }
+
+  .sobre__figure {
+    padding-right: 30%;
+  }
+
+  .gal {
+    gap: var(--space-l) clamp(0.9rem, 2vw, 1.5rem);
+  }
+
+  .carta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-l);
+  }
+  .carta__row {
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+  }
+
+  .passos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-l);
+  }
+
+  .rodape__in {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+  .rodape__indice {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-m);
+  }
+  .rodape__fim {
+    grid-column: 1 / -1;
+  }
+
+  .contacto__figure {
+    padding-left: 30%;
+  }
+
+  .produtos__fotos {
+    max-width: 34rem;
+  }
+}
+
+/* ======================================================= ≥ 60em (desktop) */
+
+@media (min-width: 60em) {
+  .narrow-only {
+    display: none;
+  }
+  .wide-only {
+    display: inline;
+  }
+
+  .v5 {
+    padding-bottom: 0;
+  }
+
+  .ctabar {
+    display: none;
+  }
+
+  .hdr {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-nav);
+  }
+  /* O cabeçalho fixo não pode tapar o início da secção. */
+  .sec[id] {
+    scroll-margin-top: 5.5rem;
+  }
+  .hdr__in {
+    min-height: 4.5rem;
+  }
+  .hdr__tag {
+    display: inline;
+  }
+  .hdr__nav {
+    display: flex;
+  }
+  .hdr__cta {
+    display: inline-flex;
+  }
+  .hdr__end {
+    gap: 0.85rem;
+    margin-left: clamp(1rem, 3vw, 3rem);
+  }
+
+  /* --- hero: texto à esquerda, fotografia rente ao filete e a sangrar --- */
+  .sec--hero {
+    padding-top: 0;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
+    column-gap: clamp(2rem, 5vw, 6rem);
+    align-items: start;
+    padding-top: 0;
+  }
+
+  .hero__text {
+    padding-top: clamp(3.5rem, 8vw, 7rem);
+    padding-bottom: clamp(3rem, 7vw, 6.5rem);
+  }
+
+  .hero__lead {
+    max-width: 40ch;
+  }
+
+  .hero__figure {
+    margin-top: 0;
+    padding-left: 0;
+    margin-right: calc(var(--gutter) * -1);
+    margin-bottom: calc(var(--space-xl) * -1.35);
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero__img img {
+    aspect-ratio: auto;
+    height: min(92vh, 48rem);
+    object-position: 56% 22%;
+  }
+
+  .sec--manifesto {
+    padding-top: calc(var(--space-2xl) + 2rem);
+  }
+
+  /* --- manifesto: linhas à esquerda, argumento à direita --- */
+  .manifesto {
+    display: grid;
+    grid-template-columns: 11rem minmax(0, 1.3fr) minmax(0, 0.62fr);
+    column-gap: clamp(2rem, 4vw, 4.5rem);
+    align-items: start;
+  }
+  .manifesto__kicker {
+    margin-bottom: 0;
+    padding-top: 0.5rem;
+  }
+  .manifesto__body {
+    margin-top: 0;
+    align-self: end;
+    padding-bottom: 0.35rem;
+  }
+
+  /* --- sobre: fotografia a sangrar pela esquerda, texto descaído --- */
+  .sobre {
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1fr);
+    column-gap: clamp(2.5rem, 5vw, 5.5rem);
+    align-items: start;
+  }
+
+  .sobre__figure {
+    margin-left: calc(var(--gutter) * -1);
+    margin-bottom: 0;
+    padding-right: 0;
+  }
+
+  .sobre__img img {
+    aspect-ratio: 5 / 6;
+  }
+
+  .sobre__text {
+    padding-top: clamp(2rem, 6vw, 5.5rem);
+  }
+
+  /* --- cabeçalho de secção: etiqueta na margem, título na coluna larga --- */
+  .sec__head {
+    display: grid;
+    grid-template-columns: 11rem minmax(0, 1fr) minmax(0, 0.8fr);
+    column-gap: clamp(2rem, 4vw, 4.5rem);
+    align-items: start;
+    margin-bottom: var(--space-xl);
+  }
+  .sec__head > .sec__kicker {
+    grid-row: 1 / span 2;
+    margin-bottom: 0;
+    padding-top: 0.75rem;
+  }
+  .sec__head > .sec__title {
+    grid-column: 2;
+  }
+  .sec__head > .sec__lead {
+    grid-column: 3;
+    grid-row: 1;
+    margin-top: 0.55rem;
+    align-self: start;
+  }
+
+  /* --- galeria: 12 colunas, três ritmos por módulo de oito --- */
+  .galeria__head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr) 9rem;
+    column-gap: clamp(2rem, 4vw, 4.5rem);
+    align-items: end;
+    margin-bottom: var(--space-xl);
+  }
+  .galeria__lead {
+    margin-top: 0;
+  }
+  .galeria__count {
+    margin-top: 0;
+    text-align: right;
+  }
+
+  .gal {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: var(--space-l) clamp(1rem, 1.7vw, 1.5rem);
+  }
+
+  .gal > * {
+    margin-top: 0;
+  }
+
+  .gal > :nth-child(8n + 1) {
+    grid-column: 1 / span 4;
+  }
+  .gal > :nth-child(8n + 2) {
+    grid-column: 6 / span 4;
+    margin-top: 4.5rem;
+  }
+  .gal > :nth-child(8n + 3) {
+    grid-column: 2 / span 3;
+  }
+  .gal > :nth-child(8n + 4) {
+    grid-column: 6 / span 4;
+    margin-top: 5rem;
+  }
+  .gal > :nth-child(8n + 5) {
+    grid-column: 11 / span 2;
+  }
+  .gal > :nth-child(8n + 6) {
+    grid-column: 1 / span 4;
+  }
+  .gal > :nth-child(8n + 7) {
+    grid-column: 6 / span 3;
+    margin-top: 6rem;
+  }
+  .gal > :nth-child(8n + 8) {
+    grid-column: 10 / span 3;
+  }
+
+  .gal > :nth-child(8n + 1) .gal__img img {
+    aspect-ratio: auto;
+  }
+
+  /* --- serviços: índice de três colunas --- */
+  .lista__row {
+    display: grid;
+    grid-template-columns: 11rem minmax(0, 1fr) minmax(0, 0.62fr);
+    column-gap: clamp(2rem, 4vw, 4.5rem);
+    align-items: start;
+    padding-block: 1.9rem;
+  }
+  .lista__title {
+    font-size: var(--step-1);
+  }
+  .lista__body {
+    margin-top: 0;
+  }
+  .lista__tag {
+    margin-top: 0;
+    text-align: right;
+  }
+  .nota {
+    margin-left: auto;
+    margin-right: 0;
+    max-width: 46ch;
+  }
+
+  /* --- carta de tons --- */
+  .carta__row {
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+    gap: 1.5rem;
+    padding-block: 1.75rem;
+  }
+
+  /* --- processo: quatro passos em linha, descaídos --- */
+  .passos {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: clamp(1.5rem, 3vw, 3rem);
+  }
+  .passos__item {
+    display: block;
+    padding-block: 1.4rem 0;
+  }
+  .passos__item:last-child {
+    border-bottom: none;
+  }
+  .passos__item:nth-child(2) {
+    margin-top: 1.5rem;
+  }
+  .passos__item:nth-child(3) {
+    margin-top: 3rem;
+  }
+  .passos__item:nth-child(4) {
+    margin-top: 4.5rem;
+  }
+  .passos__n {
+    display: block;
+    margin-bottom: 0.7rem;
+  }
+  .passos__body {
+    margin-top: 0.5rem;
+  }
+
+  /* --- produtos --- */
+  .produtos {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+    column-gap: clamp(2.5rem, 5vw, 5.5rem);
+    align-items: end;
+  }
+  .produtos .sec__kicker {
+    margin-bottom: 0.55rem;
+  }
+  .produtos__fotos {
+    max-width: none;
+    margin-top: 0;
+  }
+  .produtos__fotos > :nth-child(2) {
+    margin-top: 2.5rem;
+  }
+  .produtos__fotos > :nth-child(3) {
+    margin-top: 1.25rem;
+  }
+
+  /* --- dúvidas: título na margem, perguntas na coluna larga --- */
+  .faq {
+    display: grid;
+    grid-template-columns: minmax(0, 0.62fr) minmax(0, 1fr);
+    column-gap: clamp(2.5rem, 5vw, 5.5rem);
+    align-items: start;
+  }
+  .faq__head {
+    margin-bottom: 0;
+    position: sticky;
+    top: 7rem;
+  }
+  .faq__list {
+    border-top: none;
+  }
+  .faq__item:first-child {
+    border-top: 1px solid var(--line);
+  }
+
+  /* --- contacto --- */
+  .contacto {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.78fr);
+    column-gap: clamp(2.5rem, 5vw, 5.5rem);
+    align-items: center;
+  }
+  .contacto__figure {
+    margin-top: 0;
+    padding-left: 0;
+    margin-right: calc(var(--gutter) * -1);
+  }
+  .contacto__dados {
+    max-width: 32rem;
+  }
+
+  /* --- rodapé --- */
+  .rodape__in {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr) auto;
+    column-gap: clamp(2rem, 4vw, 4.5rem);
+  }
+  .rodape__fim {
+    grid-column: auto;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+  .rodape__legal {
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+  }
+  .rodape__legal p:last-child {
+    text-align: right;
+  }
+}
+
+/* ================================================== ecrãs muito estreitos */
+
+@media (max-width: 22.5em) {
+  .hero__title {
+    font-size: 2.15rem;
+  }
+  .hero__actions .btn {
+    padding-inline: 0.8rem;
+    font-size: var(--step--2);
+  }
+  .hdr__name {
+    font-size: 1.05rem;
+  }
+  .ctabar__main {
+    font-size: var(--step--2);
+    padding-inline: 0.6rem;
+  }
+  .ctabar__tel {
+    padding-inline: 0.75rem;
+  }
+  .carta__row {
+    grid-template-columns: 3.75rem minmax(0, 1fr);
+    gap: 0.85rem;
+  }
+}

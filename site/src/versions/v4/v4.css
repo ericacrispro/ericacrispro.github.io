@@ -1,0 +1,1138 @@
+/**
+ * V4 · "Raposa" — oliva, traço fino, artesania.
+ *
+ * Regras de cor verificadas:
+ *   #fff sobre --olive-900 (L .28) .......... ~11:1  ✓ corpo
+ *   #fff sobre --olive-700 (#5D541D) ........  7.6:1 ✓ corpo
+ *   --olive-700 sobre --paper ...............  7.6:1 ✓ corpo
+ *   --fire-800 (#7A2F04) sobre --paper ......  9.4:1 ✓ corpo
+ *   --ink sobre --fire-500 (#EC6807) ........  6.4:1 ✓ corpo (a banda de contacto)
+ *   --fire-400 sobre --olive-900 ............ ~6.9:1 ✓ display e etiquetas
+ * Sobre fundo escuro, a entrelinha do corpo sobe 0.05.
+ */
+
+:root {
+  --font-display: 'Marcellus', 'Times New Roman', serif;
+  --font-body: 'Epilogue', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --cta-bar-height: 4.25rem;
+
+  --v4-header-h: 3.5rem;
+  --v4-dark: var(--olive-900);
+  --v4-soft: oklch(0.88 0.022 100); /* corpo sobre escuro, sem ser branco puro */
+  --v4-hair: color-mix(in oklch, var(--olive-700) 40%, transparent);
+  --v4-hair-dark: rgba(255, 255, 255, 0.18);
+  --v4-max: 74rem;
+  /* Margem viva: alinha o hero de ecrã largo com o resto do conteúdo. */
+  --v4-gutter: calc(max(0px, (100vw - var(--v4-max)) / 2) + clamp(1.15rem, 5vw, 3rem));
+}
+
+html {
+  scroll-padding-top: calc(var(--v4-header-h) + 1rem);
+}
+
+body {
+  background: var(--paper);
+}
+
+/* ------------------------------------------------------------------ desenho */
+
+.v4 svg {
+  fill: none;
+  stroke: currentColor;
+  overflow: visible;
+}
+.v4 svg path,
+.v4 svg circle {
+  vector-effect: non-scaling-stroke;
+}
+
+/* Camada de base: sempre desenhada. A camada de tinta desenha-se por cima. */
+.t-base {
+  opacity: 0.34;
+}
+
+.v4-drawn {
+  display: block;
+  position: relative;
+}
+.v4-drawn svg {
+  width: 100%;
+  height: auto;
+}
+/* Estado de omissão = desenhado. A classe só reproduz o gesto. */
+.v4-drawn .t-ink .d {
+  stroke-dasharray: 1.004;
+  stroke-dashoffset: 0;
+}
+.v4-drawn.is-drawn .t-ink .d {
+  animation: v4-draw 1100ms var(--ease-out-expo) both;
+}
+.v4-drawn.is-drawn .t-ink .d:nth-child(2) {
+  animation-delay: 140ms;
+}
+.v4-drawn.is-drawn .t-ink .d:nth-child(3) {
+  animation-delay: 260ms;
+}
+.v4-drawn.is-drawn .t-ink .d:nth-child(4) {
+  animation-delay: 370ms;
+}
+
+@keyframes v4-draw {
+  from {
+    stroke-dashoffset: 1.004;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* A chama que acompanha o scroll. Sem JS fica desenhada (--v4-progress: 1). */
+.v4-scrollflame {
+  --v4-progress: 1;
+  position: fixed;
+  right: clamp(0.25rem, 1.4vw, 1.5rem);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: var(--z-base);
+  width: clamp(2rem, 3.4vw, 3.2rem);
+  pointer-events: none;
+  display: none;
+  color: var(--fire-500);
+  opacity: 0.5;
+}
+.v4-scrollflame svg {
+  width: 100%;
+  height: auto;
+}
+.v4-scrollflame .t-ink .d {
+  stroke-dasharray: 1.004;
+  stroke-dashoffset: calc(1 - var(--v4-progress));
+}
+/* Só onde há margem viva para ela viver — nunca por cima do conteúdo. */
+@media (min-width: 1200px) {
+  .v4-scrollflame {
+    display: block;
+  }
+}
+
+/* ---------------------------------------------------------------- estrutura */
+
+.v4 {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.v4-wrap {
+  width: 100%;
+  max-width: var(--v4-max);
+  margin-inline: auto;
+  padding-inline: clamp(1.15rem, 5vw, 3rem);
+}
+.v4-wrap--narrow {
+  max-width: 52rem;
+}
+
+.v4-band {
+  padding-block: clamp(3.25rem, 2rem + 6vw, 6.5rem);
+}
+.v4-band--paper {
+  background: var(--paper);
+  color: var(--ink);
+}
+.v4-band--olive {
+  background: var(--olive-100);
+  color: var(--ink);
+}
+.v4-band--dark {
+  background: var(--v4-dark);
+  color: var(--white);
+}
+.v4-band--fire {
+  background: var(--fire-500);
+  color: var(--ink);
+}
+
+/* -------------------------------------------------------------- tipografia */
+
+.v4-kicker {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--olive-700);
+  margin-bottom: 0.9rem;
+}
+.v4-kicker--fire {
+  color: var(--fire-400);
+}
+.v4-kicker--ink {
+  color: var(--fire-950);
+}
+
+.v4-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 1.2rem + 2.5vw, 3.05rem);
+  line-height: 1.06;
+  letter-spacing: 0.012em;
+  text-transform: uppercase;
+  overflow-wrap: break-word;
+}
+.v4-h2--sm {
+  font-size: clamp(1.4rem, 1.1rem + 1.4vw, 2.05rem);
+}
+
+.v4-h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.12rem, 1rem + 0.5vw, 1.38rem);
+  line-height: 1.15;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+.v4-lead {
+  font-size: var(--step-1);
+  line-height: 1.5;
+  max-width: 40ch;
+  margin-top: 1.1rem;
+  color: var(--ink-soft);
+}
+.v4-band--dark .v4-lead {
+  color: var(--v4-soft);
+  line-height: 1.55;
+}
+.v4-band--fire .v4-lead {
+  color: var(--fire-950);
+}
+
+.v4-p {
+  font-size: var(--step-0);
+  line-height: 1.65;
+  max-width: 56ch;
+  margin-top: 0.85rem;
+  color: var(--ink-soft);
+}
+.v4-p--wide {
+  max-width: 62ch;
+}
+.v4-band--dark .v4-p {
+  color: var(--v4-soft);
+  line-height: 1.7;
+}
+
+.v4-head {
+  margin-bottom: clamp(2rem, 5vw, 3.25rem);
+}
+
+.v4-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fire-800);
+  margin-bottom: 0.5rem;
+}
+
+.v4-count {
+  margin-top: 1.25rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--olive-700);
+}
+
+.v4-nota {
+  margin-top: clamp(2rem, 5vw, 3rem);
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--v4-hair);
+  font-size: var(--step--1);
+  line-height: 1.6;
+  max-width: 62ch;
+  color: var(--ink-muted);
+}
+
+/* ------------------------------------------------------------------ botões */
+
+.v4-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0.8rem 1.35rem;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  transition:
+    background-color 0.25s var(--ease-out-quart),
+    color 0.25s var(--ease-out-quart),
+    border-color 0.25s var(--ease-out-quart);
+}
+.v4-btn--lg {
+  min-height: 3.3rem;
+  padding: 0.95rem 1.65rem;
+  font-size: 1rem;
+}
+.v4-btn--fire {
+  background: var(--fire-500);
+  color: var(--ink);
+}
+.v4-btn--fire:hover {
+  background: var(--fire-400);
+}
+.v4-btn--ghost {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+.v4-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--white);
+}
+.v4-btn--ink {
+  background: var(--ink);
+  color: var(--white);
+}
+.v4-btn--ink:hover {
+  background: var(--fire-950);
+}
+.v4-btn--outline {
+  color: var(--ink);
+  border-color: var(--fire-950);
+}
+.v4-btn--outline:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.v4-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: clamp(1.4rem, 4vw, 2rem);
+}
+
+.v4-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  margin-top: 1.5rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--fire-800);
+  text-decoration: none;
+  border-bottom: 2px solid var(--fire-500);
+  padding-bottom: 0.15rem;
+}
+.v4-link:hover {
+  color: var(--fire-950);
+}
+.v4-link--sm {
+  font-size: 0.85rem;
+  color: var(--white);
+}
+.v4-link--sm:hover {
+  color: var(--fire-300);
+}
+
+/* --------------------------------------------------------------- cabeçalho */
+
+.v4-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-nav);
+  background: var(--v4-dark);
+  border-bottom: 1px solid var(--v4-hair-dark);
+}
+.v4-header__in {
+  width: 100%;
+  max-width: var(--v4-max);
+  margin-inline: auto;
+  min-height: var(--v4-header-h);
+  padding-inline: clamp(0.85rem, 4vw, 3rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.v4-header__brand {
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem;
+  flex: none;
+}
+.v4-header__end {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: none;
+}
+.v4-header__cta {
+  display: none;
+}
+
+.v4-nav {
+  display: none;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.v4-nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 1.1rem;
+}
+.v4-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--v4-soft);
+  text-decoration: none;
+}
+.v4-nav a:hover {
+  color: var(--fire-400);
+}
+
+.v4-lang {
+  min-height: 2.75rem;
+  padding: 0.4rem 0.55rem;
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+.v4-lang option {
+  color: #000;
+  background: #fff;
+}
+
+/* -------------------------------------------------------------------- hero */
+
+.v4-hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-rows: auto auto;
+  background: var(--v4-dark);
+  color: var(--white);
+  overflow: hidden;
+}
+
+/* Telemóvel: o retrato dela abre a página; o texto assenta por baixo, em oliva. */
+.v4-hero__media {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+}
+.v4-hero__media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: 52% 24%;
+}
+
+/**
+ * O herói inteiro tem de caber na dobra do telemóvel, senão os botões caem por
+ * trás da barra fixa de contacto. O texto ocupa ~55svh (título + lead + dois
+ * botões + nota), portanto a fotografia fica com o resto — cortada em altura,
+ * com o rosto guardado pelo `object-position`.
+ */
+@media (max-width: 899px) {
+  .v4-hero__media {
+    height: min(38svh, 20rem);
+  }
+  .v4-hero__media img {
+    height: 100%;
+    aspect-ratio: auto;
+    object-position: 52% 16%;
+  }
+  /* Os botões do herói seriam gémeos da barra fixa, encostados a ela. Um par
+     chega: aqui manda a barra, que acompanha o scroll todo. */
+  .v4-hero__body .v4-actions {
+    display: none;
+  }
+}
+/* Ecrã muito curto e estreito: menos fotografia para o título caber na dobra. */
+@media (max-width: 359px) {
+  .v4-hero__media img {
+    aspect-ratio: 7 / 6;
+    object-position: 52% 18%;
+  }
+  .v4-hero__body {
+    padding-top: 1.1rem;
+  }
+}
+.v4-hero__body {
+  position: relative;
+  z-index: 2;
+  align-self: end;
+  background: var(--v4-dark);
+  /* A barra fixa de contacto vive por cima do fim do ecrã: sem esta reserva, a
+     nota e o fim do texto ficavam por baixo dela. */
+  padding: 1.6rem clamp(1.15rem, 5vw, 3rem) calc(clamp(1.25rem, 4vw, 2rem) + var(--cta-bar-height));
+  width: 100%;
+  max-width: var(--v4-max);
+  margin-inline: auto;
+}
+/* 900px é onde `.v4-bar` desaparece e o CTA passa para o cabeçalho — a reserva
+   acompanha o mesmo ponto de corte, senão sobra um vazio no fim do herói. */
+@media (min-width: 900px) {
+  .v4-hero__body {
+    padding-bottom: clamp(1.75rem, 5vw, 3rem);
+  }
+}
+/* Fusão suave entre a fotografia e o texto — nunca por cima do texto. */
+.v4-hero__body::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 7rem;
+  background: linear-gradient(to top, var(--v4-dark), transparent);
+  pointer-events: none;
+}
+
+.v4-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.95rem, 1.05rem + 4.2vw, 4.4rem);
+  line-height: 1.03;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  overflow-wrap: break-word;
+}
+.v4-hero__line {
+  display: block;
+}
+.v4-hero__line.is-hot {
+  color: var(--fire-400);
+}
+
+.v4-hero__lead {
+  margin-top: 1.05rem;
+  max-width: 38ch;
+  font-size: var(--step-0);
+  line-height: 1.6;
+  color: var(--v4-soft);
+}
+
+.v4-hero__note {
+  margin-top: 0.9rem;
+  font-size: 0.76rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fire-300);
+}
+
+.v4-hero__flame {
+  position: absolute;
+  z-index: 2;
+  right: clamp(1rem, 5vw, 3rem);
+  top: clamp(0.75rem, 4vw, 2.5rem);
+  width: clamp(2.75rem, 11vw, 5.5rem);
+  color: var(--fire-400);
+  opacity: 0.92;
+}
+
+/* --------------------------------------------------------------- manifesto */
+
+.v4-manifesto__in {
+  display: grid;
+  gap: clamp(1.35rem, 4vw, 2.5rem);
+}
+.v4-manifesto__mark {
+  display: flex;
+}
+.v4-manifesto__lines {
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 1.05rem + 2vw, 2.6rem);
+  line-height: 1.18;
+  letter-spacing: 0.005em;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+  max-width: 22ch;
+}
+.v4-manifesto__line {
+  display: block;
+}
+.v4-manifesto__line.is-hot {
+  color: var(--fire-800);
+}
+
+@media (min-width: 800px) {
+  .v4-manifesto__in {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    gap: clamp(2rem, 6vw, 4.5rem);
+  }
+}
+
+/* ------------------------------------------------------------------- sobre */
+
+.v4-sobre {
+  display: grid;
+  gap: clamp(1.75rem, 5vw, 3.5rem);
+}
+.v4-sobre__media {
+  position: relative;
+}
+.v4-sobre__media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 22%;
+}
+.v4-sobre__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  margin-top: -1.5rem;
+  margin-left: clamp(0.75rem, 3vw, 1.5rem);
+  padding: 0.65rem 1.05rem;
+  background: var(--v4-dark);
+  color: var(--white);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.v4-inline-star {
+  width: 0.85rem;
+  height: 0.85rem;
+  flex: none;
+  color: var(--fire-400);
+}
+
+@media (min-width: 900px) {
+  .v4-sobre {
+    grid-template-columns: 0.85fr 1fr;
+    align-items: center;
+  }
+}
+
+/* ---------------------------------------------------------------- trabalho */
+
+.v4-rule {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: 26rem;
+  margin: 0 auto clamp(2rem, 5vw, 3rem);
+  color: var(--olive-500);
+}
+.v4-rule > svg {
+  height: 1.5rem;
+}
+.v4-rule__star {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 1.4rem;
+  height: 1.4rem;
+  color: var(--fire-500);
+}
+
+.v4-grid {
+  list-style: none;
+  padding: 0 clamp(0.5rem, 3vw, 3rem);
+  margin: 0 auto;
+  max-width: 96rem;
+  display: grid;
+  grid-auto-flow: dense;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.5rem, 1.6vw, 1.1rem);
+}
+.v4-cell figure {
+  margin: 0;
+}
+.v4-cell img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: 50% 24%;
+}
+.v4-cell.is-wide {
+  grid-column: span 2;
+}
+.v4-cell.is-wide img {
+  aspect-ratio: 1 / 1;
+  object-position: 50% 28%;
+}
+.v4-cell figcaption {
+  padding-top: 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--olive-700);
+}
+
+/* A partir do tablet a grelha é regular: o destaque de duas colunas abriria
+   buracos na retícula. O ritmo irregular fica para o telemóvel. */
+@media (min-width: 700px) {
+  .v4-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .v4-cell.is-wide {
+    grid-column: auto;
+  }
+  .v4-cell.is-wide img {
+    aspect-ratio: 3 / 4;
+    object-position: 50% 24%;
+  }
+}
+@media (min-width: 1100px) {
+  .v4-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* -------------------------------------------------------------------- tons */
+
+.v4-tons {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: clamp(1.4rem, 3.5vw, 2.25rem);
+}
+.v4-tone {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: clamp(1rem, 3.5vw, 1.75rem);
+  align-items: start;
+  padding-top: 1.35rem;
+  border-top: 1px solid var(--v4-hair-dark);
+}
+.v4-tone__swatch {
+  width: clamp(2.4rem, 8vw, 3.2rem);
+  color: var(--tone);
+}
+.v4-tone--cobre {
+  --tone: #d8813f;
+}
+.v4-tone--acaju {
+  --tone: #bb6048;
+}
+.v4-tone--gengibre {
+  --tone: #e8a45c;
+}
+.v4-tone--cereja {
+  --tone: #c74a63;
+}
+.v4-tone--laranja {
+  --tone: #ec6807;
+}
+.v4-tone--escuro {
+  --tone: #a06a51;
+}
+
+@media (min-width: 800px) {
+  .v4-tons {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(2rem, 6vw, 4.5rem);
+  }
+}
+
+/* ---------------------------------------------------------------- serviços */
+
+.v4-first {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: clamp(1.1rem, 4vw, 2.25rem);
+  align-items: start;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--fire-500);
+}
+.v4-first__flame {
+  width: clamp(2.5rem, 8vw, 4.25rem);
+  color: var(--fire-500);
+}
+
+.v4-servs {
+  list-style: none;
+  padding: 0;
+  margin-top: clamp(2rem, 5vw, 3rem);
+  display: grid;
+  gap: clamp(1.4rem, 3.5vw, 2.25rem);
+}
+.v4-servs li {
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--v4-hair);
+}
+
+@media (min-width: 700px) {
+  .v4-servs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(2rem, 5vw, 3.5rem);
+  }
+}
+@media (min-width: 1050px) {
+  .v4-servs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ---------------------------------------------------------------- processo */
+
+.v4-steps {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.25rem);
+}
+.v4-steps li {
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--v4-hair);
+}
+/* Corpo, não display: em Marcellus o zero lê-se como um "O". */
+.v4-steps__n {
+  display: block;
+  font-family: var(--font-body);
+  font-size: clamp(1.35rem, 1.1rem + 1.1vw, 1.85rem);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--fire-800);
+  margin-bottom: 0.55rem;
+}
+
+@media (min-width: 700px) {
+  .v4-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(2rem, 5vw, 3.5rem);
+  }
+}
+@media (min-width: 1050px) {
+  .v4-steps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* ---------------------------------------------------------------- produtos */
+
+.v4-produtos {
+  padding-block: clamp(2.5rem, 1.5rem + 4vw, 4.5rem);
+}
+.v4-produtos__in {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+}
+.v4-produtos__strip {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.5rem, 1.6vw, 1rem);
+}
+.v4-produtos__strip img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+@media (min-width: 900px) {
+  .v4-produtos__in {
+    grid-template-columns: 1fr 1.25fr;
+  }
+}
+
+/* ----------------------------------------------------------------- dúvidas */
+
+.v4-faq {
+  list-style: none;
+  padding: 0;
+}
+.v4-faq li {
+  border-top: 1px solid var(--v4-hair-dark);
+}
+.v4-faq li:last-child {
+  border-bottom: 1px solid var(--v4-hair-dark);
+}
+.v4-faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.5rem;
+  padding: 1rem 0;
+  list-style: none;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 0.94rem + 0.35vw, 1.18rem);
+  line-height: 1.35;
+  color: var(--white);
+}
+.v4-faq summary::-webkit-details-marker {
+  display: none;
+}
+.v4-faq__star {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex: none;
+  color: var(--fire-400);
+  transition: transform 0.35s var(--ease-out-quart);
+}
+.v4-faq details[open] .v4-faq__star {
+  transform: rotate(45deg) scale(1.2);
+}
+.v4-faq details p {
+  padding-bottom: 1.35rem;
+  max-width: 62ch;
+}
+
+/* ---------------------------------------------------------------- contacto */
+
+.v4-contacto {
+  display: grid;
+  gap: clamp(1.75rem, 5vw, 3.5rem);
+  align-items: center;
+}
+.v4-contacto__seal {
+  position: relative;
+  width: clamp(10rem, 42vw, 14.5rem);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  justify-self: start;
+}
+.v4-contacto__ring {
+  position: absolute;
+  inset: 0;
+  color: var(--ink);
+}
+.v4-seal {
+  width: 100%;
+  height: 100%;
+  animation: v4-spin 96s linear infinite;
+}
+.v4-seal__text {
+  fill: var(--ink);
+  stroke: none;
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+}
+.v4-contacto__helper {
+  margin-top: 1.25rem;
+  font-size: var(--step--1);
+  line-height: 1.6;
+  max-width: 46ch;
+  color: var(--fire-950);
+}
+
+@keyframes v4-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 900px) {
+  .v4-contacto {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: clamp(2.5rem, 7vw, 5rem);
+  }
+}
+
+/* ------------------------------------------------------------------ rodapé */
+
+.v4-footer {
+  background: var(--v4-dark);
+  color: var(--white);
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+  padding-bottom: calc(var(--cta-bar-height) + 2rem);
+}
+.v4-footer__in {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3.5rem);
+}
+.v4-footer__tagline {
+  margin-top: 1rem;
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  line-height: 1.35;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  max-width: 22ch;
+}
+.v4-footer__note {
+  margin-top: 0.9rem;
+  font-size: var(--step--1);
+  line-height: 1.65;
+  max-width: 42ch;
+  color: var(--v4-soft);
+}
+.v4-footer__label {
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--fire-300);
+  margin-bottom: 0.65rem;
+}
+.v4-langtabs {
+  display: flex;
+  gap: 0.4rem;
+}
+.v4-langtabs button {
+  min-width: 3rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.8rem;
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+.v4-langtabs button[aria-current] {
+  background: var(--fire-500);
+  color: var(--ink);
+  border-color: var(--fire-500);
+}
+.v4-footer__meta .v4-link--sm {
+  margin-top: 1.5rem;
+}
+.v4-footer__rights {
+  margin-top: 1.25rem;
+  font-size: var(--step--2);
+  letter-spacing: 0.05em;
+  color: var(--v4-soft);
+}
+
+@media (min-width: 800px) {
+  .v4-footer__in {
+    grid-template-columns: 1.2fr 1fr;
+    align-items: start;
+  }
+}
+
+/* ------------------------------------------------------------ barra de CTA */
+
+.v4-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-sticky);
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.6rem clamp(0.75rem, 3vw, 1rem);
+  padding-bottom: calc(0.6rem + env(safe-area-inset-bottom, 0px));
+  background: var(--v4-dark);
+  border-top: 1px solid var(--v4-hair-dark);
+}
+.v4-bar__main {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: clamp(0.78rem, 3.1vw, 0.92rem);
+  padding-inline: 0.6rem;
+}
+.v4-bar__tel {
+  flex: 0 0 auto;
+  min-width: 4.5rem;
+  font-size: clamp(0.82rem, 3.1vw, 0.92rem);
+  padding-inline: 0.8rem;
+}
+
+/* --------------------------------------------------------------- ≥ desktop */
+
+@media (min-width: 900px) {
+  .v4-bar {
+    display: none;
+  }
+  .v4-footer {
+    padding-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+  .v4-header__cta {
+    display: inline-flex;
+  }
+
+  .v4-hero {
+    grid-template-columns: 1.02fr 0.98fr;
+    grid-template-rows: auto;
+    min-height: calc(100svh - var(--v4-header-h));
+    max-height: 54rem;
+  }
+  .v4-hero__media {
+    grid-column: 2;
+    grid-row: 1;
+    height: 100%;
+  }
+  .v4-hero__media img {
+    height: 100%;
+    aspect-ratio: auto;
+    object-position: 50% 20%;
+  }
+  .v4-hero__body {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+    background: transparent;
+    max-width: none;
+    margin-inline: 0;
+    padding: clamp(2rem, 5vw, 4rem) clamp(2rem, 4vw, 3.5rem) clamp(2rem, 5vw, 4rem) var(--v4-gutter);
+  }
+  .v4-hero__body::before {
+    display: none;
+  }
+  .v4-hero__flame {
+    right: auto;
+    left: var(--v4-gutter);
+    top: clamp(1.5rem, 7vh, 4.5rem);
+    width: clamp(3rem, 5vw, 4.5rem);
+    opacity: 0.6;
+  }
+  .v4-hero__lead {
+    max-width: 34ch;
+  }
+}
+
+@media (min-width: 1150px) {
+  .v4-nav {
+    display: block;
+  }
+}
+
+/* ------------------------------------------------------ movimento reduzido */
+
+@media (prefers-reduced-motion: reduce) {
+  .v4-drawn .t-ink .d,
+  .v4-drawn.is-drawn .t-ink .d {
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+    animation: none !important;
+  }
+  .v4-scrollflame .t-ink .d {
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+  }
+  .v4-seal {
+    animation: none !important;
+  }
+}

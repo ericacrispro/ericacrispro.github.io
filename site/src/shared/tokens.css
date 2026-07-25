@@ -1,0 +1,206 @@
+/**
+ * Tokens da marca (docs/BRAND.md) + reset. Partilhado pelas 10 versões.
+ * Cada versão pode redefinir/estender no seu próprio CSS — isto é o chão, não a lei.
+ *
+ * Contraste já verificado (o laranja é traiçoeiro):
+ *   #EC6807 sobre branco ......... 3.2:1 → só display/ícone, NUNCA corpo
+ *   preto/#1B0E05 sobre #EC6807 .. 6.4:1 → o padrão do botão principal
+ *   #7A2F04 (brasa) sobre branco .. 9.4:1 → o laranja que pode ser corpo
+ *   #5D541D (oliva) sobre branco .. 7.6:1
+ *   #FFF sobre #5D541D ............ 7.6:1
+ */
+
+/**
+ * TUDO aqui vive na camada `base`. Motivo: no build de produção o Vite emite
+ * este ficheiro DEPOIS do CSS de cada versão, e um `:root` sem camada anulava as
+ * fontes que cada versão define (a V1 saía em serifada em vez de Anton).
+ * Regras em camada perdem sempre para regras sem camada, independentemente da
+ * ordem de carregamento — portanto o CSS de cada versão manda, como deve ser.
+ */
+@layer base {
+
+  :root {
+    /* --- Laranja-fogo: a cor da marca (#EC6807 exacto, lido do logótipo). --- */
+    --fire-950: oklch(0.24 0.088 45); /* quase-preto queimado, para fundos */
+    --fire-900: oklch(0.32 0.115 45);
+    --fire-800: oklch(0.42 0.145 45); /* #7A2F04 brasa — o laranja legível em corpo */
+    --fire-600: oklch(0.58 0.19 45);
+    --fire-500: oklch(0.667 0.185 45); /* #EC6807 — A cor */
+    --fire-400: oklch(0.75 0.155 55);
+    --fire-300: oklch(0.84 0.105 62); /* âmbar claro */
+    --fire-100: oklch(0.94 0.045 65);
+    --fire-50: oklch(0.975 0.018 65);
+
+    /* --- Oliva: a assinatura do logótipo, o contraponto terroso. --- */
+    --olive-900: oklch(0.28 0.05 100);
+    --olive-700: oklch(0.42 0.072 100); /* #5D541D */
+    --olive-500: oklch(0.56 0.075 100);
+    --olive-300: oklch(0.74 0.055 100);
+    --olive-100: oklch(0.93 0.025 100);
+
+    /* --- Neutros. Croma ~0 de propósito: o creme/bege é o default de IA. --- */
+    --ink: oklch(0.16 0.008 45); /* #1B0E05-ish — o preto da marca, não puro */
+    --ink-soft: oklch(0.36 0.012 45);
+    --ink-muted: oklch(0.52 0.012 45); /* limite do que pode ser corpo sobre branco */
+    --paper: oklch(0.985 0 0); /* off-white sem temperatura inventada */
+    --paper-dim: oklch(0.955 0.004 45);
+    --line: oklch(0.88 0.006 45);
+    --white: #ffffff;
+
+    /* --- Tipografia. Cada versão escolhe o par; isto é o default. --- */
+    --font-display: 'Bodoni Moda', 'Times New Roman', serif;
+    --font-body: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-script: 'Sacramento', cursive;
+
+    /* Escala fluida, razão ≥ 1.25. Tecto do display em 6rem — sem gritar. */
+    --step--2: clamp(0.72rem, 0.7rem + 0.1vw, 0.78rem);
+    --step--1: clamp(0.83rem, 0.79rem + 0.2vw, 0.94rem);
+    --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.13rem);
+    --step-1: clamp(1.25rem, 1.16rem + 0.45vw, 1.5rem);
+    --step-2: clamp(1.56rem, 1.4rem + 0.8vw, 2rem);
+    --step-3: clamp(1.95rem, 1.68rem + 1.35vw, 2.66rem);
+    --step-4: clamp(2.44rem, 2rem + 2.2vw, 3.55rem);
+    --step-5: clamp(3.05rem, 2.35rem + 3.5vw, 4.73rem);
+    --step-6: clamp(3.5rem, 2.4rem + 5.5vw, 6rem);
+
+    /* Ritmo. Variar, não repetir. */
+    --space-2xs: 0.5rem;
+    --space-xs: 0.75rem;
+    --space-s: 1rem;
+    --space-m: 1.5rem;
+    --space-l: 2.5rem;
+    --space-xl: clamp(3rem, 2rem + 5vw, 5rem);
+    --space-2xl: clamp(4.5rem, 3rem + 7.5vw, 8rem);
+
+    /* Curvas exponenciais — nada de bounce. */
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+
+    /* Escala z semântica. */
+    --z-base: 1;
+    --z-sticky: 100;
+    --z-nav: 200;
+    --z-overlay: 300;
+    --z-modal: 400;
+    --z-toast: 500;
+
+    /* Barra de contacto fixa: as versões reservam este espaço no fim da página. */
+    --cta-bar-height: 4.5rem;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100dvh;
+    font-family: var(--font-body);
+    font-size: var(--step-0);
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  img,
+  picture,
+  svg,
+  video {
+    display: block;
+    max-width: 100%;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.05;
+    text-wrap: balance;
+    letter-spacing: -0.015em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+    color: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  /* Foco sempre visível. */
+  :focus-visible {
+    outline: 3px solid var(--fire-500);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: var(--space-s);
+    top: -100%;
+    z-index: var(--z-modal);
+    padding: var(--space-xs) var(--space-s);
+    background: var(--fire-500);
+    color: var(--ink);
+    border-radius: 999px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: top 0.2s var(--ease-out-quart);
+  }
+  .skip-link:focus {
+    top: var(--space-s);
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+}

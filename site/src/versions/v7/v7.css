@@ -1,0 +1,982 @@
+/**
+ * V7 · MOSTRUÁRIO — a montra de um salão à noite.
+ *
+ * Fundo quase-preto quente para as fotografias brilharem. As faixas correm em
+ * `transform: translate3d` e mais nada; param ao rato e ao teclado; com
+ * `prefers-reduced-motion` viram faixas de scroll manual com scroll-snap.
+ *
+ * Contraste verificado sobre o fundo escuro (#1B1310-ish):
+ *   texto ....... oklch(0.955) ...... ~17:1
+ *   secundário .. oklch(0.785) ...... ~8.6:1
+ *   laranja ..... #EC6807 ........... ~5.8:1  (passa em corpo; aqui é acento)
+ *   ink sobre #EC6807 ............... 6.4:1
+ */
+
+.v7 {
+  --v7-night: oklch(0.145 0.018 45);
+  --v7-panel: oklch(0.202 0.026 45);
+  --v7-sunk: oklch(0.115 0.016 45);
+  --v7-line: oklch(0.33 0.022 45);
+  --v7-hair: oklch(0.28 0.018 45);
+  --v7-text: oklch(0.955 0.008 70);
+  --v7-dim: oklch(0.785 0.014 70);
+  --v7-fire: var(--fire-500);
+  --v7-fire-lt: var(--fire-400);
+
+  --pad: clamp(1.15rem, 4.5vw, 3rem);
+  --wrap: 74rem;
+  --gap: clamp(0.4rem, 1.1vw, 0.8rem);
+  --head-h: 3.5rem;
+
+  /* Alturas das faixas — variadas de propósito, para a montra ter composição. */
+  --h-hero: clamp(7.5rem, 30vw, 19rem);
+  --h-a: clamp(11rem, 50vw, 22rem);
+  --h-b: clamp(12rem, 58vw, 26rem);
+  --h-c: clamp(10rem, 44vw, 20rem);
+
+  font-family: 'Epilogue', system-ui, sans-serif;
+  color: var(--v7-text);
+  background: var(--v7-night);
+  padding-bottom: calc(var(--cta-bar-height) + env(safe-area-inset-bottom, 0px));
+  overflow-x: hidden;
+}
+
+.v7 :focus-visible {
+  outline: 3px solid var(--v7-fire-lt);
+  outline-offset: 2px;
+}
+
+.v7 .skip-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.v7-wrap {
+  width: min(100%, var(--wrap));
+  margin-inline: auto;
+  padding-inline: var(--pad);
+}
+
+/* ------------------------------------------------------------- tipografia -- */
+
+.v7-h1,
+.v7-h2,
+.v7-h3,
+.v7-h4 {
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--v7-text);
+}
+
+.v7-h1 {
+  font-size: clamp(2.1rem, 1.15rem + 4.8vw, 5rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+.v7-h1 span {
+  display: block;
+}
+.v7-h1-em {
+  font-style: italic;
+  color: var(--v7-fire-lt);
+}
+
+.v7-h2 {
+  font-size: clamp(1.75rem, 1.2rem + 2.4vw, 3.3rem);
+  line-height: 1.06;
+}
+.v7-h3 {
+  font-size: clamp(1.3rem, 1.1rem + 0.9vw, 1.85rem);
+  line-height: 1.15;
+}
+.v7-h4 {
+  font-size: clamp(1.1rem, 1rem + 0.5vw, 1.4rem);
+  line-height: 1.2;
+}
+
+.v7-kicker {
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--v7-fire-lt);
+  margin-bottom: 0.7rem;
+}
+.v7-kicker--ink {
+  color: color-mix(in oklab, var(--ink) 78%, transparent);
+}
+
+.v7-lead {
+  font-size: clamp(1.05rem, 0.98rem + 0.5vw, 1.4rem);
+  line-height: 1.55;
+  color: var(--v7-text);
+  max-width: 46ch;
+}
+.v7-lead--sm {
+  font-size: var(--step-0);
+  line-height: 1.65;
+  color: var(--v7-dim);
+  max-width: 54ch;
+}
+
+.v7-body {
+  font-size: var(--step-0);
+  line-height: 1.7;
+  color: var(--v7-dim);
+  max-width: 60ch;
+}
+.v7-body + .v7-body {
+  margin-top: 0.9rem;
+}
+.v7-body--sm {
+  font-size: var(--step--1);
+  line-height: 1.68;
+}
+
+.v7-note,
+.v7-nota {
+  font-size: var(--step--1);
+  line-height: 1.6;
+  color: var(--v7-dim);
+}
+
+/* ----------------------------------------------------------------- botões -- */
+
+.v7-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 46px;
+  padding: 0.7rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  text-align: center;
+  transition:
+    transform 0.25s var(--ease-out-quart),
+    background-color 0.25s var(--ease-out-quart),
+    border-color 0.25s var(--ease-out-quart);
+}
+.v7-btn--lg {
+  min-height: 52px;
+  padding: 0.85rem 1.6rem;
+  font-size: var(--step-0);
+}
+
+.v7-btn--fire {
+  background: var(--v7-fire);
+  color: var(--ink);
+}
+.v7-btn--fire:hover {
+  background: var(--fire-400);
+}
+
+.v7-btn--ghost {
+  background: transparent;
+  color: var(--v7-text);
+  border-color: var(--v7-line);
+}
+.v7-btn--ghost:hover {
+  border-color: var(--v7-fire-lt);
+}
+
+.v7-btn--ink {
+  background: var(--ink);
+  color: var(--fire-50);
+}
+.v7-btn--ink:hover {
+  background: oklch(0.26 0.03 45);
+}
+
+.v7-btn--outline {
+  background: transparent;
+  color: var(--ink);
+  border-color: color-mix(in oklab, var(--ink) 45%, transparent);
+}
+.v7-btn--outline:hover {
+  border-color: var(--ink);
+}
+
+.v7-btn:active {
+  transform: translateY(1px);
+}
+
+.v7-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.4rem;
+}
+.v7-actions--center {
+  justify-content: center;
+}
+
+/* ------------------------------------------------------------- cabeçalho -- */
+
+.v7-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-nav);
+  background: var(--v7-sunk);
+  border-bottom: 1px solid var(--v7-hair);
+}
+.v7-header-in {
+  width: min(100%, var(--wrap));
+  margin-inline: auto;
+  padding-inline: var(--pad);
+  min-height: var(--head-h);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.v7-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 44px;
+  text-decoration: none;
+  margin-right: auto;
+}
+.v7-brand-mark {
+  flex: none;
+}
+.v7-brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+.v7-brand-name {
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+.v7-brand-tag {
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--v7-fire-lt);
+}
+
+.v7-nav {
+  display: none;
+  gap: 1.4rem;
+}
+.v7-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: var(--step--1);
+  text-decoration: none;
+  color: var(--v7-dim);
+  border-bottom: 1px solid transparent;
+}
+.v7-nav a:hover {
+  color: var(--v7-text);
+  border-bottom-color: var(--v7-fire);
+}
+
+.v7-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.v7-header-cta {
+  display: none;
+}
+
+.v7-lang {
+  min-height: 44px;
+  padding: 0.4rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--v7-line);
+  background: transparent;
+  color: var(--v7-text);
+  font-size: var(--step--1);
+}
+.v7-lang option {
+  color: var(--ink);
+}
+
+/* ------------------------------------------------------------ as faixas --
+ * O invólucro corta (overflow: hidden) — é isto que impede o `<body>` de rolar
+ * na horizontal. O track é o único elemento animado, e só em `transform`.
+ */
+
+.v7-strip {
+  position: relative;
+  overflow: hidden;
+  background: var(--v7-sunk);
+}
+.v7-strip + .v7-strip {
+  margin-top: var(--gap);
+}
+
+.v7-track {
+  display: flex;
+  width: max-content;
+  height: var(--strip-h);
+}
+
+/* A faixa só corre enquanto está no ecrã — e é só aí que ganha camada própria.
+   É assim que o `will-change` fica com moderação: fora de vista a faixa está
+   parada, não gasta bateria, e pinta-se como conteúdo normal (uma camada
+   composta e animada fora do ecrã sai em branco na captura de página inteira). */
+.v7-strip[data-live='true'] .v7-track {
+  will-change: transform;
+  animation: v7-slide var(--dur, 40s) linear infinite;
+}
+.v7-strip[data-dir='direita'] .v7-track {
+  animation-direction: reverse;
+}
+
+/* Quem quer ver uma foto, pára a faixa: rato ou teclado. */
+.v7-strip:hover .v7-track,
+.v7-strip:focus-within .v7-track {
+  animation-play-state: paused;
+}
+
+@keyframes v7-slide {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.v7-copy {
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  padding-right: var(--gap);
+  height: 100%;
+}
+
+.v7-cell {
+  flex: 0 0 auto;
+  width: calc(var(--strip-h) * var(--w));
+  height: calc(var(--strip-h) * var(--h));
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--v7-panel);
+}
+.v7-cell picture,
+.v7-cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 26%;
+}
+
+.v7-strips {
+  margin-top: clamp(1.5rem, 4vw, 2.75rem);
+}
+
+/* -------------------------------------------------------------- letreiro -- */
+
+.v7-ticker {
+  overflow: hidden;
+  background: var(--v7-fire);
+  color: var(--ink);
+  padding-block: clamp(0.5rem, 1.5vw, 1rem);
+}
+.v7-tickerTrack {
+  display: flex;
+  width: max-content;
+}
+.v7-ticker[data-live='true'] .v7-tickerTrack {
+  animation: v7-slide var(--dur, 44s) linear infinite;
+}
+.v7-ticker:hover .v7-tickerTrack,
+.v7-ticker:focus-within .v7-tickerTrack {
+  animation-play-state: paused;
+}
+.v7-tickerCopy {
+  display: flex;
+  align-items: center;
+}
+.v7-tickerItem {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  padding-right: clamp(1.25rem, 3vw, 2.5rem);
+  white-space: nowrap;
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.35rem, 0.9rem + 2.2vw, 2.9rem);
+  line-height: 1.3;
+}
+.v7-tickerDot {
+  flex: none;
+  width: 0.42em;
+  height: 0.42em;
+  border-radius: 50%;
+  background: color-mix(in oklab, var(--ink) 65%, transparent);
+}
+
+/* ------------------------------------------------------------- secções --- */
+
+.v7-section {
+  padding-block: clamp(3rem, 8vw, 6.5rem);
+  scroll-margin-top: calc(var(--head-h) + 0.75rem);
+}
+.v7-section--panel {
+  background: var(--v7-panel);
+}
+.v7-section--flush {
+  padding-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+.v7-intro {
+  max-width: 54ch;
+  margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+}
+.v7-intro .v7-lead--sm {
+  margin-top: 0.9rem;
+}
+
+.v7-rise {
+  transition: transform 0.7s var(--ease-out-expo);
+}
+.v7-rise.is-entering {
+  transform: translateY(0.9rem);
+}
+
+/* ------------------------------------------------------------------ hero -- */
+
+.v7-hero {
+  padding-bottom: clamp(1.5rem, 4vw, 3rem);
+}
+.v7-hero-copy {
+  padding-block: clamp(1.4rem, 4.5vw, 3.5rem);
+}
+.v7-hero .v7-lead {
+  margin-top: clamp(0.9rem, 2.5vw, 1.5rem);
+}
+.v7-hero .v7-note {
+  margin-top: 0.85rem;
+}
+/* No telemóvel o "ligar" já vive na barra fixa — no hero seria a mesma coisa
+   duas vezes, e rouba a dobra ao que interessa. */
+.v7-hero .v7-btn--ghost {
+  display: none;
+}
+
+/* ----------------------------------------------------------------- sobre -- */
+
+.v7-sobre {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+.v7-sobre-fig {
+  position: relative;
+  margin: 0;
+}
+.v7-sobre-fig picture {
+  border-radius: 4px;
+  overflow: hidden;
+}
+.v7-sobre-fig img {
+  width: 100%;
+  height: clamp(16rem, 62vw, 34rem);
+  object-fit: cover;
+  object-position: 50% 22%;
+}
+.v7-badge {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translateY(45%);
+  background: var(--v7-fire);
+  color: var(--ink);
+  font-size: var(--step--2);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+}
+.v7-sobre-text {
+  padding-top: 1.5rem;
+}
+.v7-sobre-lead {
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.3rem, 1.05rem + 1.1vw, 2rem);
+  line-height: 1.25;
+  color: var(--v7-fire-lt);
+  margin-block: 1.1rem;
+}
+
+/* -------------------------------------------------------------- serviços -- */
+
+.v7-servicos {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 1px;
+  background: var(--v7-hair);
+  border-block: 1px solid var(--v7-hair);
+}
+.v7-servico {
+  background: var(--v7-panel);
+  padding-block: clamp(1.25rem, 3vw, 2rem);
+  padding-right: clamp(0rem, 2vw, 2rem);
+}
+.v7-servico--destaque {
+  background: var(--v7-night);
+  padding-inline: clamp(1.15rem, 3vw, 2rem);
+  border-top: 3px solid var(--v7-fire);
+}
+.v7-servico .v7-h3 {
+  margin-block: 0.35rem 0.6rem;
+}
+.v7-tag {
+  font-size: var(--step--2);
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--v7-fire-lt);
+}
+.v7-nota {
+  margin-top: 1.5rem;
+  max-width: 60ch;
+}
+
+/* ------------------------------------------------------------------ tons -- */
+
+.v7-tons {
+  list-style: none;
+  padding: 0;
+  display: grid;
+}
+.v7-tom {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(0.9rem, 2.5vw, 1.4rem);
+  padding-block: clamp(1rem, 2.5vw, 1.5rem);
+  border-top: 1px solid var(--v7-hair);
+}
+.v7-tom-foto {
+  flex: none;
+  width: clamp(4rem, 14vw, 5.5rem);
+  height: clamp(5rem, 18vw, 7rem);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.v7-tom-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 24%;
+}
+.v7-tom-text .v7-h4 {
+  margin-bottom: 0.35rem;
+}
+
+/* -------------------------------------------------------------- produtos -- */
+
+.v7-produtos {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+}
+.v7-produtos-text .v7-h3 {
+  margin-block: 0.3rem 0.8rem;
+}
+.v7-produtos-fotos {
+  display: flex;
+  gap: var(--gap);
+}
+.v7-produtos-fotos picture {
+  flex: 1 1 0;
+  min-width: 0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.v7-produtos-fotos img {
+  width: 100%;
+  height: clamp(8rem, 30vw, 15rem);
+  object-fit: cover;
+  object-position: 50% 45%;
+}
+
+/* -------------------------------------------------------------- processo -- */
+
+.v7-passos {
+  list-style: none;
+  padding: 0;
+  counter-reset: v7-passo;
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 2rem);
+}
+.v7-passo {
+  border-top: 1px solid var(--v7-hair);
+  padding-top: 1rem;
+}
+.v7-passo::before {
+  counter-increment: v7-passo;
+  content: '0' counter(v7-passo);
+  display: block;
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.4rem);
+  line-height: 1;
+  color: var(--v7-fire);
+  margin-bottom: 0.6rem;
+}
+.v7-passo .v7-h4 {
+  margin-bottom: 0.4rem;
+}
+
+/* ------------------------------------------------------------------- faq -- */
+
+.v7-faq-wrap {
+  max-width: 62rem;
+}
+.v7-faq {
+  border-top: 1px solid var(--v7-hair);
+}
+.v7-faqItem {
+  border-bottom: 1px solid var(--v7-hair);
+}
+.v7-faqItem summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 56px;
+  padding-block: 0.9rem;
+  list-style: none;
+  cursor: pointer;
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-size: clamp(1.05rem, 0.98rem + 0.5vw, 1.35rem);
+  line-height: 1.3;
+  color: var(--v7-text);
+}
+.v7-faqItem summary::-webkit-details-marker {
+  display: none;
+}
+.v7-faqItem summary::after {
+  content: '';
+  flex: none;
+  width: 0.7rem;
+  height: 0.7rem;
+  margin-right: 0.3rem;
+  border-right: 2px solid var(--v7-fire);
+  border-bottom: 2px solid var(--v7-fire);
+  transform: rotate(45deg);
+  transition: transform 0.3s var(--ease-out-quart);
+}
+.v7-faqItem[open] summary::after {
+  transform: rotate(225deg);
+}
+.v7-faqItem p {
+  padding-bottom: 1.25rem;
+  max-width: 68ch;
+}
+
+/* -------------------------------------------------------------- contacto -- */
+
+.v7-contacto {
+  background: var(--v7-fire);
+  color: var(--ink);
+}
+.v7-contacto-in {
+  text-align: center;
+}
+.v7-h2--ink {
+  color: var(--ink);
+}
+.v7-contacto-lead {
+  margin: 1rem auto 0;
+  max-width: 44ch;
+  font-size: clamp(1.02rem, 0.96rem + 0.4vw, 1.3rem);
+  line-height: 1.6;
+  color: color-mix(in oklab, var(--ink) 88%, transparent);
+}
+.v7-contacto-helper {
+  margin-top: 1rem;
+  font-size: var(--step--1);
+  color: color-mix(in oklab, var(--ink) 78%, transparent);
+}
+
+.v7-dados {
+  margin-top: clamp(2rem, 5vw, 3rem);
+  display: grid;
+  gap: 0.5rem;
+  text-align: left;
+  border-top: 1px solid color-mix(in oklab, var(--ink) 25%, transparent);
+  padding-top: clamp(1.5rem, 4vw, 2rem);
+}
+.v7-dados > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.75rem;
+}
+.v7-dados dt {
+  font-size: var(--step--2);
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--ink) 72%, transparent);
+  min-width: 7rem;
+}
+.v7-dados dd {
+  margin: 0;
+  font-size: var(--step-0);
+  font-weight: 600;
+}
+.v7-dados a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  min-width: 44px;
+  text-underline-offset: 4px;
+}
+
+/* --------------------------------------------------------------- rodapé -- */
+
+.v7-footer {
+  background: var(--v7-sunk);
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+  border-top: 1px solid var(--v7-hair);
+}
+.v7-footer-in {
+  display: grid;
+  gap: 1.75rem;
+}
+.v7-footer-tagline {
+  margin-top: 0.9rem;
+  font-size: var(--step--1);
+  color: var(--v7-dim);
+}
+.v7-footer-meta p {
+  font-size: var(--step--2);
+  line-height: 1.7;
+  color: var(--v7-dim);
+  max-width: 44ch;
+}
+.v7-footer-meta p + p {
+  margin-top: 0.5rem;
+}
+.v7-footer-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+.v7-topo {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 0.25rem;
+  font-size: var(--step--1);
+  color: var(--v7-dim);
+  text-underline-offset: 4px;
+}
+.v7-topo:hover {
+  color: var(--v7-fire-lt);
+}
+
+/* ------------------------------------------------------------ barra fixa -- */
+
+.v7-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-sticky);
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  min-height: var(--cta-bar-height);
+  padding: 0.6rem var(--pad);
+  padding-bottom: calc(0.6rem + env(safe-area-inset-bottom, 0px));
+  background: var(--v7-sunk);
+  border-top: 1px solid var(--v7-hair);
+}
+.v7-bar-main {
+  flex: 1 1 auto;
+  min-height: 48px;
+}
+.v7-bar-tel {
+  flex: 0 0 auto;
+  min-height: 48px;
+  padding-inline: 1.1rem;
+}
+
+/* ---------------------------------------------------------- até 360px --- *
+ * O piso (iPhone SE de 1ª geração). Aperta-se o hero para o botão principal
+ * caber na dobra — a barra fixa já o garante, mas é melhor vê-lo duas vezes.
+ */
+
+@media (max-width: 22.5rem) {
+  .v7 {
+    --h-hero: 6.75rem;
+  }
+  .v7-hero-copy {
+    padding-block: 1.1rem 0.9rem;
+  }
+  .v7-hero .v7-lead {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .v7-hero .v7-actions {
+    margin-top: 1.1rem;
+  }
+}
+
+/* -------------------------------------------------------------- 480px+ --- */
+
+@media (min-width: 30rem) {
+  .v7-produtos-fotos img {
+    height: clamp(10rem, 26vw, 15rem);
+  }
+}
+
+/* -------------------------------------------------------------- 704px+ --- */
+
+@media (min-width: 44rem) {
+  .v7-servicos {
+    grid-template-columns: 1fr 1fr;
+  }
+  .v7-servico {
+    padding-inline: clamp(1.15rem, 2.5vw, 2rem);
+  }
+  .v7-servico--destaque,
+  .v7-servico:last-child {
+    grid-column: 1 / -1;
+  }
+  .v7-tons {
+    grid-template-columns: 1fr 1fr;
+    column-gap: clamp(1.5rem, 4vw, 3rem);
+  }
+  .v7-produtos {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  }
+  .v7-passos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(1.5rem, 4vw, 3rem);
+  }
+  .v7-footer-in {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+  }
+  .v7-footer-tools {
+    grid-column: 1 / -1;
+  }
+  .v7-dados {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+  .v7-dados > div {
+    display: block;
+  }
+  .v7-dados dt {
+    margin-bottom: 0.2rem;
+  }
+}
+
+/* -------------------------------------------------------------- 900px+ --- */
+
+@media (min-width: 56.25rem) {
+  .v7 {
+    --head-h: 4.25rem;
+    padding-bottom: 0;
+  }
+  .v7-nav {
+    display: flex;
+  }
+  .v7-header-cta {
+    display: inline-flex;
+  }
+  .v7-hero .v7-btn--ghost {
+    display: inline-flex;
+  }
+  .v7-bar {
+    display: none;
+  }
+  .v7-brand-name {
+    font-size: 1.1rem;
+  }
+
+  .v7-hero-copy {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    column-gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: end;
+  }
+  .v7-hero-copy .v7-h1 {
+    grid-row: 1 / span 3;
+  }
+  .v7-hero .v7-lead {
+    margin-top: 0;
+  }
+
+  .v7-sobre {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: center;
+  }
+  .v7-sobre-text {
+    padding-top: 0;
+  }
+  .v7-passos {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .v7-footer-in {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  }
+  .v7-footer-tools {
+    grid-column: auto;
+    justify-content: flex-end;
+  }
+}
+
+/* ------------------------------------------------- movimento reduzido --- *
+ * O marquee PÁRA. As faixas passam a ser scroll horizontal manual com snap, e
+ * a cópia duplicada desaparece para não haver conteúdo repetido a percorrer.
+ */
+
+@media (prefers-reduced-motion: reduce) {
+  .v7-strip,
+  .v7-ticker {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+  }
+  /* Especificidade à altura da regra que liga o movimento — senão uma faixa
+     dentro do ecrã continuava a correr. */
+  .v7-strip[data-live='true'] .v7-track,
+  .v7-ticker[data-live='true'] .v7-tickerTrack,
+  .v7-track,
+  .v7-tickerTrack {
+    animation: none;
+    will-change: auto;
+    transform: none;
+  }
+  .v7-copy[aria-hidden='true'],
+  .v7-tickerCopy[aria-hidden='true'] {
+    display: none;
+  }
+  .v7-cell {
+    scroll-snap-align: center;
+  }
+  .v7-tickerItem {
+    scroll-snap-align: start;
+  }
+  .v7-rise {
+    transition: none;
+  }
+  .v7-rise.is-entering {
+    transform: none;
+  }
+}

@@ -1,0 +1,1109 @@
+/**
+ * V6 · MANIFESTO — laranja chapado e quase-preto, alternados.
+ * Um ecrã, uma ideia. Tipografia enorme (Bricolage Grotesque variável) e
+ * poucas fotografias, todas gigantes.
+ *
+ * Contraste:
+ *   --ink sobre --fire-500 ......... 6.4:1  ✓ corpo
+ *   --paper sobre --night .......... 14:1   ✓ corpo
+ *   --fire-500 sobre --night ....... 3.8:1  ✓ SÓ display (≥ 24px bold / 32px)
+ */
+
+:root {
+  --font-display: 'Bricolage Grotesque', 'Archivo', system-ui, sans-serif;
+  --font-body: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* O quase-preto desta versão: queimado, não neutro. */
+  --night: oklch(0.19 0.06 45);
+  --night-2: oklch(0.25 0.07 45);
+
+  --cta-bar-height: 4.5rem;
+
+  /* Tipografia de cartaz. Tecto: 6rem (96px), como manda o sistema.
+     Bricolage é estreita: 1 caractere ≈ 0.34em. As medidas abaixo foram
+     conferidas com a linha mais comprida em EN ("is not a colour") a 320px. */
+  --shout: clamp(2.8rem, 17vw, 6rem);
+  --roar: clamp(2.5rem, 16vw, 5.5rem);
+  --title: clamp(2rem, 8vw, 3.75rem);
+  --name: clamp(1.6rem, 5.6vw, 2.75rem);
+
+  --pad: clamp(1rem, 5vw, 4.5rem);
+
+  /* Tecto em px para os "ecrãs": impede a secção-monstro em monitores altos. */
+  --screen: min(calc(100svh - var(--cta-bar-height)), 54rem);
+  --band: var(--screen);
+}
+
+.v6 {
+  background: var(--night);
+  color: var(--paper);
+  padding-bottom: calc(var(--cta-bar-height) + env(safe-area-inset-bottom, 0px));
+  overflow-x: clip;
+}
+
+.v6 .skip-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* ------------------------------------------------------------------ *
+ * Tipos
+ * ------------------------------------------------------------------ */
+
+.v6-roar,
+.v6-shout,
+.v6-title,
+.v6-index-name,
+.v6-row-title,
+.v6-step-title,
+.v6-q > summary {
+  font-family: var(--font-display);
+  font-optical-sizing: none;
+  text-wrap: balance;
+}
+
+.v6-shout {
+  font-size: var(--shout);
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+  font-variation-settings: 'opsz' 96, 'wght' 760;
+  max-width: 15ch;
+  text-wrap: pretty;
+}
+
+.v6-shout--small {
+  font-size: clamp(1.9rem, 8.4vw, 4rem);
+  max-width: 13ch;
+}
+
+.v6-roar {
+  font-size: var(--roar);
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  display: flex;
+  flex-direction: column;
+}
+
+.v6-roar-line {
+  font-variation-settings: 'opsz' 96, 'wght' 320;
+}
+.v6-roar-line:first-child {
+  font-variation-settings: 'opsz' 96, 'wght' 800;
+  color: var(--fire-500);
+}
+
+.v6-title {
+  font-size: var(--title);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  font-variation-settings: 'opsz' 48, 'wght' 740;
+  color: var(--ink);
+  max-width: 16ch;
+}
+.v6-title--light {
+  color: var(--paper);
+}
+
+.v6-kicker {
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  line-height: 1.2;
+  color: var(--fire-400);
+}
+.v6-kicker--ink {
+  color: var(--ink);
+}
+
+.v6-lead {
+  font-size: var(--step-1);
+  line-height: 1.4;
+  max-width: 42ch;
+  color: var(--ink-soft);
+}
+.v6-lead--light {
+  color: oklch(0.86 0.02 45);
+}
+
+.v6-p {
+  max-width: 56ch;
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------------------------ *
+ * Entrada — o conteúdo é visível por omissão; `is-entering` é o antes.
+ * ------------------------------------------------------------------ */
+
+.v6-w {
+  display: inline-block;
+  margin-inline-end: 0.24em;
+  transition:
+    transform 560ms var(--ease-out-expo),
+    opacity 340ms linear;
+  transition-delay: calc(var(--i, 0) * 34ms);
+}
+.is-entering .v6-w {
+  transform: translateY(0.42em);
+  opacity: 0.001;
+}
+
+.v6-roar-line,
+.v6-hero-lead,
+.v6-hero-note,
+.v6-hero .v6-cta {
+  transition:
+    transform 760ms var(--ease-out-expo),
+    opacity 520ms linear;
+}
+.v6-roar-line {
+  transition-delay: calc(var(--i, 0) * 90ms + 120ms);
+}
+.v6-hero-lead {
+  transition-delay: 420ms;
+}
+.v6-hero .v6-cta {
+  transition-delay: 520ms;
+}
+.v6-hero-note {
+  transition-delay: 600ms;
+}
+.v6-hero.is-entering .v6-roar-line,
+.v6-hero.is-entering .v6-hero-lead,
+.v6-hero.is-entering .v6-hero-note,
+.v6-hero.is-entering .v6-cta {
+  transform: translateY(0.5em);
+  opacity: 0.001;
+}
+
+.v6-screen .v6-kicker,
+.v6-screen .v6-prose {
+  transition:
+    transform 700ms var(--ease-out-expo),
+    opacity 460ms linear;
+}
+.v6-screen.is-entering .v6-kicker,
+.v6-screen.is-entering .v6-prose {
+  transform: translateY(0.9rem);
+  opacity: 0.001;
+}
+
+.v6-head,
+.v6-sobre-body,
+.v6-contacto-body,
+.v6-qs,
+.v6-faq .v6-title {
+  transition:
+    transform 700ms var(--ease-out-expo),
+    opacity 460ms linear;
+}
+.v6-head.is-entering,
+.v6-sobre-body.is-entering,
+.v6-contacto-body.is-entering,
+.v6-qs.is-entering,
+.v6-faq .v6-title.is-entering {
+  transform: translateY(1.2rem);
+  opacity: 0.001;
+}
+
+.v6-row,
+.v6-index-row,
+.v6-step,
+.v6-cell,
+.v6-q {
+  transition:
+    transform 640ms var(--ease-out-expo),
+    opacity 420ms linear;
+  transition-delay: calc(var(--i, 0) * 45ms);
+}
+.is-entering .v6-row,
+.is-entering .v6-index-row,
+.is-entering .v6-step,
+.is-entering .v6-cell,
+.is-entering .v6-q {
+  transform: translateY(1.1rem);
+  opacity: 0.001;
+}
+
+/* Fotografias: recorte que abre + escala que assenta. */
+.v6-shot,
+.v6-sobre-photo,
+.v6-contacto-photo {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 900ms var(--ease-out-expo);
+}
+.v6-shot.is-entering,
+.v6-sobre-photo.is-entering,
+.v6-contacto-photo.is-entering {
+  clip-path: inset(0 0 88% 0);
+}
+.v6-shot img,
+.v6-sobre-photo img,
+.v6-contacto-photo img {
+  transition: transform 1400ms var(--ease-out-expo);
+}
+.v6-shot.is-entering img,
+.v6-sobre-photo.is-entering img,
+.v6-contacto-photo.is-entering img {
+  transform: scale(1.14);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v6 .is-entering,
+  .v6 .is-entering * {
+    transform: none !important;
+    opacity: 1 !important;
+    clip-path: none !important;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * HERO — fotografia gigante + a frase por cima
+ * ------------------------------------------------------------------ */
+
+.v6-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: var(--screen);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: var(--space-l);
+  padding: var(--pad) var(--pad) clamp(1.5rem, 5vw, 3.5rem);
+  background: var(--night);
+  overflow: hidden;
+}
+
+.v6-hero-photo {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+.v6-hero-photo picture,
+.v6-hero-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 18%;
+}
+.v6-hero-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, oklch(0.19 0.06 45 / 0.92) 20%, oklch(0.19 0.06 45 / 0.6) 46%, oklch(0.19 0.06 45 / 0.08) 84%),
+    linear-gradient(to right, oklch(0.19 0.06 45 / 0.45), transparent 60%);
+}
+
+.v6-top {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+.v6-top img {
+  filter: drop-shadow(0 2px 10px oklch(0.19 0.06 45 / 0.6));
+}
+
+.v6-hero-body {
+  align-self: end;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(0.75rem, 2.5vw, 1.25rem);
+}
+
+.v6-hero-lead {
+  font-size: var(--step-0);
+  line-height: 1.45;
+  color: oklch(0.9 0.02 45);
+  max-width: 32ch;
+}
+
+.v6-hero-note {
+  font-size: var(--step--1);
+  color: oklch(0.78 0.02 45);
+  max-width: 34ch;
+}
+
+/* ------------------------------------------------------------------ *
+ * CTA
+ * ------------------------------------------------------------------ */
+
+.v6-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.25rem;
+  padding: 0.75rem 1.4rem;
+  background: var(--fire-500);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: var(--step-0);
+  font-variation-settings: 'opsz' 20, 'wght' 700;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 2px;
+  transition:
+    background-color 200ms var(--ease-out-quart),
+    transform 200ms var(--ease-out-quart);
+}
+.v6-cta:hover {
+  background: var(--fire-400);
+}
+.v6-cta:active {
+  transform: translateY(1px);
+}
+.v6-cta--dark {
+  background: var(--ink);
+  color: var(--fire-400);
+}
+.v6-cta--dark:hover {
+  background: var(--night-2);
+}
+
+/* ------------------------------------------------------------------ *
+ * MANIFESTO — os ecrãs alternados
+ * ------------------------------------------------------------------ */
+
+.v6-screen {
+  min-height: var(--band);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: clamp(1.25rem, 4vw, 2rem);
+  padding: clamp(2.5rem, 8vw, 5rem) var(--pad);
+}
+/* O kicker sobe ao topo; a frase fica ancorada em baixo, como num cartaz. */
+.v6-screen > .v6-kicker {
+  margin-block-end: auto;
+}
+
+.v6-screen--fire {
+  background: var(--fire-500);
+  color: var(--ink);
+}
+.v6-screen--night {
+  background: var(--night);
+  color: var(--fire-500);
+}
+.v6-screen--night .v6-shout {
+  color: var(--fire-500);
+}
+
+.v6-screen--prose {
+  min-height: 0;
+  justify-content: flex-start;
+  padding-block: clamp(3rem, 9vw, 6rem);
+  border-top: 1px solid oklch(0.35 0.06 45);
+}
+.v6-prose {
+  font-size: var(--step-1);
+  line-height: 1.5;
+  max-width: 46ch;
+  color: oklch(0.88 0.02 45);
+}
+
+/* Fotografia gigante que interrompe. */
+.v6-shot {
+  margin: 0;
+  overflow: hidden;
+  background: var(--night);
+}
+.v6-shot picture,
+.v6-shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.v6-shot--tall {
+  height: min(78svh, 42rem);
+  min-height: 22rem;
+}
+.v6-shot img {
+  object-position: 50% 22%;
+}
+
+/* ------------------------------------------------------------------ *
+ * SOBRE
+ * ------------------------------------------------------------------ */
+
+.v6-sobre {
+  background: var(--paper);
+  color: var(--ink);
+  display: grid;
+  gap: clamp(1.75rem, 5vw, 3.5rem);
+  padding: clamp(3rem, 8vw, 6rem) var(--pad);
+}
+
+.v6-sobre-photo {
+  overflow: hidden;
+  background: var(--paper-dim);
+}
+.v6-sobre-photo picture,
+.v6-sobre-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 18%;
+}
+
+.v6-sobre-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+}
+
+.v6-sobre-lead {
+  font-family: var(--font-display);
+  font-optical-sizing: none;
+  font-size: clamp(1.35rem, 4vw, 2rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  font-variation-settings: 'opsz' 40, 'wght' 300;
+  color: var(--fire-800);
+  max-width: 20ch;
+  margin-block-start: 0.25rem;
+}
+
+.v6-badge {
+  align-self: flex-start;
+  margin-block-start: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  background: var(--fire-500);
+  color: var(--ink);
+  font-size: var(--step--1);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ------------------------------------------------------------------ *
+ * SERVIÇOS — lista editorial, não cartões
+ * ------------------------------------------------------------------ */
+
+.v6-servicos {
+  background: var(--paper);
+  color: var(--ink);
+  padding: clamp(2rem, 6vw, 4rem) var(--pad) clamp(3rem, 8vw, 6rem);
+  border-top: 1px solid var(--line);
+}
+
+.v6-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-block-end: clamp(1.75rem, 5vw, 3rem);
+}
+
+.v6-list,
+.v6-index,
+.v6-steps,
+.v6-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.v6-row {
+  display: grid;
+  gap: 0.35rem;
+  padding-block: clamp(1.25rem, 3.5vw, 2rem);
+  border-top: 1px solid var(--line);
+}
+.v6-row-title {
+  font-size: clamp(1.35rem, 4.4vw, 2rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variation-settings: 'opsz' 36, 'wght' 700;
+}
+.v6-row-tag {
+  font-size: var(--step--2);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--fire-800);
+}
+.v6-row-body {
+  max-width: 48ch;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.v6-nota {
+  margin-block-start: clamp(1.5rem, 4vw, 2.5rem);
+  padding-block-start: 1.25rem;
+  border-top: 3px solid var(--fire-500);
+  max-width: 52ch;
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+
+/* ------------------------------------------------------------------ *
+ * TONS — índice
+ * ------------------------------------------------------------------ */
+
+.v6-tons {
+  background: var(--night);
+  color: var(--paper);
+  padding: clamp(3rem, 8vw, 6rem) var(--pad);
+}
+
+.v6-index-row {
+  display: grid;
+  gap: 0.3rem;
+  padding-block: clamp(1.1rem, 3vw, 1.75rem);
+  border-top: 1px solid oklch(0.34 0.05 45);
+}
+.v6-index-name {
+  font-size: var(--name);
+  line-height: 1;
+  letter-spacing: -0.045em;
+  font-variation-settings: 'opsz' 60, 'wght' 300;
+  color: var(--fire-400);
+}
+.v6-index-body {
+  max-width: 46ch;
+  color: oklch(0.82 0.015 45);
+  line-height: 1.55;
+  font-size: var(--step--1);
+}
+
+/* ------------------------------------------------------------------ *
+ * PROCESSO
+ * ------------------------------------------------------------------ */
+
+.v6-processo {
+  background: var(--fire-500);
+  color: var(--ink);
+  padding: clamp(3rem, 8vw, 6rem) var(--pad);
+}
+/* Sobre laranja, o corpo é sempre --ink (6.4:1). Nada mais passa em AA. */
+.v6-processo .v6-lead {
+  color: var(--ink);
+}
+
+.v6-steps {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+}
+.v6-step {
+  display: grid;
+  gap: 0.3rem;
+  padding-block-start: clamp(1rem, 3vw, 1.5rem);
+  border-top: 2px solid var(--ink);
+}
+.v6-step-n {
+  font-family: var(--font-display);
+  font-optical-sizing: none;
+  font-size: clamp(2.5rem, 9vw, 4.5rem);
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  font-variation-settings: 'opsz' 96, 'wght' 800;
+  color: var(--ink);
+}
+@supports (-webkit-text-stroke: 2px currentColor) {
+  .v6-step-n {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--ink);
+  }
+}
+.v6-step-title {
+  font-size: clamp(1.2rem, 3.6vw, 1.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  font-variation-settings: 'opsz' 30, 'wght' 700;
+}
+.v6-step-body {
+  max-width: 40ch;
+  line-height: 1.5;
+  font-size: var(--step--1);
+  color: var(--ink);
+}
+
+/* ------------------------------------------------------------------ *
+ * TRABALHO — a prova, compacta
+ * ------------------------------------------------------------------ */
+
+.v6-trabalho {
+  background: var(--night);
+  color: var(--paper);
+  padding: clamp(3rem, 8vw, 6rem) var(--pad);
+}
+
+/* 16 fotografias: 2 / 4 / 8 colunas — divisores exactos, sem órfã na última fila. */
+.v6-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(0.25rem, 1vw, 0.5rem);
+}
+@media (min-width: 560px) {
+  .v6-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (min-width: 1100px) {
+  .v6-grid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+.v6-cell {
+  position: relative;
+  overflow: hidden;
+  background: var(--night-2);
+  aspect-ratio: 3 / 4;
+}
+.v6-cell picture,
+.v6-cell img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 22%;
+  transition: transform 600ms var(--ease-out-expo);
+}
+.v6-cell:hover img {
+  transform: scale(1.05);
+}
+
+/* ------------------------------------------------------------------ *
+ * DÚVIDAS
+ * ------------------------------------------------------------------ */
+
+.v6-faq {
+  background: var(--paper);
+  color: var(--ink);
+  padding: clamp(3rem, 8vw, 6rem) var(--pad);
+}
+.v6-faq .v6-title {
+  margin-block-end: clamp(1.5rem, 4vw, 2.5rem);
+  max-width: 20ch;
+}
+
+.v6-q {
+  border-top: 1px solid var(--line);
+}
+.v6-q > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.5rem;
+  padding-block: 0.9rem;
+  padding-inline-end: 0.25rem;
+  list-style: none;
+  cursor: pointer;
+  font-size: clamp(1.05rem, 2.8vw, 1.3rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-variation-settings: 'opsz' 24, 'wght' 640;
+}
+.v6-q > summary::-webkit-details-marker {
+  display: none;
+}
+.v6-q > summary::after {
+  content: '';
+  flex: 0 0 auto;
+  width: 1.15rem;
+  height: 1.15rem;
+  background:
+    linear-gradient(var(--fire-800), var(--fire-800)) center / 100% 2px no-repeat,
+    linear-gradient(var(--fire-800), var(--fire-800)) center / 2px 100% no-repeat;
+  transition: transform 260ms var(--ease-out-quart);
+}
+.v6-q[open] > summary::after {
+  transform: rotate(45deg);
+}
+.v6-q > p {
+  max-width: 58ch;
+  padding-block-end: 1.25rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------------------------ *
+ * CONTACTO
+ * ------------------------------------------------------------------ */
+
+.v6-contacto {
+  background: var(--fire-500);
+  color: var(--ink);
+  display: grid;
+  gap: 0;
+}
+
+.v6-contacto-photo {
+  overflow: hidden;
+  background: var(--fire-600);
+  height: min(62svh, 32rem);
+  min-height: 18rem;
+}
+.v6-contacto-photo picture,
+.v6-contacto-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+}
+
+.v6-contacto-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-s);
+  padding: clamp(2.5rem, 8vw, 5rem) var(--pad);
+}
+.v6-contacto-lead {
+  max-width: 40ch;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.v6-helper {
+  font-size: var(--step--1);
+  line-height: 1.5;
+  max-width: 34ch;
+  color: var(--ink);
+}
+
+.v6-tel {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 3rem;
+  margin-block-start: 0.25rem;
+  color: var(--ink);
+  text-decoration: none;
+  border-block-end: 2px solid var(--ink);
+  padding-block-end: 0.25rem;
+}
+.v6-tel-label {
+  font-size: var(--step--2);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  opacity: 0.7;
+}
+.v6-tel-n {
+  font-family: var(--font-display);
+  font-optical-sizing: none;
+  font-size: clamp(1.15rem, 3.4vw, 1.5rem);
+  letter-spacing: -0.03em;
+  font-variation-settings: 'opsz' 24, 'wght' 700;
+}
+
+/* ------------------------------------------------------------------ *
+ * RODAPÉ
+ * ------------------------------------------------------------------ */
+
+.v6-footer {
+  background: var(--night);
+  color: oklch(0.82 0.015 45);
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  padding: clamp(2.5rem, 6vw, 4rem) var(--pad) clamp(2.5rem, 6vw, 4rem);
+  border-top: 1px solid oklch(0.34 0.05 45);
+  font-size: var(--step--1);
+}
+.v6-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-s);
+}
+.v6-footer-tagline {
+  font-family: var(--font-display);
+  font-optical-sizing: none;
+  font-size: clamp(1.1rem, 3.2vw, 1.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  font-variation-settings: 'opsz' 30, 'wght' 700;
+  color: var(--paper);
+  max-width: 18ch;
+}
+.v6-footer-meta {
+  display: grid;
+  gap: 0.35rem;
+  max-width: 44ch;
+}
+.v6-footer-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-s);
+}
+.v6-up {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 0.25rem;
+  color: var(--fire-400);
+  text-underline-offset: 4px;
+}
+
+/* ------------------------------------------------------------------ *
+ * Selector de idioma
+ * ------------------------------------------------------------------ */
+
+.v6-select {
+  appearance: none;
+  min-height: 44px;
+  padding: 0 2rem 0 0.75rem;
+  background: transparent;
+  color: var(--paper);
+  border: 1px solid oklch(0.5 0.05 45);
+  border-radius: 2px;
+  font-size: var(--step--1);
+  font-weight: 600;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: right 1rem center, right 0.65rem center;
+  background-size: 0.35rem 0.35rem, 0.35rem 0.35rem;
+  background-repeat: no-repeat;
+}
+.v6-select option {
+  color: #111;
+  background: #fff;
+}
+
+/* ------------------------------------------------------------------ *
+ * Barra fixa — o contacto ao alcance do polegar em qualquer ponto
+ * ------------------------------------------------------------------ */
+
+.v6-bar {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: var(--z-sticky);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: var(--cta-bar-height);
+  padding: 0.5rem clamp(0.6rem, 3vw, 1.5rem);
+  padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px));
+  background: var(--night);
+  border-top: 2px solid var(--fire-500);
+}
+
+.v6-bar-cta {
+  flex: 1 1 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  background: var(--fire-500);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: var(--step-0);
+  font-variation-settings: 'opsz' 20, 'wght' 750;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  border-radius: 2px;
+}
+.v6-bar-cta:hover {
+  background: var(--fire-400);
+}
+
+.v6-bar-tel {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding-inline: 0.5rem;
+  color: var(--paper);
+  font-weight: 600;
+  font-size: var(--step--1);
+  text-decoration: none;
+  border: 1px solid oklch(0.5 0.05 45);
+  border-radius: 2px;
+}
+
+.v6-select--bar {
+  flex: 0 0 auto;
+}
+
+/* ------------------------------------------------------------------ *
+ * ≥ 620px
+ * ------------------------------------------------------------------ */
+
+@media (min-width: 620px) {
+  .v6-row {
+    grid-template-columns: minmax(11rem, 1fr) 1.5fr;
+    grid-template-areas:
+      'title body'
+      'tag   body';
+    column-gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: start;
+  }
+  .v6-row-title {
+    grid-area: title;
+  }
+  .v6-row-tag {
+    grid-area: tag;
+  }
+  .v6-row-body {
+    grid-area: body;
+  }
+  .v6-index-row {
+    grid-template-columns: minmax(8rem, 1fr) 1.7fr;
+    column-gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: baseline;
+  }
+  .v6-steps {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: clamp(1.5rem, 4vw, 3rem);
+  }
+  .v6-footer {
+    grid-template-columns: 1fr auto;
+    align-items: start;
+  }
+  .v6-footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * ≥ 900px — o desktop
+ * ------------------------------------------------------------------ */
+
+@media (min-width: 900px) {
+  :root {
+    /* No desktop a barra deixa de ser faixa: passa a bloco flutuante. */
+    --screen: min(100svh, 56rem);
+    /* A faixa do manifesto encolhe: 96px de tipo dentro de 800px de vazio
+       lê-se como página por acabar, não como cartaz. */
+    --band: min(calc(100svh - 4rem), 42rem);
+  }
+  .v6 {
+    padding-bottom: 0;
+  }
+  .v6-screen {
+    justify-content: center;
+  }
+  .v6-screen > .v6-kicker {
+    margin-block-end: 0;
+  }
+
+  .v6-hero-photo img {
+    object-position: 60% 22%;
+  }
+  .v6-hero-photo::after {
+    background:
+      linear-gradient(to top, oklch(0.19 0.06 45 / 0.9) 8%, oklch(0.19 0.06 45 / 0.35) 55%, transparent 90%),
+      linear-gradient(to right, oklch(0.19 0.06 45 / 0.92) 22%, oklch(0.19 0.06 45 / 0.35) 58%, transparent 78%);
+  }
+  .v6-hero-body {
+    max-width: 34rem;
+  }
+  .v6-hero-lead,
+  .v6-hero-note {
+    max-width: 32ch;
+  }
+  .v6-hero-lead {
+    font-size: var(--step-1);
+  }
+
+  .v6-screen {
+    padding-inline: clamp(3rem, 8vw, 8rem);
+  }
+  /* Alternância: laranja à esquerda, quase-preto à direita. */
+  .v6-shout {
+    max-width: 20ch;
+  }
+  .v6-screen--night .v6-shout {
+    margin-inline-start: auto;
+    max-width: 17ch;
+  }
+
+  .v6-index-row {
+    grid-template-columns: minmax(9rem, 0.55fr) 1.45fr;
+  }
+  .v6-index-body,
+  .v6-step-body {
+    font-size: var(--step-0);
+  }
+
+  /* Barra fixa → bloco flutuante, encostado ao canto. */
+  .v6-bar {
+    inset-inline: auto clamp(1rem, 2vw, 2rem);
+    bottom: clamp(1rem, 2vw, 2rem);
+    width: auto;
+    min-height: 0;
+    padding: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-top: 0;
+    border-radius: 4px;
+    box-shadow: 0 0.75rem 2.5rem oklch(0.19 0.06 45 / 0.5);
+  }
+  .v6-bar-cta {
+    flex: 0 0 auto;
+  }
+
+  .v6-shot--tall {
+    height: min(88svh, 46rem);
+  }
+
+  .v6-sobre {
+    grid-template-columns: 0.85fr 1fr;
+    align-items: center;
+    column-gap: clamp(2.5rem, 6vw, 5rem);
+    padding-inline: 0;
+  }
+  .v6-sobre-photo {
+    height: 100%;
+    min-height: 34rem;
+  }
+  .v6-sobre-body {
+    padding-inline-end: var(--pad);
+  }
+
+  .v6-steps {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .v6-contacto {
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+  .v6-contacto-photo {
+    height: 100%;
+    min-height: 32rem;
+    order: 2;
+  }
+  .v6-contacto-body {
+    justify-content: center;
+    order: 1;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * ≥ 1200px
+ * ------------------------------------------------------------------ */
+
+@media (min-width: 1200px) {
+  .v6-servicos,
+  .v6-tons,
+  .v6-processo,
+  .v6-trabalho,
+  .v6-faq {
+    padding-inline: clamp(3rem, 8vw, 8rem);
+  }
+  .v6-head {
+    max-width: 62ch;
+  }
+  .v6-shout {
+    max-width: 22ch;
+  }
+  .v6-qs {
+    max-width: 72ch;
+  }
+}

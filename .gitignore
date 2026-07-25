@@ -1,0 +1,12 @@
+# Materiais-fonte da Érica (grandes, ~100 MB; ficam locais, não publicados)
+docs da erica/
+
+# Dependências e cache de build
+node_modules/
+.vite/
+.build-root/
+
+# Lixo do Windows/WSL
+*:Zone.Identifier
+.DS_Store
+Thumbs.db

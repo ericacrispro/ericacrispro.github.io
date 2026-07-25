@@ -1,0 +1,1431 @@
+/* ==========================================================================
+   V10 · CARTAZ — impressão gráfica
+   --------------------------------------------------------------------------
+   Vocabulário: chapa (bloco de cor sólida), retícula (meio-tom em pontos),
+   registo (o desalinhamento de 2–4px entre chapas de cor). Sem gradientes de
+   cor, sem sombras suaves, sem cantos redondos. Tudo encaixa.
+
+   Tipos: Anton (display, condensada) + Bodoni Moda (corpo, números, detalhes).
+
+   Contraste verificado (WCAG 2.1, fórmula oficial):
+     #14100B sobre #EC6807 ....... 5.95:1  ✓ corpo
+     #14100B sobre #F7F7F6 ....... 17.8:1  ✓
+     #F7F7F6 sobre #14100B ....... 17.8:1  ✓
+     #EC6807 sobre #14100B .......  5.95:1 ✓ corpo (o laranja legível)
+     #F7F7F6 sobre #5D541D .......  7.1:1  ✓
+     branco sobre #A34210 ........  6.1:1  ✓  (cobre)
+     branco sobre #7E2434 ........  9.6:1  ✓  (acaju)
+     #14100B sobre #D98236 .......  6.4:1  ✓  (gengibre)
+     branco sobre #8B1230 ........  9.5:1  ✓  (cereja)
+     branco sobre #4A2418 ........ 13.5:1  ✓  (ruivo escuro)
+   ========================================================================== */
+
+.v10 {
+  /* --- As chapas de tinta. --- */
+  --k: #14100b; /* preto de impressão */
+  --l: #ec6807; /* laranja da marca */
+  --l-esc: #7a2f04; /* brasa */
+  --o: #5d541d; /* oliva do logótipo */
+  --o-esc: #38320f;
+  --p: #f7f7f6; /* papel, neutro — nada de creme */
+
+  /* --- A carta de tons, na ordem de `t.tons.items`. --- */
+  --tom-0: #a34210;
+  --tom-0-t: #ffffff; /* cobre */
+  --tom-1: #7e2434;
+  --tom-1-t: #ffffff; /* acaju */
+  --tom-2: #d98236;
+  --tom-2-t: var(--k); /* gengibre */
+  --tom-3: #8b1230;
+  --tom-3-t: #ffffff; /* cereja */
+  --tom-4: #ec6807;
+  --tom-4-t: var(--k); /* laranja vivo */
+  --tom-5: #4a2418;
+  --tom-5-t: #ffffff; /* ruivo escuro */
+
+  --font-display: 'Anton', 'Arial Narrow', 'Haettenschweiler', sans-serif;
+  --serif: 'Bodoni Moda', 'Bodoni MT', Georgia, serif;
+
+  --cta-bar-height: 4.25rem;
+  --gutter: clamp(1.125rem, 4.5vw, 3.5rem);
+  --max: 82rem;
+
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.02rem, 0.95rem + 0.32vw, 1.18rem);
+  line-height: 1.55;
+  color: var(--k);
+  background: var(--p);
+  /* A barra fixa do WhatsApp nunca tapa o fim da página. */
+  padding-bottom: calc(var(--cta-bar-height) + env(safe-area-inset-bottom, 0px));
+  overflow-x: clip;
+}
+
+.v10 :is(h1, h2, h3) {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+  line-height: 0.95;
+  text-wrap: balance;
+}
+
+/* `:where()` não soma especificidade: as listas que servem de contentor
+   (grelha, carta de tons, bandas, passos) podem repor margem e goteira sem
+   ter de gritar mais alto do que o reset. */
+.v10 :where(ul, ol) {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.v10 a {
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+/* --------------------------------------------------------------- retícula */
+/* Meio-tom em CSS. Usada com parcimónia: hero, manifesto, produtos, contacto. */
+.v10-reticula::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(currentColor 1.15px, transparent 1.35px);
+  background-size: 6px 6px;
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------- animação */
+/* Encaixe curto. O conteúdo NUNCA é escondido — a classe só o desloca. */
+.v10-anim {
+  transition: transform 0.6s var(--ease-out-quart);
+}
+.v10-anim.is-entering {
+  transform: translateY(0.9rem);
+}
+@media (prefers-reduced-motion: reduce) {
+  .v10-anim,
+  .v10-anim.is-entering {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ============================================================ TIPOS COMUNS */
+
+.v10-kicker {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: var(--step--1);
+  line-height: 1;
+  color: var(--l-esc);
+  margin-bottom: 0.85rem;
+}
+.v10-kicker--l {
+  color: var(--l);
+}
+
+.v10-h2 {
+  font-size: clamp(1.9rem, 8.4vw, 3.6rem);
+  color: var(--k);
+  margin-bottom: 0.6rem;
+}
+.v10-h2--claro {
+  color: var(--p);
+}
+/* Registo desalinhado: a chapa laranja saiu 3px fora do preto. */
+.v10-h2 {
+  text-shadow: 0.045em 0.045em 0 var(--l);
+}
+.v10-h2--claro {
+  text-shadow: 0.045em 0.045em 0 var(--l);
+}
+
+.v10-corpo {
+  max-width: 34em;
+  margin-bottom: 0.9rem;
+}
+
+/* ================================================================= BOTÕES */
+
+.v10-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.7rem 1.35rem;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.045em;
+  font-size: var(--step-0);
+  line-height: 1.1;
+  text-align: center;
+  text-decoration: none;
+  border: 0;
+  border-radius: 0;
+  transition:
+    transform 0.25s var(--ease-out-quart),
+    box-shadow 0.25s var(--ease-out-quart);
+}
+
+.v10-btn--k {
+  background: var(--k);
+  color: var(--p);
+  box-shadow: 4px 4px 0 var(--o);
+}
+.v10-btn--k:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--o);
+}
+
+.v10-btn--vazio {
+  background: transparent;
+  color: currentColor;
+  box-shadow: inset 0 0 0 2px currentColor;
+}
+.v10-btn--vazio:hover {
+  transform: translate(2px, 2px);
+}
+
+.v10-btn--grande {
+  min-height: 3.5rem;
+  font-size: var(--step-1);
+  padding: 0.85rem 1.75rem;
+}
+
+/* =============================================================== CABEÇALHO */
+
+.v10-topo {
+  background: var(--k);
+  color: var(--p);
+  border-bottom: 4px solid var(--l);
+}
+.v10-topo__in {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding: 0.6rem var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: space-between;
+}
+
+.v10-marca {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-width: 0;
+}
+.v10-marca__txt {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.v10-marca__nome {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.055em;
+  font-size: var(--step--1);
+  line-height: 1.05;
+  white-space: nowrap;
+}
+/* No telemóvel a assinatura repetia o kicker do cartaz logo por baixo. */
+.v10-marca__tag {
+  display: none;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: var(--step--2);
+  line-height: 1.15;
+  color: var(--l);
+  white-space: nowrap;
+}
+
+.v10-nav {
+  display: none;
+}
+.v10-nav ul {
+  display: flex;
+  gap: 0.25rem;
+  margin: 0;
+}
+.v10-nav a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 0.6rem;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-size: var(--step--1);
+  text-decoration: none;
+  color: var(--p);
+}
+.v10-nav a:hover {
+  background: var(--l);
+  color: var(--k);
+}
+
+.v10-topo__dir {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.v10-lang {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  color: var(--p);
+  border: 2px solid currentColor;
+  border-radius: 0;
+  min-height: 44px;
+  padding: 0 0.55rem;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: var(--step--1);
+}
+.v10-lang option {
+  color: #000;
+  background: #fff;
+}
+
+.v10-topo__wa {
+  display: none;
+}
+
+/* ==================================================================== HERO */
+
+.v10-hero {
+  position: relative;
+  background: var(--l);
+  color: var(--k);
+}
+
+.v10-hero__chapa {
+  --ret: clamp(46px, 10vw, 120px);
+  position: relative;
+  max-width: var(--max);
+  margin-inline: auto;
+  /* A margem de baixo é exactamente a faixa da retícula: os pontos ficam em
+     papel vazio, nunca por trás de texto. */
+  padding: clamp(1.4rem, 5vw, 3.25rem) var(--gutter) calc(var(--ret) + 0.5rem);
+}
+/* A retícula desce sobre a chapa laranja — a degradação de meio-tom impressa.
+   É máscara sobre pontos, não gradiente de cor. */
+.v10-hero__chapa::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--ret);
+  background-image: radial-gradient(var(--k) 1.7px, transparent 1.9px);
+  background-size: 8px 8px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000);
+  mask-image: linear-gradient(to bottom, transparent, #000);
+  opacity: 0.5;
+  pointer-events: none;
+}
+.v10-hero__chapa > * {
+  position: relative;
+  z-index: 1;
+}
+
+.v10-hero__kicker {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: var(--step--1);
+  line-height: 1;
+  margin-bottom: 0.7rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 3px solid var(--k);
+  display: inline-block;
+}
+
+.v10-hero__h1 {
+  font-size: clamp(2.25rem, 11.6vw, 6rem);
+  line-height: 0.9;
+  letter-spacing: -0.012em;
+  margin: 0 0 0.9rem;
+  /* O registo: a chapa oliva ficou 3px atrás da preta. */
+  text-shadow: 0.05em 0.05em 0 var(--o);
+}
+.v10-hero__linha {
+  display: block;
+}
+.v10-hero__linha:nth-child(2) {
+  margin-left: 0.06em;
+}
+/* Branco puro (não o papel) para garantir 3.2:1 sobre o laranja, e a chapa
+   preta 3px fora do registo por trás. */
+.v10-hero__linha:nth-child(3) {
+  color: #ffffff;
+  text-shadow: 0.05em 0.05em 0 var(--k);
+}
+
+/* Duas escritas da mesma frase: o ecrã curto recebe a curta, para o cartaz
+   caber sem empurrar a fotografia para fora da dobra. Só uma existe no DOM
+   visível de cada vez (`display:none` não é lido). */
+.v10-hero__lead {
+  max-width: 30em;
+  font-size: var(--step-0);
+  margin-bottom: 1.25rem;
+}
+.v10-hero__lead--longo {
+  display: none;
+}
+@media (min-width: 560px) {
+  .v10-hero__lead--curto {
+    display: none;
+  }
+  .v10-hero__lead--longo {
+    display: block;
+  }
+}
+
+.v10-hero__accoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 0.85rem;
+}
+.v10-hero__wa {
+  display: none;
+}
+
+/* Sobre laranja, a brasa só dá 2.93:1 — não serve para corpo. O preto de
+   impressão dá 5.95:1 e é o que o cartaz quer. */
+.v10-hero__nota {
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--k);
+}
+
+.v10-hero__foto {
+  position: relative;
+  background: var(--k);
+}
+.v10-hero__foto picture {
+  clip-path: polygon(0 0, 100% 3.5%, 100% 100%, 0 96.5%);
+}
+.v10-hero__foto img {
+  width: 100%;
+  height: clamp(320px, 68vw, 560px);
+  object-fit: cover;
+  object-position: 50% 32%;
+}
+
+/* Barra de cores de impressão — a régua de tinta ao pé da folha. */
+.v10-barracores {
+  display: flex;
+  height: 14px;
+}
+.v10-barracores i {
+  flex: 1;
+}
+.v10-barracores--rodape {
+  height: 10px;
+}
+
+[data-tom='cobre'] {
+  --chip: var(--tom-0);
+  --chip-t: var(--tom-0-t);
+}
+[data-tom='acaju'] {
+  --chip: var(--tom-1);
+  --chip-t: var(--tom-1-t);
+}
+[data-tom='gengibre'] {
+  --chip: var(--tom-2);
+  --chip-t: var(--tom-2-t);
+}
+[data-tom='cereja'] {
+  --chip: var(--tom-3);
+  --chip-t: var(--tom-3-t);
+}
+[data-tom='laranja'] {
+  --chip: var(--tom-4);
+  --chip-t: var(--tom-4-t);
+}
+[data-tom='ruivo-escuro'] {
+  --chip: var(--tom-5);
+  --chip-t: var(--tom-5-t);
+}
+.v10-barracores i {
+  background: var(--chip);
+}
+
+/* =============================================================== MANIFESTO */
+
+.v10-manifesto {
+  position: relative;
+  background: var(--o-esc);
+  color: var(--p);
+  overflow: hidden;
+  isolation: isolate;
+}
+/* Duotone: a foto passa a uma só tinta (preto + laranja), escurecida ao ponto
+   de o texto branco por cima ficar sempre acima de 4.5:1. */
+.v10-manifesto__fundo {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: var(--o-esc);
+}
+.v10-manifesto__fundo picture,
+.v10-manifesto__fundo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 28%;
+}
+.v10-manifesto__fundo img {
+  filter: grayscale(1) contrast(1.4) brightness(0.27);
+  mix-blend-mode: luminosity;
+}
+.v10-manifesto::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(20, 16, 11, 0.76);
+  /* Alfa baixo de propósito: a 0.55 o ponto mais claro da retícula deixava a
+     linha laranja em 1.98:1. A 0.3 o pior ponto dá 3.6:1 no display e 9:1 no
+     corpo — a textura fica, o contraste também. */
+  background-image: radial-gradient(rgba(236, 104, 7, 0.3) 1.2px, transparent 1.4px);
+  background-size: 7px 7px;
+  pointer-events: none;
+}
+.v10-manifesto__in {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding: clamp(2.5rem, 9vw, 5.5rem) var(--gutter);
+}
+.v10-manifesto__linhas {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: clamp(1.55rem, 6.6vw, 3.1rem);
+  line-height: 1.02;
+  letter-spacing: -0.005em;
+  max-width: 18em;
+  margin-bottom: 1.2rem;
+}
+.v10-manifesto__linhas span {
+  display: block;
+}
+/* A segunda linha é a segunda chapa de tinta. Só o display pode ser laranja
+   aqui (≥3:1); o kicker, por ser miudinho, vai a papel. */
+.v10-manifesto__linhas span:nth-child(2) {
+  color: var(--l);
+}
+.v10-manifesto .v10-kicker--l {
+  color: var(--p);
+}
+.v10-manifesto__corpo {
+  max-width: 34em;
+  font-size: var(--step-0);
+  color: #ede9e2;
+}
+
+/* =================================================================== SOBRE */
+
+.v10-sobre {
+  background: var(--p);
+  padding: clamp(2.5rem, 9vw, 5.5rem) 0;
+}
+.v10-sobre__in {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  display: grid;
+  gap: clamp(1.75rem, 5vw, 3rem);
+}
+
+.v10-sobre__foto {
+  position: relative;
+  /* O registo: a chapa oliva ficou fora do sítio, atrás da fotografia. */
+  box-shadow: 10px 10px 0 var(--o);
+  max-width: 26rem;
+}
+.v10-sobre__foto img {
+  width: 100%;
+  height: auto;
+}
+
+.v10-selo {
+  position: absolute;
+  left: -0.5rem;
+  bottom: -0.9rem;
+  max-width: 11rem;
+  transform: rotate(-3.5deg);
+  background: var(--l);
+  color: var(--k);
+  padding: 0.5rem 0.75rem;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: var(--step--1);
+  line-height: 1.08;
+  box-shadow: 3px 3px 0 var(--k);
+}
+
+.v10-sobre__lead {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: clamp(1.35rem, 5.4vw, 2rem);
+  line-height: 1.02;
+  color: var(--l-esc);
+  margin: 0.4rem 0 1rem;
+  max-width: 16em;
+}
+
+/* ================================================================ TRABALHO */
+
+.v10-galeria {
+  background: var(--k);
+  color: var(--p);
+  padding: clamp(2.5rem, 9vw, 5.5rem) 0 clamp(2rem, 7vw, 4rem);
+}
+.v10-galeria__cab {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  display: grid;
+  gap: 1rem;
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+.v10-galeria__conta {
+  font-family: var(--serif);
+  font-size: var(--step-1);
+  color: var(--l);
+  margin-bottom: 0.2rem;
+}
+.v10-galeria__conta b {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.6em;
+  line-height: 1;
+  margin-right: 0.15em;
+}
+.v10-galeria__lead {
+  max-width: 30em;
+  font-size: var(--step--1);
+  color: #d9d4cc;
+}
+
+.v10-grelha {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+.v10-cel {
+  position: relative;
+  background: var(--o-esc);
+}
+.v10-cel__foto {
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+}
+.v10-cel__foto picture,
+.v10-cel__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Recortes geométricos — a folha cortada à guilhotina, não a molduras. */
+.v10-cel__foto[data-corte='1'] picture {
+  clip-path: polygon(0 0, 100% 0, 100% 94%, 0 100%);
+}
+.v10-cel__foto[data-corte='2'] picture {
+  clip-path: polygon(0 0, 100% 6%, 100% 100%, 0 100%);
+}
+
+.v10-chip {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: var(--chip);
+  color: var(--chip-t);
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: var(--step--2);
+  line-height: 1;
+  padding: 0.42rem 0.6rem;
+}
+
+/* ==================================================================== TONS */
+
+.v10-tons {
+  background: var(--p);
+  padding: clamp(2.5rem, 9vw, 5.5rem) 0 0;
+}
+.v10-tons__cab {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+.v10-tons__lead {
+  font-size: var(--step-0);
+}
+.v10-carta {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+.v10-tom {
+  background: var(--cor);
+  color: var(--txt);
+  padding: 1.1rem 1.2rem 1.25rem;
+}
+.v10-tom[data-i='0'] {
+  --cor: var(--tom-0);
+  --txt: var(--tom-0-t);
+}
+.v10-tom[data-i='1'] {
+  --cor: var(--tom-1);
+  --txt: var(--tom-1-t);
+}
+.v10-tom[data-i='2'] {
+  --cor: var(--tom-2);
+  --txt: var(--tom-2-t);
+}
+.v10-tom[data-i='3'] {
+  --cor: var(--tom-3);
+  --txt: var(--tom-3-t);
+}
+.v10-tom[data-i='4'] {
+  --cor: var(--tom-4);
+  --txt: var(--tom-4-t);
+}
+.v10-tom[data-i='5'] {
+  --cor: var(--tom-5);
+  --txt: var(--tom-5-t);
+}
+.v10-tom__nome {
+  font-size: clamp(1.5rem, 6.5vw, 2.15rem);
+  line-height: 0.95;
+  margin-bottom: 0.4rem;
+}
+.v10-tom__corpo {
+  font-size: var(--step--1);
+  line-height: 1.5;
+  max-width: 32em;
+}
+
+/* ================================================================ SERVIÇOS */
+
+.v10-servicos {
+  background: var(--k);
+  color: var(--p);
+  padding: clamp(2.5rem, 9vw, 5.5rem) 0 clamp(2rem, 7vw, 4rem);
+}
+.v10-servicos__cab {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+.v10-servicos__lead {
+  max-width: 32em;
+  color: #d9d4cc;
+}
+.v10-bandas {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  display: grid;
+  gap: 4px;
+}
+.v10-banda {
+  padding: 1.15rem 1.2rem 1.3rem;
+}
+.v10-banda[data-i='0'] {
+  background: var(--p);
+  color: var(--k);
+}
+.v10-banda[data-i='1'] {
+  background: var(--l);
+  color: var(--k);
+}
+.v10-banda[data-i='2'] {
+  background: var(--o);
+  color: var(--p);
+}
+.v10-banda__tag {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: var(--step--1);
+  line-height: 1.2;
+  margin-bottom: 0.3rem;
+  opacity: 0.95;
+}
+.v10-banda__titulo {
+  font-size: clamp(1.4rem, 6vw, 2rem);
+  line-height: 0.98;
+  margin-bottom: 0.5rem;
+}
+.v10-banda__corpo {
+  font-size: var(--step--1);
+  line-height: 1.5;
+  max-width: 34em;
+}
+.v10-servicos__nota {
+  max-width: var(--max);
+  margin: clamp(1.25rem, 3vw, 2rem) auto 0;
+  padding-inline: var(--gutter);
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--l);
+}
+
+/* ================================================================ PRODUTOS */
+
+.v10-produtos {
+  position: relative;
+  background: var(--o);
+  color: var(--p);
+  padding: clamp(2.5rem, 9vw, 5.5rem) 0 clamp(2.25rem, 8vw, 4.5rem);
+  overflow: hidden;
+}
+.v10-produtos__cab {
+  position: relative;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+.v10-produtos__lead {
+  max-width: 34em;
+  font-size: var(--step-0);
+}
+/* Laranja sobre oliva dá 2.38:1 — aqui o kicker vai a papel (7.1:1). */
+.v10-produtos .v10-kicker--l {
+  color: var(--p);
+}
+.v10-produtos__fila {
+  position: relative;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  display: grid;
+  gap: clamp(1rem, 3vw, 1.5rem);
+}
+.v10-prod {
+  max-width: 24rem;
+}
+.v10-prod__foto {
+  position: relative;
+  background: var(--k);
+  box-shadow: 8px 8px 0 var(--l);
+}
+.v10-prod__foto img {
+  width: 100%;
+  height: clamp(230px, 52vw, 340px);
+  object-fit: cover;
+  object-position: 50% 42%;
+}
+/* Retícula por cima do produto: a foto passa a impresso. A cor real do frasco
+   mantém-se — o que muda é a textura. */
+.v10-prod__foto::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(20, 16, 11, 0.9) 0.85px, transparent 1.05px);
+  background-size: 4px 4px;
+  opacity: 0.24;
+  pointer-events: none;
+}
+
+/* ================================================================ PROCESSO */
+
+.v10-processo {
+  background: var(--k);
+  color: var(--p);
+  padding: clamp(2.5rem, 9vw, 5.5rem) 0;
+}
+.v10-processo__cab {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+.v10-processo__lead {
+  max-width: 32em;
+  color: #d9d4cc;
+}
+.v10-passos {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  display: grid;
+  gap: 0;
+  border-top: 3px solid var(--l);
+}
+.v10-passo {
+  position: relative;
+  padding: 1.1rem 0 1.2rem;
+  border-bottom: 3px solid var(--l);
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  column-gap: 0.9rem;
+  align-items: start;
+}
+.v10-passo__n {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 11vw, 3.5rem);
+  line-height: 0.8;
+  color: var(--l);
+  grid-row: span 2;
+}
+.v10-passo__titulo {
+  font-size: clamp(1.2rem, 5.2vw, 1.6rem);
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+.v10-passo__corpo {
+  grid-column: 2;
+  font-size: var(--step--1);
+  line-height: 1.5;
+  max-width: 34em;
+  color: #d9d4cc;
+}
+
+/* ================================================================= DÚVIDAS */
+
+.v10-faq {
+  background: var(--p);
+  padding: clamp(2.5rem, 9vw, 5.5rem) 0;
+}
+.v10-faq__cab,
+.v10-faq__lista {
+  max-width: 56rem;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.v10-faq__cab {
+  margin-bottom: clamp(1.25rem, 3.5vw, 2rem);
+}
+.v10-qa {
+  border-top: 2px solid var(--k);
+}
+.v10-qa:last-child {
+  border-bottom: 2px solid var(--k);
+}
+.v10-qa summary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 44px;
+  padding: 0.85rem 0;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: var(--step-0);
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+}
+.v10-qa summary::-webkit-details-marker {
+  display: none;
+}
+.v10-qa summary::after {
+  content: '';
+  flex: 0 0 auto;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-left: auto;
+  background: var(--l);
+  clip-path: polygon(45% 0, 55% 0, 55% 45%, 100% 45%, 100% 55%, 55% 55%, 55% 100%, 45% 100%, 45% 55%, 0 55%, 0 45%, 45% 45%);
+  transition: transform 0.3s var(--ease-out-quart);
+}
+.v10-qa[open] summary::after {
+  transform: rotate(45deg);
+}
+.v10-qa summary:hover {
+  color: var(--l-esc);
+}
+.v10-qa__a {
+  padding: 0 0 1.1rem;
+  max-width: 36em;
+  font-size: var(--step--1);
+  line-height: 1.6;
+  color: #2c261e;
+}
+
+/* ================================================================ CONTACTO */
+
+.v10-contacto {
+  position: relative;
+  background: var(--l);
+  color: var(--k);
+  padding: clamp(2.5rem, 9vw, 5.5rem) 0 clamp(2.5rem, 8vw, 4.5rem);
+  overflow: hidden;
+}
+.v10-contacto::before {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: clamp(80px, 16vw, 170px);
+  background-image: radial-gradient(var(--k) 1.7px, transparent 1.9px);
+  background-size: 8px 8px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000);
+  mask-image: linear-gradient(to bottom, transparent, #000);
+  opacity: 0.45;
+  pointer-events: none;
+}
+.v10-contacto__in {
+  position: relative;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.v10-contacto__h2 {
+  text-shadow: 0.045em 0.045em 0 var(--p);
+}
+.v10-contacto__lead {
+  max-width: 30em;
+  margin-bottom: 1.4rem;
+}
+.v10-contacto__accoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 0.75rem;
+}
+.v10-contacto__helper {
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--k);
+  margin-bottom: 1.75rem;
+  max-width: 30em;
+}
+/* Sobre a chapa laranja o kicker também tem de ser preto (a brasa reprova). */
+.v10-contacto .v10-kicker {
+  color: var(--k);
+}
+
+.v10-fichas {
+  display: grid;
+  gap: 3px;
+  margin: 0;
+  max-width: 44rem;
+}
+.v10-fichas > div {
+  background: var(--k);
+  color: var(--p);
+  padding: 0.7rem 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 0.75rem;
+}
+.v10-fichas dt {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  font-size: var(--step--2);
+  color: var(--l);
+  flex: 0 0 auto;
+  min-width: 6.5em;
+}
+.v10-fichas dd {
+  margin: 0;
+  font-size: var(--step--1);
+}
+.v10-fichas dd a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--p);
+  text-decoration: underline;
+}
+.v10-fichas dd a:hover {
+  color: var(--l);
+}
+
+/* ================================================================== RODAPÉ */
+
+.v10-rodape {
+  background: var(--k);
+  color: var(--p);
+}
+.v10-rodape__in {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding: clamp(2.25rem, 7vw, 4rem) var(--gutter) clamp(1.75rem, 5vw, 3rem);
+}
+.v10-rodape__logo {
+  margin-bottom: 1.1rem;
+}
+.v10-rodape__tagline {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: clamp(1.15rem, 5vw, 1.75rem);
+  line-height: 1.05;
+  color: var(--l);
+  max-width: 16em;
+  margin-bottom: 0.85rem;
+}
+.v10-rodape__nota {
+  font-size: var(--step--1);
+  color: #cec9c1;
+  max-width: 32em;
+  margin-bottom: 1.5rem;
+}
+.v10-rodape__barra {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 2px solid #3b352c;
+  margin-bottom: 1.1rem;
+}
+.v10-lang--rodape {
+  min-width: 10rem;
+}
+.v10-rodape__topo {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 0.65rem;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: var(--step--1);
+  color: var(--l);
+  text-decoration: none;
+  box-shadow: inset 0 0 0 2px currentColor;
+}
+.v10-rodape__topo:hover {
+  background: var(--l);
+  color: var(--k);
+}
+.v10-rodape__legal {
+  font-size: var(--step--2);
+  color: #a49d92;
+}
+
+/* ==================================================== BARRA FIXA (POLEGAR) */
+
+.v10-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-sticky);
+  display: flex;
+  gap: 4px;
+  padding: 0.5rem 0.6rem calc(0.5rem + env(safe-area-inset-bottom, 0px));
+  background: var(--k);
+  border-top: 3px solid var(--l);
+}
+.v10-bar a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 0.85rem;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: var(--step-0);
+  text-decoration: none;
+}
+.v10-bar__wa {
+  flex: 1 1 auto;
+  background: var(--l);
+  color: var(--k);
+}
+.v10-bar__tel {
+  flex: 0 0 auto;
+  min-width: 5.5rem;
+  background: transparent;
+  color: var(--p);
+  box-shadow: inset 0 0 0 2px var(--p);
+}
+
+/* ======================================================= ÂNCORAS / SCROLL */
+
+.v10 [id] {
+  scroll-margin-top: 1rem;
+}
+
+/* ============================================================ ≥ 560px */
+
+@media (min-width: 560px) {
+  .v10-fichas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================================ ≥ 700px */
+
+@media (min-width: 700px) {
+  .v10-grelha {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: dense;
+  }
+  /* Uma em cada quatro sai da folha em paisagem — o mosaico não é uma grelha
+     de cartões iguais. `dense` fecha os buracos que o span deixa. */
+  .v10-cel[data-largo] {
+    grid-column: span 2;
+  }
+  .v10-cel[data-largo] .v10-cel__foto {
+    aspect-ratio: 4 / 3;
+  }
+  .v10-carta {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .v10-bandas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .v10-produtos__fila {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .v10-prod {
+    max-width: none;
+  }
+  .v10-passos {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: clamp(1.5rem, 4vw, 3rem);
+  }
+  .v10-passo {
+    border-bottom: 3px solid var(--l);
+  }
+  .v10-manifesto__linhas {
+    max-width: 14em;
+  }
+}
+
+/* ============================================================ ≥ 900px */
+
+@media (min-width: 900px) {
+  .v10 {
+    padding-bottom: 0;
+  }
+  .v10-bar {
+    display: none;
+  }
+
+  .v10-topo {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-nav);
+  }
+  .v10 [id] {
+    scroll-margin-top: 5.5rem;
+  }
+  .v10-nav {
+    display: block;
+  }
+  .v10-topo__wa {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 1rem;
+    background: var(--l);
+    color: var(--k);
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: var(--step--1);
+    text-decoration: none;
+  }
+  .v10-topo__wa:hover {
+    background: var(--p);
+  }
+
+  /* O cartaz: chapa de tipografia à esquerda, fotografia encaixada à direita,
+     sem folga entre elas. */
+  .v10-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    align-items: stretch;
+  }
+  .v10-hero__chapa {
+    grid-column: 1;
+    grid-row: 1;
+    max-width: none;
+    padding: clamp(2.5rem, 4.5vw, 4.5rem) clamp(2rem, 3.5vw, 4rem) clamp(2.5rem, 4.5vw, 4rem)
+      max(var(--gutter), calc((100vw - var(--max)) / 2 + var(--gutter)));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .v10-hero__foto {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .v10-hero__foto picture {
+    height: 100%;
+    clip-path: polygon(4% 0, 100% 0, 100% 100%, 0 100%);
+  }
+  .v10-hero__foto img {
+    height: 100%;
+    min-height: 30rem;
+    object-position: 50% 26%;
+  }
+  .v10-hero__h1 {
+    font-size: min(6.4vw, 5.5rem);
+  }
+  .v10-hero__lead {
+    font-size: var(--step-1);
+  }
+  .v10-hero__wa {
+    display: inline-flex;
+  }
+  .v10-marca__tag {
+    display: block;
+  }
+  .v10-barracores {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    height: 18px;
+  }
+
+  .v10-sobre__in {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    align-items: start;
+    gap: clamp(2.5rem, 6vw, 5rem);
+  }
+  .v10-sobre__foto {
+    max-width: none;
+    position: sticky;
+    top: 6rem;
+  }
+
+  .v10-galeria__cab {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: end;
+    gap: 2rem;
+  }
+  .v10-grelha {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .v10-carta {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .v10-tom {
+    padding: 1.5rem 1.4rem 1.75rem;
+  }
+
+  .v10-bandas {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .v10-banda {
+    padding: 1.6rem 1.5rem 1.9rem;
+  }
+  /* Xadrez de chapas: nenhuma linha repete a mesma sequência de cor. */
+  .v10-banda:nth-child(4) {
+    background: var(--o);
+    color: var(--p);
+  }
+  .v10-banda:nth-child(5) {
+    background: var(--p);
+    color: var(--k);
+  }
+  .v10-banda:nth-child(6) {
+    background: var(--l);
+    color: var(--k);
+  }
+
+  .v10-passos {
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 4px solid var(--l);
+    border-bottom: 4px solid var(--l);
+  }
+  .v10-passo {
+    grid-template-columns: 1fr;
+    padding: 1.5rem 1.5rem 1.75rem 0;
+    border-bottom: 0;
+  }
+  .v10-passo + .v10-passo {
+    border-left: 0;
+  }
+  .v10-passo__n {
+    grid-row: auto;
+    font-size: 4.5rem;
+    margin-bottom: 0.35rem;
+  }
+  .v10-passo__corpo {
+    grid-column: 1;
+  }
+
+  .v10-contacto__in {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    column-gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: start;
+  }
+  .v10-contacto .v10-kicker,
+  .v10-contacto__h2,
+  .v10-contacto__lead,
+  .v10-contacto__accoes,
+  .v10-contacto__helper {
+    grid-column: 1;
+  }
+  .v10-fichas {
+    grid-column: 2;
+    grid-row: 1 / span 5;
+    grid-template-columns: 1fr;
+    align-self: center;
+  }
+
+  .v10-rodape__in {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 3rem;
+    align-items: start;
+  }
+  .v10-rodape__logo {
+    grid-column: 1;
+  }
+  .v10-rodape__tagline {
+    grid-column: 1;
+  }
+  .v10-rodape__nota {
+    grid-column: 1;
+    margin-bottom: 0;
+  }
+  .v10-rodape__barra {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    justify-content: flex-end;
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+  .v10-rodape__legal {
+    grid-column: 1 / -1;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    border-top: 2px solid #3b352c;
+  }
+}
+
+/* ============================================================ ≥ 1200px */
+
+@media (min-width: 1200px) {
+  .v10-h2 {
+    font-size: clamp(2.4rem, 3.6vw, 4rem);
+  }
+  .v10-manifesto__linhas {
+    font-size: clamp(2.4rem, 4.4vw, 4rem);
+  }
+}

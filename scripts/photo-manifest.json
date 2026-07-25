@@ -1,0 +1,266 @@
+{
+  "erica": [
+    {
+      "file": "erica/1000186209.jpg.jpeg",
+      "slug": "erica-retrato-estudio",
+      "role": "hero",
+      "alt": "Érica Gonçalves, especialista em ruivos, de bob acobreado encaracolado e look todo preto, em retrato de estúdio",
+      "orientation": "portrait",
+      "notes": "A única foto verdadeiramente profissional dela: fundo cinza uniforme, luz suave, nitidez alta. Muito espaço vazio à esquerda e no topo para título e CTA. O gesto de apontar para baixo funciona a apontar para o botão de marcação."
+    },
+    {
+      "file": "erica/1000220528.jpg.jpeg",
+      "slug": "erica-sorriso-salao",
+      "role": "sobre",
+      "alt": "Érica de perto, com o seu bob de caracóis num ruivo laranja intenso, no salão",
+      "orientation": "portrait",
+      "notes": "O ruivo dela está no ponto mais vibrante de todas as fotos e o enquadramento é próximo e caloroso. Ideal para a secção 'sobre' — cria ligação humana. Fundo claro do salão, boa luz natural."
+    },
+    {
+      "file": "erica/1000178848.jpg.jpeg",
+      "slug": "erica-raposa-croche",
+      "role": "prova",
+      "alt": "Érica no salão, cabelo ruivo em caracóis volumosos, a segurar uma raposa e um camaleão em crochê",
+      "orientation": "portrait",
+      "notes": "Mostra-a dentro do salão real, com a personalidade da marca (raposa = ruivo, camaleão = KC Color). Qualidade de telemóvel e fundo movimentado, por isso serve melhor em bloco pequeno de prova/bastidores do que em destaque."
+    }
+  ],
+  "hero": [
+    {
+      "file": "clients/1000183290.jpg.jpeg",
+      "slug": "ruivo-acaju-camadas-longas",
+      "alt": "Cabelo ruivo acaju em camadas longas com pontas viradas, brilho espelhado sob luz natural",
+      "orientation": "portrait",
+      "notes": "Primeira escolha para hero. Cliente em três quartos, parede bege lisa a ocupar todo o terço direito e o topo — espaço limpo para título, subtítulo e CTA. Cor rica, brilho impecável, corte bem legível. A mão da Érica a levantar o cabelo assina o trabalho sem mostrar rosto."
+    },
+    {
+      "file": "clients/1000255813.jpg.jpeg",
+      "slug": "caracois-ruivos-cobre-volume",
+      "alt": "Caracóis ruivos acobreados definidos, volume cheio e cor uniforme da raiz às pontas",
+      "orientation": "portrait",
+      "notes": "Segunda escolha. Cabelo simétrico e enorme, cor cobre saturada, fundo branco e bege muito limpo com faixa vazia à esquerda. Excelente também para versão vertical em telemóvel."
+    },
+    {
+      "file": "clients/1000221305.jpg.jpeg",
+      "slug": "ruivo-acaju-ondas-medias",
+      "alt": "Ondas ruivas acaju à altura dos ombros, movimento solto e brilho quente",
+      "orientation": "portrait",
+      "notes": "Terceira escolha. Fundo quase branco, grande área vazia no canto superior esquerdo — o texto assenta lá sem tratamento. Olhar de perfil elevado, rosto pouco frontal, mais discreto para a cliente."
+    }
+  ],
+  "gallery": [
+    {
+      "file": "clients/1000230759.jpg.jpeg",
+      "slug": "ruivo-laranja-vivo-ondas-longas",
+      "alt": "Ruivo laranja vivo em ondas longas e volumosas, com sorriso aberto no salão",
+      "orientation": "portrait",
+      "tone": "laranja",
+      "faceVisible": true,
+      "notes": "A cor mais luminosa de toda a coleção. Impacto imediato numa grelha — deve abrir a galeria."
+    },
+    {
+      "file": "clients/1000234733.jpg.jpeg",
+      "slug": "ruivo-cobre-ondas-volumosas",
+      "alt": "Ruivo cobre em ondas volumosas e brilhantes, penteado com raiz cheia",
+      "orientation": "portrait",
+      "tone": "cobre",
+      "faceVisible": true,
+      "notes": "Cobre quente perfeitamente uniforme, luz suave, top branco que faz a cor saltar. Referência de 'cobre clássico'."
+    },
+    {
+      "file": "clients/1000259001.jpg.jpeg",
+      "slug": "ruivo-gengibre-franja-cortina",
+      "alt": "Ruivo gengibre comprido com franja e pontas viradas, num salão cheio de luz",
+      "orientation": "portrait",
+      "tone": "gengibre",
+      "faceVisible": true,
+      "notes": "Mostra corte (franja) e cor ao mesmo tempo. Enquadramento limpo, fundo em tons de areia que valoriza o ruivo."
+    },
+    {
+      "file": "clients/1000189856.jpg.jpeg",
+      "slug": "ruivo-gengibre-ondas-compridas",
+      "alt": "Ruivo gengibre em ondas compridas com camadas, brilho intenso sob a luz do salão",
+      "orientation": "portrait",
+      "tone": "gengibre",
+      "faceVisible": true,
+      "notes": "Cor saturada e textura desenhada; fundo do salão desfocado dá profundidade. Uma das mais fotogénicas do conjunto."
+    },
+    {
+      "file": "clients/1000247307.jpg.jpeg",
+      "slug": "ruivo-cereja-vinho-ondas",
+      "alt": "Ruivo cereja em tom vinho, ondas largas e acetinadas ao lado do rosto",
+      "orientation": "portrait",
+      "tone": "cereja",
+      "faceVisible": true,
+      "notes": "Registo editorial, olhos fechados e cabeça inclinada — elegante e pouco identificável. Traz a família dos vermelhos escuros à paleta."
+    },
+    {
+      "file": "clients/1000208295.jpg.jpeg",
+      "slug": "ruivo-acaju-liso-camadas",
+      "alt": "Ruivo acaju comprido e liso com camadas em movimento, brilho de espelho",
+      "orientation": "portrait",
+      "tone": "acaju",
+      "faceVisible": true,
+      "notes": "Acaju profundo com reflexos avermelhados; excelente demonstração de brilho e alisamento. Cliente de óculos, sorriso natural."
+    },
+    {
+      "file": "clients/1000249213.jpg.jpeg",
+      "slug": "caracois-acaju-compridos",
+      "alt": "Caracóis acaju muito compridos e definidos, cor quente da raiz às pontas",
+      "orientation": "portrait",
+      "tone": "acaju",
+      "faceVisible": true,
+      "notes": "Prova de trabalho em cabelo cacheado longo — textura diferente das restantes. Boa nitidez e luz frontal."
+    },
+    {
+      "file": "clients/1000242296.jpg.jpeg",
+      "slug": "ruivo-cereja-medio-camadas",
+      "alt": "Ruivo cereja vibrante em corte médio com camadas e pontas mais vermelhas",
+      "orientation": "portrait",
+      "tone": "cereja",
+      "faceVisible": true,
+      "notes": "Vermelho cereja saturado com degradê nas pontas; pose de estúdio improvisada que dá atitude. Camisa branca a contrastar."
+    },
+    {
+      "file": "clients/1000226758.jpg.jpeg",
+      "slug": "ruivo-escuro-liso-comprido",
+      "alt": "Ruivo escuro acastanhado, comprido e liso, com brilho acetinado",
+      "orientation": "portrait",
+      "tone": "ruivo-escuro",
+      "faceVisible": true,
+      "notes": "O extremo discreto da paleta: ruivo escuro/castanho acobreado, para clientes que querem algo natural. Perfil de três quartos, luz limpa."
+    },
+    {
+      "file": "clients/1000222549.jpg.jpeg",
+      "slug": "ruivo-cobre-dourado-ondas",
+      "alt": "Ruivo cobre dourado em ondas largas, com reflexos que puxam ao morango",
+      "orientation": "portrait",
+      "tone": "cobre",
+      "faceVisible": true,
+      "notes": "Tom mais claro e dourado, boa variação face aos cobres intensos. Cliente muito tatuada — dá um ar editorial e moderno à galeria."
+    },
+    {
+      "file": "clients/1000178859.jpg.jpeg",
+      "slug": "erica-com-cliente-ruivo-comprido",
+      "alt": "Érica ao lado de uma cliente com ruivo cobre comprido e escovado, ambas de ruivo no salão",
+      "orientation": "portrait",
+      "tone": "cobre",
+      "faceVisible": true,
+      "notes": "Prova social forte: a cabeleireira e o resultado no mesmo enquadramento. Cor cobre luminosa e comprimento impressionante."
+    },
+    {
+      "file": "clients/1000215600.jpg.jpeg",
+      "slug": "coloracao-fantasia-laranja-fogo",
+      "alt": "Coloração de fantasia em degradê fogo, do magenta na raiz ao laranja e amarelo nas pontas, nas mãos da Érica",
+      "orientation": "portrait",
+      "tone": "laranja",
+      "faceVisible": false,
+      "notes": "Foto profissional e a única em que o rosto da cliente não aparece — mostra só o cabelo e a Érica a sorrir. Ideal para representar coloração criativa sem expor ninguém."
+    },
+    {
+      "file": "clients/1000239610.jpg.jpeg",
+      "slug": "caracois-acaju-medios",
+      "alt": "Caracóis acaju de comprimento médio, bem definidos e com brilho",
+      "orientation": "portrait",
+      "tone": "acaju",
+      "faceVisible": true,
+      "notes": "Cacho mais fechado e volume lateral; acrescenta diversidade de textura e de tipo de cliente à galeria."
+    },
+    {
+      "file": "clients/1000236342.jpg.jpeg",
+      "slug": "ruivo-gengibre-comprido-ondulado",
+      "alt": "Ruivo gengibre comprido com ondas suaves nas pontas e risco ao meio",
+      "orientation": "portrait",
+      "tone": "gengibre",
+      "faceVisible": true,
+      "notes": "Cor limpa e homogénea, luz natural do salão. Serve bem como imagem calma entre as fotos mais fortes."
+    },
+    {
+      "file": "clients/1000216693.jpg.jpeg",
+      "slug": "ruivo-acaju-escuro-medio",
+      "alt": "Ruivo acaju escuro em corte médio ondulado, com reflexos acobreados",
+      "orientation": "portrait",
+      "tone": "acaju",
+      "faceVisible": true,
+      "notes": "Pose descontraída, mão no queixo; fundo do salão desfocado. Bom exemplo de ruivo discreto para o dia a dia."
+    },
+    {
+      "file": "clients/1000207119.jpg.jpeg",
+      "slug": "ruivo-cobre-caramelo-liso",
+      "alt": "Ruivo cobre acaramelado, comprido e liso, visto de perfil no salão",
+      "orientation": "portrait",
+      "tone": "cobre",
+      "faceVisible": false,
+      "notes": "Perfil com o rosto parcialmente tapado pelo cabelo — a mais discreta da galeria. Mostra o tom mais suave, quase caramelo, e o acabamento liso."
+    }
+  ],
+  "produtos": [
+    {
+      "file": "produtos/Cachorro caramelo-46.jpg.jpeg",
+      "slug": "kc-color-cachorro-caramelo-frasco",
+      "alt": "Frasco de coloração KC Color Cachorro Caramelo, tom golden copper, sobre a bancada do salão",
+      "orientation": "portrait",
+      "notes": "A melhor foto de produto: profundidade de campo curta, frasco nítido em primeiro plano e o salão desfocado atrás. Vertical, ideal para bloco 'os produtos que uso'."
+    },
+    {
+      "file": "produtos/Cachorro caramelo-35.jpg.jpeg",
+      "slug": "kc-color-gama-tons-ruivos",
+      "alt": "Três colorações KC Color lado a lado — Cachorro Caramelo, Urso Pardo e Carpa — com a carta de cores",
+      "orientation": "portrait",
+      "notes": "Segunda escolha: mostra a gama de tons e a carta de cores, útil para explicar o serviço de coloração. Fundo claro e limpo; o terceiro frasco fica cortado à direita, prever crop."
+    },
+    {
+      "file": "clients/1000213918.jpg.jpeg",
+      "slug": "erica-com-coloracao-kc-color",
+      "alt": "Érica de luvas a mostrar dois frascos de coloração KC Color Cachorro Caramelo, a sorrir",
+      "orientation": "portrait",
+      "notes": "Está na pasta clients/ mas é a melhor imagem de 'Érica + produto': liga a profissional à marca de coloração. Excelente para o topo da secção de produtos."
+    }
+  ],
+  "rejected": [
+    {
+      "file": "clients/1000207120.jpg.jpeg",
+      "reason": "É uma captura de ecrã: barra de estado do telemóvel, botões de partilha e miniatura sobrepostos. Inutilizável sem recorte agressivo, e o tom é loiro mel, fora do posicionamento ruivo."
+    },
+    {
+      "file": "clients/1000208294.jpg.jpeg",
+      "reason": "Cabelo castanho com mechas, sem qualquer nuance ruiva — foge ao posicionamento 'especialista em ruivos'. Luz frontal chapada."
+    },
+    {
+      "file": "clients/1000242301.jpg.jpeg",
+      "reason": "Mesma cliente e mesmo trabalho de 1000242296, com o olhar baixo e menos leitura da cor. Duplicado."
+    },
+    {
+      "file": "clients/1000247306.jpg.jpeg",
+      "reason": "Mesma cliente e mesma sessão de 1000247307, aqui a sorrir de frente. Muito boa — fica como reserva, mas repetiria o tom vinho na galeria."
+    },
+    {
+      "file": "clients/1000215602.jpg.jpeg",
+      "reason": "Excelente qualidade, mas repete a coloração de fantasia já representada por 1000215600 — e aqui o rosto da cliente aparece por inteiro. Reserva."
+    },
+    {
+      "file": "clients/1000213755.jpg.jpeg",
+      "reason": "Mesma sessão e mesma cliente do degradê de fogo; a composição com Érica atrás já está coberta por 1000215600. Reserva."
+    },
+    {
+      "file": "clients/1000183564.jpg.jpeg",
+      "reason": "Boa prova social, mas o enquadramento é largo e vazio à direita, com cadeiras a competir, e a expressão da cliente é fechada. 1000178859 cumpre melhor a mesma função."
+    },
+    {
+      "file": "clients/1000230626.jpg.jpeg",
+      "reason": "Tom cobre já representado por fotos mais fortes (1000234733, 1000236342) e há pessoas desfocadas em segundo plano a distrair."
+    },
+    {
+      "file": "clients/1000259883.jpg.jpeg",
+      "reason": "Selfie de ambiente com ruído, foco fraco e outras pessoas no fundo. Simpática, mas abaixo do padrão do resto do site."
+    },
+    {
+      "file": "produtos/Cachorro caramelo-26.jpg.jpeg",
+      "reason": "É um cartaz publicitário da KC Color com código QR, não um produto em uso. Comunica a marca do fornecedor, não o trabalho da Érica."
+    },
+    {
+      "file": "produtos/Cachorro caramelo-153.jpg.jpeg",
+      "reason": "Cena confusa: peluche, expositor, cartaz e um tabuleiro Kérastase bem visível. Marcas de terceiros a competir com o produto principal."
+    }
+  ]
+}

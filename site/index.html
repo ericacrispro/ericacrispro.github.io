@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rascunhos — Érica Gonçalves</title>
+    <meta name="description" content="Área de rascunhos do site da Érica Gonçalves: versões para ver, comparar e escolher." />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#1B0E05" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_PT" />
+    <meta property="og:title" content="Rascunhos — Érica Gonçalves" />
+    <meta property="og:description" content="As versões do site antes de irem para o ar." />
+    <meta property="og:url" content="https://ericacrispro.github.io/mockup/" />
+    <meta property="og:image" content="https://ericacrispro.github.io/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="./src/assets/fonts.css" />
+    <link rel="stylesheet" href="./src/shared/tokens.css" />
+    <style>
+      body {
+        background: var(--fire-950);
+        color: var(--fire-50);
+        display: grid;
+        align-content: center;
+        min-height: 100dvh;
+        padding: var(--space-xl) var(--space-m);
+      }
+      .wrap {
+        width: 100%;
+        max-width: 44rem;
+        margin: 0 auto;
+      }
+      .mark {
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs);
+        color: var(--fire-300);
+        font-size: var(--step--1);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .mark::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: color-mix(in oklch, var(--fire-300) 35%, transparent);
+      }
+      h1 {
+        font-size: var(--step-4);
+        margin: var(--space-m) 0 var(--space-s);
+      }
+      .lead {
+        font-size: var(--step-1);
+        max-width: 34ch;
+      }
+      .note {
+        color: var(--fire-300);
+        margin-top: var(--space-s);
+        max-width: 50ch;
+      }
+      /* Link dentro de um parágrafo: `inline-block` + padding dá-lhe os 44px de
+         alvo sem partir a linha de texto à volta. */
+      .note a {
+        display: inline-block;
+        padding-block: 0.7rem;
+        color: var(--fire-400);
+      }
+      .items {
+        list-style: none;
+        padding: 0;
+        margin: var(--space-xl) 0 0;
+        display: grid;
+        gap: var(--space-s);
+      }
+      a.item {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: var(--space-s);
+        padding: var(--space-m);
+        min-height: 44px;
+        text-decoration: none;
+        border: 1px solid color-mix(in oklch, var(--fire-400) 35%, transparent);
+        border-radius: 1rem;
+        background: color-mix(in oklch, var(--fire-900) 55%, transparent);
+        transition:
+          background 0.35s var(--ease-out-quart),
+          border-color 0.35s var(--ease-out-quart),
+          transform 0.35s var(--ease-out-quart);
+      }
+      a.item:hover,
+      a.item:focus-visible {
+        background: var(--fire-900);
+        border-color: var(--fire-500);
+        transform: translateY(-2px);
+      }
+      a.item h2 {
+        font-size: var(--step-2);
+      }
+      a.item p {
+        color: var(--fire-300);
+        font-size: var(--step--1);
+        margin-top: 0.25rem;
+      }
+      .arrow {
+        display: grid;
+        place-items: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        border-radius: 50%;
+        background: var(--fire-500);
+        color: var(--ink);
+        font-size: 1.1rem;
+        flex-shrink: 0;
+      }
+      .soon {
+        padding: var(--space-m);
+        border: 1px dashed color-mix(in oklch, var(--fire-400) 30%, transparent);
+        border-radius: 1rem;
+        color: var(--fire-300);
+        font-size: var(--step--1);
+      }
+      footer {
+        margin-top: var(--space-xl);
+        color: color-mix(in oklch, var(--fire-300) 80%, transparent);
+        font-size: var(--step--1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <p class="mark">Érica Gonçalves · área de rascunhos</p>
+
+      <h1>Rascunhos</h1>
+      <p class="lead">Aqui ficam as versões do site antes de irem para o ar.</p>
+      <p class="note">
+        Nada nesta área é o site oficial — é material para ver, comparar e escolher. O site publicado continua em
+        <a href="/">ericacrispro.github.io</a>.
+      </p>
+
+      <ul class="items">
+        <li>
+          <a class="item" href="./versoes/">
+            <span>
+              <h2>As 10 versões</h2>
+              <p>Dez direcções visuais para o site — cada uma abre a funcionar, no telemóvel e no computador.</p>
+            </span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li class="soon">Outras categorias de rascunho entram aqui conforme forem aparecendo.</li>
+      </ul>
+
+      <footer>
+        <p>Páginas não indexadas (<code>noindex</code> + <code>robots.txt</code>).</p>
+      </footer>
+    </div>
+  </body>
+</html>
