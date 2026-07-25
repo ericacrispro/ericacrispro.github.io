@@ -179,7 +179,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  height: min(100dvh, 58rem);
+  height: 100dvh;
   overflow: hidden;
 }
 
@@ -844,13 +844,17 @@ body {
     border-right: 1px solid var(--v2-line-soft);
   }
 
-  /* O tecto em `min()` protege a composição quando a janela é muito alta — e
-     evita que a captura de página inteira (que redimensiona a janela) estique
-     o painel até aos 11.000px. */
+  /**
+   * Altura do ecrã, inteira. Houve aqui um tecto de 58rem para a captura de
+   * página inteira não esticar o painel até aos 11.000px — mas isso deixava
+   * uma faixa vazia em qualquer monitor acima de 928px de altura, que é a
+   * maioria. O produto manda: a captura de página inteira desta coluna sai
+   * esticada, a captura da dobra (a que serve para avaliar) sai certa.
+   */
   .v2-mirror__inner {
     position: sticky;
     top: 0;
-    height: min(100dvh, 58rem);
+    height: 100dvh;
     overflow: hidden;
   }
 
